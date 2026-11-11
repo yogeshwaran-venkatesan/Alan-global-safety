@@ -1,0 +1,952 @@
+{
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "trainings": "Trainings",
+    "about": "About",
+    "contact": "Contact",
+    "quote": "Get a quote",
+    "main": "Main menu",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "language": "Change language",
+    "skip": "Skip to content"
+  },
+  "common": {
+    "brochure": "Download brochure",
+    "dismiss": "Dismiss"
+  },
+  "mega": {
+    "eyebrow": "Catalogue",
+    "title": "Everything your site needs to stay safe",
+    "text": "Protective equipment from head to toe, height safety, emergency gear and detection — sourced and supplied by one team.",
+    "all": "View all products"
+  },
+  "quick": {
+    "label": "Quick contact",
+    "call": "Call"
+  },
+  "footer": {
+    "ctaEyebrow": "Let’s talk safety",
+    "ctaTitle": "Make every shift a safe one.",
+    "about": "Safety equipment supply and hands-on safety training from Kakkanad, Kochi — backed by over two decades in the safety field.",
+    "products": "Products",
+    "company": "Company",
+    "reach": "Reach us",
+    "rights": "All rights reserved."
+  },
+  "products": {
+    "groups": {
+      "ppe": "Personal protection",
+      "height": "Work at height",
+      "emergency": "Emergency & first aid",
+      "spill": "Spill & storage",
+      "detection": "Detection & lighting",
+      "site": "Site & electrical"
+    },
+    "categories": {
+      "head-protection": {
+        "name": "Head Protection",
+        "short": "Helmets and accessories that take the knock so your team doesn’t.",
+        "items": [
+          "Safety helmets",
+          "Bump caps",
+          "Chin straps",
+          "Helmet accessories"
+        ]
+      },
+      "eye-protection": {
+        "name": "Eye Protection",
+        "short": "Clear, comfortable protection against dust, splashes and impact.",
+        "items": [
+          "Safety spectacles",
+          "Goggles",
+          "Face shields",
+          "Welding eye protection"
+        ]
+      },
+      "ear-protection": {
+        "name": "Ear Protection",
+        "short": "Hearing protection for noisy plants, workshops and sites.",
+        "items": [
+          "Ear plugs",
+          "Ear muffs",
+          "Helmet-mounted muffs"
+        ]
+      },
+      "respiratory-protection": {
+        "name": "Respiratory Protection",
+        "short": "Masks and respirators for dust, fumes and vapours.",
+        "items": [
+          "Disposable masks",
+          "Half face-piece respirators",
+          "Full face-piece respirators",
+          "Filters & cartridges"
+        ]
+      },
+      "airline-respirators": {
+        "name": "Airline Respirators",
+        "short": "Supplied-air protection for confined spaces and hazardous atmospheres.",
+        "items": [
+          "Airline respirators",
+          "Supplied-air hoods",
+          "Air hoses & regulators"
+        ]
+      },
+      "hand-protection": {
+        "name": "Hand Protection",
+        "short": "The right glove for every task — from general handling to chemicals.",
+        "items": [
+          "General-purpose gloves",
+          "Cut-resistant gloves",
+          "Chemical gloves",
+          "Heat-resistant gloves"
+        ]
+      },
+      "body-protection": {
+        "name": "Body Protection",
+        "short": "Workwear that keeps people seen and shielded.",
+        "items": [
+          "Coveralls",
+          "High-visibility vests",
+          "Aprons",
+          "Chemical suits"
+        ]
+      },
+      "safety-footwear": {
+        "name": "Safety Footwear",
+        "short": "Safety shoes from Allen Cooper, Acme and other trusted brands.",
+        "items": [
+          "Allen Cooper",
+          "Acme",
+          "Safety shoes & boots"
+        ]
+      },
+      "fall-protection": {
+        "name": "Fall Protection",
+        "short": "Harnesses and connectors for safe work at height.",
+        "items": [
+          "Full-body harnesses",
+          "Lanyards",
+          "Anchors",
+          "Lifelines"
+        ]
+      },
+      "fall-arresters-ladders": {
+        "name": "Fall Arresters & Ladders",
+        "short": "Arrest systems and ladders for climbing and access.",
+        "items": [
+          "Fall arresters",
+          "Self-retracting lifelines",
+          "Ladders"
+        ]
+      },
+      "first-aid": {
+        "name": "First Aid",
+        "short": "Kits and equipment to act fast when it matters.",
+        "items": [
+          "First-aid kits",
+          "Stretchers",
+          "Burn care"
+        ]
+      },
+      "eye-wash-shower": {
+        "name": "Eye Wash & Showers",
+        "short": "Emergency decontamination stations for chemical areas.",
+        "items": [
+          "Eye-wash stations",
+          "Combination showers",
+          "Portable eye wash"
+        ]
+      },
+      "emergency-rescue": {
+        "name": "Emergency Rescue",
+        "short": "Rescue equipment for confined spaces and emergencies.",
+        "items": [
+          "Rescue tripods",
+          "Rescue stretchers",
+          "Emergency kits"
+        ]
+      },
+      "spill-control": {
+        "name": "Spill Control",
+        "short": "Sorbents and spill kits for oil and chemical leaks.",
+        "items": [
+          "Oil sorbents",
+          "Chemical sorbents",
+          "Spill kits",
+          "Booms & pads"
+        ]
+      },
+      "safety-cans-cabinets": {
+        "name": "Safety Cans & Cabinets",
+        "short": "Safe storage for flammable and hazardous liquids.",
+        "items": [
+          "Safety cans",
+          "Flammable storage cabinets"
+        ]
+      },
+      "gas-detection": {
+        "name": "Gas Detection",
+        "short": "Detectors and instruments that warn before it’s too late.",
+        "items": [
+          "Single-gas detectors",
+          "Multi-gas detectors",
+          "Instrumentation"
+        ]
+      },
+      "traffic-safety": {
+        "name": "Traffic Safety",
+        "short": "Cones, barriers and signs that control site traffic.",
+        "items": [
+          "Traffic cones",
+          "Barricades",
+          "Warning tape",
+          "Safety signs"
+        ]
+      },
+      "electrical-safety": {
+        "name": "Electrical Safety",
+        "short": "Protection for anyone working near live equipment.",
+        "items": [
+          "Electrical gloves",
+          "Insulating mats",
+          "Voltage detectors"
+        ]
+      },
+      "lockout-tagout": {
+        "name": "Lockout Tagout",
+        "short": "Isolate energy sources safely during maintenance.",
+        "items": [
+          "Safety padlocks",
+          "Hasps",
+          "Valve & breaker lockouts",
+          "Tags"
+        ]
+      },
+      "welding-safety": {
+        "name": "Welding Safety",
+        "short": "Protection for welders and anyone near hot work.",
+        "items": [
+          "Welding helmets & shields",
+          "Welding gloves",
+          "Welding goggles",
+          "Protective aprons"
+        ]
+      },
+      "safe-lighting": {
+        "name": "Intrinsically Safe Lighting",
+        "short": "Torches and head-lamps built for hazardous and flammable areas.",
+        "items": [
+          "Intrinsically safe torches",
+          "Head-lamps",
+          "Hazardous-area lighting"
+        ]
+      },
+      "safety-signage": {
+        "name": "Safety Signage",
+        "short": "Clear signs for exits, assembly points, hazards and PPE rules.",
+        "items": [
+          "Emergency exit signs",
+          "Assembly point signs",
+          "Fire safety signs",
+          "Glow-in-the-dark signs"
+        ]
+      }
+    },
+    "gallery": {
+      "halfFull": "Half & full face-piece",
+      "otherBrands": "Other brands"
+    }
+  },
+  "trainings": {
+    "programmes": {
+      "atp1": {
+        "title": "Basic Fire Safety & Emergency Preparedness",
+        "short": "How fires start and spread, and what every employee should do in the first minutes.",
+        "objectives": [
+          "Case studies of fire accidents",
+          "The QMK concept",
+          "10 steps of a life saver",
+          "Origin of fire and how fire spreads",
+          "Roles and responsibilities of the ERT team",
+          "Proactive steps to prevent fire accidents",
+          "Rescue and lifting methods",
+          "Live demonstration"
+        ]
+      },
+      "atp2": {
+        "title": "Basic Life Support & First Aid Skills",
+        "short": "Practical first aid and life support skills for workplace emergencies.",
+        "objectives": [
+          "10 commandments of a first aider",
+          "Preserve life, prevent harm, treat",
+          "Relieving pain and protecting the unconscious",
+          "Checking for the 4 lacks",
+          "Practising CPR",
+          "First aid for electrocution, drowning and choking",
+          "First aid for head, hand and leg injuries",
+          "First aid for fire and chemical burns"
+        ]
+      },
+      "atp3": {
+        "title": "AED & Cardio-Pulmonary Resuscitation (CPR)",
+        "short": "Using an automated external defibrillator and performing CPR with confidence.",
+        "objectives": [
+          "Application, mechanism and use of the AED",
+          "Maintenance and service of the AED",
+          "How the heart and circulation work",
+          "Heart attack, cardiac arrest and stroke — the differences",
+          "Checking for the 4 lacks",
+          "Cardio-pulmonary resuscitation (CPR)",
+          "When to use the AED and when to perform CPR",
+          "Counting and post-CPR care"
+        ]
+      },
+      "atp4": {
+        "title": "Evacuation Mock Drill",
+        "short": "Plan, rehearse and review a full evacuation of your premises.",
+        "objectives": [
+          "Preparing the evacuation plan",
+          "Policy and procedure for ERT members",
+          "Educating employees on evacuation procedures",
+          "Forming ERT teams to handle a calamity",
+          "Motivating workers to take part in drills",
+          "Why evacuation matters",
+          "The all-clear signal after an emergency",
+          "Post-evacuation procedures"
+        ]
+      },
+      "atp5": {
+        "title": "Disaster Management & Emergency Preparedness",
+        "short": "The full disaster-management cycle, from planning to recovery.",
+        "objectives": [
+          "The disaster management cycle",
+          "Before-event planning",
+          "Prevention and mitigation",
+          "Preparedness",
+          "After-event direction and response",
+          "Recovery and protection",
+          "Demonstration of emergency handling equipment"
+        ]
+      },
+      "atp6": {
+        "title": "Advanced Fire Safety & Hydrant Systems",
+        "short": "Fire prevention plus the operation and maintenance of hydrant systems.",
+        "objectives": [
+          "Case studies of fire accidents",
+          "Causes of fire and prevention methods",
+          "Hydrant systems and how they work",
+          "Supporting and serving the fire crew",
+          "Rescue methods",
+          "Live demonstration at hydrant points"
+        ]
+      },
+      "atp7": {
+        "title": "Behaviour Based Safety",
+        "short": "How everyday behaviour leads to accidents — and how to build safe habits.",
+        "objectives": [
+          "Basic behaviour principles",
+          "How negative behaviour leads to accidents",
+          "The A-B-C method of BBS",
+          "Promoting positive, safe behaviour",
+          "Workplace challenges for employees",
+          "Industrial hazard control",
+          "Ergonomic safe work practice",
+          "Selecting and using safety equipment"
+        ]
+      },
+      "atp8": {
+        "title": "Road Safety & Defensive Driving",
+        "short": "Safer driving habits for staff on the road and on site.",
+        "objectives": [
+          "The 'think safety' concept",
+          "Road accident case studies and lessons",
+          "Driving depends on health and emotional balance",
+          "Road safety policy and law",
+          "Concentration and distraction",
+          "Defensive driving attitude",
+          "Signalling and direction",
+          "Vehicle maintenance habits"
+        ]
+      },
+      "atp9": {
+        "title": "Chemical Handling, Laboratory Safety & Spill Management",
+        "short": "Store, handle, move and clean up chemicals safely.",
+        "objectives": [
+          "Hazard communication",
+          "OSHA classification of chemicals",
+          "Safe storage, handling and transport",
+          "Spill management techniques",
+          "Labelling and neutralisation",
+          "Hazards of flammable liquids",
+          "Selecting, using and maintaining the right PPE"
+        ]
+      },
+      "atp10": {
+        "title": "Electrical & Maintenance Safety",
+        "short": "Recognise and control electrical hazards during work and maintenance.",
+        "objectives": [
+          "Electrical hazards in the workplace",
+          "Electrical accident case studies and fixes",
+          "Electrical energy-saving methods",
+          "Arc flash hazards and categories",
+          "Preventing hazards with LOTO equipment",
+          "First aid for electric shock and burns",
+          "CPR"
+        ]
+      },
+      "atp11": {
+        "title": "General Safety & Occupational Health Awareness",
+        "short": "The foundations of a safe workplace for every employee.",
+        "objectives": [
+          "Identifying hazards at work",
+          "A proactive safety approach",
+          "Communicating safety concerns",
+          "Personal responsibility for a safe workplace",
+          "The cost of accidents",
+          "Using PPE throughout working hours",
+          "Why PPE matters — and what happens without it"
+        ]
+      },
+      "atp12": {
+        "title": "Domestic & Home Safety",
+        "short": "Keeping families safe at home — from the kitchen to the electrics.",
+        "objectives": [
+          "A safe and secure home environment",
+          "Slips, trips and falls",
+          "Electrical safety",
+          "Kitchen safety",
+          "Hazard control and precautions",
+          "Safety of children and elders",
+          "Emergency contacts",
+          "First aid and CPR for medical emergencies"
+        ]
+      },
+      "atp13": {
+        "title": "Welding & Grinding Safety",
+        "short": "Safe hot work, from cylinders to respiratory protection.",
+        "objectives": [
+          "Welding hazards",
+          "Safe welding work practices",
+          "Welding in confined spaces",
+          "Compressed gas cylinder safety",
+          "Respiratory protection for welding",
+          "The right safety equipment for welding"
+        ]
+      },
+      "atp14": {
+        "title": "Confined Space Safety",
+        "short": "Entering and working in confined spaces under a permit system.",
+        "objectives": [
+          "Classifying confined spaces",
+          "Entry permit methods and procedure",
+          "Pre-entry measures and supervision",
+          "Fitness of the entry team",
+          "Atmospheric and non-atmospheric hazards",
+          "Selecting and using the right PPE"
+        ]
+      },
+      "atp15": {
+        "title": "Fall Protection & Work at Height",
+        "short": "Prevent falls and plan rescues for work at height.",
+        "objectives": [
+          "Identifying fall hazards",
+          "Active and passive fall protection",
+          "Slips, trips and falls",
+          "OSHA guidelines for work at height",
+          "Height work permit procedure",
+          "Rescue at height",
+          "Selecting and using fall protection PPE"
+        ]
+      },
+      "atp16": {
+        "title": "Respirator Fit-Test Training",
+        "short": "Choose the right respirator and make sure it actually seals.",
+        "objectives": [
+          "Briefing on respiratory protection",
+          "Classification of respirators",
+          "Why the right respirator matters at work",
+          "Normal and deep breathing tests",
+          "Head-turning and up-down tests",
+          "Recommending respirators for a proper fit"
+        ]
+      },
+      "atp17": {
+        "title": "Health, Mental & Emotional Safety",
+        "short": "Wellbeing at work — physical, mental and emotional.",
+        "objectives": [
+          "The hierarchy of health controls",
+          "Mental health in the workplace",
+          "Job performance and engagement",
+          "Communicating with co-workers",
+          "Physical capability and daily functioning",
+          "Emotional health self-assessment",
+          "Counselling and clinical support",
+          "Communicating in an optimistic way"
+        ]
+      },
+      "atp18": {
+        "title": "Industrial Hazardous Waste Management",
+        "short": "Collect, segregate, treat and dispose of industrial waste responsibly.",
+        "objectives": [
+          "Impact of waste on the environment",
+          "Collection and segregation of waste",
+          "Local rules for waste disposal",
+          "Reduce, reuse and recycle",
+          "Types of industrial waste",
+          "Treatment and disposal of waste",
+          "Using PPE"
+        ]
+      },
+      "atp19": {
+        "title": "5S Safety",
+        "short": "The Japanese 5S method for a tidy, efficient and safer workplace.",
+        "objectives": [
+          "The Japanese role model",
+          "Advantages of 5S",
+          "Seiri, Seiton, Seiso, Seiketsu, Shitsuke",
+          "Correction and implementation",
+          "How 5S leads to safety",
+          "Regular supervision and follow-ups"
+        ]
+      },
+      "atp20": {
+        "title": "Effective Safety Leadership & Supervision",
+        "short": "Lead safety from the front — for supervisors and team leaders.",
+        "objectives": [
+          "Safety leadership qualities",
+          "Understanding employee attitudes",
+          "A team leader is a team player",
+          "Safety responsibility",
+          "The role of safety supervisors",
+          "Safety excellence",
+          "Interpersonal relationships"
+        ]
+      },
+      "atp21": {
+        "title": "Near Miss & Unsafe Conditions",
+        "short": "Spot, report and fix problems before they become accidents.",
+        "objectives": [
+          "What near misses and unsafe conditions are",
+          "Causes of near misses",
+          "Unsafe conditions and unsafe tools",
+          "Unsafe work practices",
+          "Communication and human error",
+          "Lack of training, PPE and awareness",
+          "Reporting unsafe conditions and near misses",
+          "Prevention methods"
+        ]
+      },
+      "atp22": {
+        "title": "Fire Suit, Breathing Apparatus & Gas-Tight Suit",
+        "short": "Using SCBA and protective suits correctly in an emergency.",
+        "objectives": [
+          "Why emergency equipment is needed",
+          "Components of SCBA, fire suits and gas-tight suits",
+          "SCBA fit test",
+          "Donning and doffing the equipment",
+          "Safety guidelines and maintenance"
+        ]
+      },
+      "atp23": {
+        "title": "Materials Handling & Warehouse Safety",
+        "short": "Lift, move, stack and store materials without injury.",
+        "objectives": [
+          "Understanding the hazards",
+          "Safe ways of lifting loads",
+          "Material handling procedure",
+          "Hazards in warehouses",
+          "Forklift and stacker safety",
+          "Safe ladder use and climbing",
+          "Safe storage and racking",
+          "Emergency response procedures"
+        ]
+      },
+      "atp24": {
+        "title": "Forklift & Internal Traffic Control",
+        "short": "Safe forklift operation and traffic management inside your premises.",
+        "objectives": [
+          "Forklift operator safety",
+          "Surface conditions",
+          "Proper load handling and stability",
+          "Vehicle and pedestrian traffic",
+          "Pre-use inspection",
+          "Stacking and unstacking",
+          "Signage, directions and traffic rules",
+          "Traffic safety equipment"
+        ]
+      },
+      "atp25": {
+        "title": "Lockout / Tagout (LOTO)",
+        "short": "Isolate hazardous energy before maintenance — every time.",
+        "objectives": [
+          "Types of hazardous energy",
+          "The LOTO programme",
+          "Best practices in LOTO",
+          "OSHA standard on control of hazardous energy"
+        ]
+      }
+    },
+    "eyebrow": "Safety training",
+    "title": "25 programmes. Zero guesswork.",
+    "lead": "Practical programmes for teams of every size — from fire safety and first aid to confined spaces and lockout/tagout. Add the ones you need and we’ll plan the sessions with you.",
+    "themes": {
+      "all": "All",
+      "fire": "Fire & rescue",
+      "health": "First aid & health",
+      "emergency": "Emergency response",
+      "culture": "Safety culture",
+      "highRisk": "High-risk work",
+      "logistics": "Transport & handling",
+      "environment": "Home & environment"
+    },
+    "search": "Search trainings",
+    "searchPlaceholder": "Search fire, first aid, forklift…",
+    "topics": "{{count}} topics",
+    "view": "View programme",
+    "book": "Book this training",
+    "inBooking": "In your booking request",
+    "askWhatsapp": "Ask on WhatsApp",
+    "waMessage": "Hello Alan Global Safety, I’d like to book the {{code}} {{name}} training.",
+    "email": "Email the training team",
+    "emptyTitle": "No programme matches that",
+    "emptyText": "Try another word — or tell us what your team needs and we’ll suggest a programme.",
+    "how": {
+      "eyebrow": "How sessions run",
+      "title": "Learn it. See it. Do it.",
+      "plan": {
+        "title": "Planned with you",
+        "text": "Tell us your team size, site and goals. We suggest the right programmes and a schedule."
+      },
+      "learn": {
+        "title": "Clear sessions",
+        "text": "Case studies and real incidents make each topic stick."
+      },
+      "practise": {
+        "title": "Live demos & practice",
+        "text": "Hands-on practice and demonstrations wherever the topic allows."
+      },
+      "review": {
+        "title": "Follow-up",
+        "text": "We answer questions afterwards and help you plan refresher sessions."
+      }
+    },
+    "detail": {
+      "programme": "Programme",
+      "learnEyebrow": "What you’ll learn",
+      "learnTitle": "Topics covered",
+      "related": "More in {{theme}}",
+      "pager": "Other programmes",
+      "bookTitle": "Book it for your team",
+      "bookText": "Add it to your booking request, add more programmes or equipment if you like, then send everything in one go."
+    }
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Kakkanad · Kochi — {{years}} years in safety",
+      "title": "Built for the worst day. Ready every day.",
+      "lead": "Personal protective equipment, emergency gear and hands-on safety training — supplied by one team that has spent over two decades in the safety field.",
+      "ctaProducts": "Explore products",
+      "scroll": "Scroll",
+      "chips": {
+        "ppe": "Head-to-toe PPE",
+        "fire": "Fire safety",
+        "firstAid": "First aid & CPR"
+      }
+    },
+    "stats": {
+      "years": "Years",
+      "categories": "Categories",
+      "programmes": "Trainings"
+    },
+    "marquee": {
+      "label": "Product categories"
+    },
+    "manifesto": {
+      "eyebrow": "Why we exist",
+      "text": "For {{years}} years, safety has been our whole job. We help workplaces protect their people — with the right equipment, and the training to use it well."
+    },
+    "divisions": {
+      "equipment": {
+        "title": "Safety equipment",
+        "text": "From helmets and harnesses to gas detectors and spill kits — protective gear for every hazard on your site."
+      },
+      "training": {
+        "title": "Safety training",
+        "text": "Practical programmes on fire safety, first aid, CPR, evacuation and more — delivered at your workplace.",
+        "tag1": "Fire safety",
+        "tag2": "First aid & CPR",
+        "tag3": "Mock drills"
+      }
+    },
+    "products": {
+      "eyebrow": "The catalogue",
+      "title": "{{count}} categories. One supplier.",
+      "allTitle": "Can’t find it? We’ll source it."
+    },
+    "trainings": {
+      "eyebrow": "Training programmes",
+      "title": "Training that sticks.",
+      "lead": "{{count}} programmes that turn safety rules into instinct — with live demonstrations, case studies and hands-on practice.",
+      "cta": "All {{count}} programmes"
+    },
+    "process": {
+      "eyebrow": "How it works",
+      "title": "From enquiry to a safer site.",
+      "step": "Step",
+      "enquire": {
+        "title": "Tell us what you need",
+        "text": "Send your requirement, site details or a list — by WhatsApp, phone or the quote form."
+      },
+      "recommend": {
+        "title": "Get the right recommendation",
+        "text": "We suggest suitable equipment for your hazards and send a clear quotation."
+      },
+      "deliver": {
+        "title": "Supplied to your site",
+        "text": "Your order is packed and delivered, ready for your team to use."
+      },
+      "train": {
+        "title": "Train your team",
+        "text": "Add a training programme so everyone knows how to use it — and what to do in an emergency."
+      }
+    },
+    "brochure": {
+      "eyebrow": "Product catalogue",
+      "title": "The full range, in one file.",
+      "text": "Download our brochure to browse every category, then send us your list for a quote.",
+      "mock": "Product catalogue"
+    }
+  },
+  "notFound": {
+    "title": "This area is off-limits",
+    "text": "The page you’re looking for has moved or doesn’t exist.",
+    "home": "Back to safety"
+  },
+  "seo": {
+    "home": {
+      "title": "Alan Global Safety — Safety Equipment & Training in Kochi, Kerala",
+      "description": "Personal protective equipment, fall protection, gas detection, first aid and fire-safety training from Kakkanad, Kochi. Over 20 years in the safety field. Get a quote today."
+    },
+    "notFound": {
+      "title": "Page not found",
+      "description": "The page you’re looking for has moved or doesn’t exist."
+    },
+    "products": {
+      "title": "Safety Equipment & PPE Catalogue",
+      "description": "Browse 22 categories of safety equipment — helmets, respirators, gloves, harnesses, gas detectors, spill kits, signage, lockout tagout and more. Request a quote from Alan Global Safety, Kochi."
+    },
+    "quote": {
+      "title": "Request a Quote",
+      "description": "Send your list of safety equipment and trainings to Alan Global Safety and get prices and availability on WhatsApp."
+    },
+    "category": {
+      "title": "{{name}} — Safety Equipment Supplier in Kochi"
+    },
+    "trainings": {
+      "title": "Safety Training Programmes in Kochi",
+      "description": "25 safety training programmes: fire safety, first aid & CPR, evacuation drills, confined space, work at height, LOTO, forklift safety and more — by Alan Global Safety, Kochi."
+    },
+    "training": {
+      "title": "{{code}} {{name}} — Safety Training in Kochi"
+    },
+    "about": {
+      "title": "About Alan Global Safety — Safety Experts in Kochi",
+      "description": "Alan Global Safety supplies safety equipment and runs safety training from Kakkanad, Kochi, with over 20 years in the safety field."
+    },
+    "contact": {
+      "title": "Contact Alan Global Safety — Kakkanad, Kochi",
+      "description": "Call +91 87142 67507, message us on WhatsApp or visit our Kakkanad office for safety equipment quotes and training bookings."
+    }
+  },
+  "catalogue": {
+    "eyebrow": "Product catalogue",
+    "title": "Protection for every hazard.",
+    "lead": "{{count}} categories of safety equipment, from head-to-toe PPE to gas detection. Add what you need to your quote list and send it in one go.",
+    "search": "Search products",
+    "searchPlaceholder": "Search helmets, gloves, harness…",
+    "clear": "Clear search",
+    "filter": "Filter by group",
+    "all": "All",
+    "showing": "Showing {{count}} of {{total}}",
+    "emptyTitle": "Nothing matches that",
+    "emptyText": "Try another word, or tell us what you need — we’ll source it.",
+    "reset": "Show everything",
+    "sourceText": "If it keeps people safe at work, we can probably supply it. Send us the item, brand or specification."
+  },
+  "category": {
+    "breadcrumb": "Breadcrumb",
+    "addCategory": "Add to quote",
+    "askWhatsapp": "Ask on WhatsApp",
+    "supplyEyebrow": "What we supply",
+    "supplyTitle": "Typical items",
+    "supplyText": "Add the whole category or just the items you need to your quote list, with quantities.",
+    "brands": "Brands",
+    "indicative": "This list is indicative. Tell us the exact specification, size or brand and we’ll quote for it.",
+    "related": "More in {{group}}",
+    "pager": "Other categories",
+    "prev": "Previous",
+    "next": "Next",
+    "waMessage": "Hello Alan Global Safety, I need a quote for {{name}}."
+  },
+  "quote": {
+    "added": "{{name}} added to your quote",
+    "view": "View",
+    "addNamed": "Add {{name}} to quote",
+    "removeNamed": "Remove {{name}} from quote",
+    "add": "Add",
+    "added_short": "Added",
+    "inQuote": "In your quote",
+    "itemsCount": "{{count}} items in your quote",
+    "eyebrow": "Request a quote",
+    "title": "Your quote list.",
+    "lead": "Review the items, set rough quantities and send your details. We’ll reply on WhatsApp or by phone with prices and availability.",
+    "listTitle": "Items",
+    "clear": "Clear list",
+    "qtyFor": "Quantity for {{name}}",
+    "decrease": "Decrease quantity",
+    "increase": "Increase quantity",
+    "qty": "Quantity",
+    "addMore": "Add more products",
+    "emptyTitle": "Your list is empty",
+    "emptyText": "Browse the catalogue and tap + on anything you need — or just describe it in the form.",
+    "kind": {
+      "category": "Whole category",
+      "training": "Training programme"
+    },
+    "form": {
+      "title": "Your details",
+      "lead": "Fields marked * are required.",
+      "name": "Full name",
+      "company": "Company",
+      "location": "Site / city",
+      "phone": "Mobile number",
+      "email": "Email",
+      "message": "Anything else?",
+      "messageHint": "Sizes, brands, delivery date, site conditions…",
+      "how": "Sending opens WhatsApp with your list ready to send. Nothing is charged online.",
+      "submit": "Send quote request",
+      "noItems": "No items selected — see message."
+    },
+    "message": {
+      "heading": "Quote request — {{company}}",
+      "items": "Items",
+      "subject": "Quote request from {{name}} ({{company}})"
+    },
+    "done": {
+      "title": "Almost there!",
+      "text": "WhatsApp has opened with your request — just press send. We’ll get back to you soon.",
+      "clear": "Clear my list",
+      "keep": "Keep my list"
+    }
+  },
+  "form": {
+    "sending": "Sending your request…",
+    "emailSent": "A copy was also emailed to our team.",
+    "emailFailed": "We couldn’t send the email copy — please send the WhatsApp message or call us.",
+    "errors": {
+      "name": "Please enter your name.",
+      "phone": "Enter a valid mobile number (10–13 digits).",
+      "email": "Enter a valid email address."
+    }
+  },
+  "about": {
+    "eyebrow": "About us",
+    "title": "Safety is the whole job.",
+    "lead": "Alan Global Safety supplies safety equipment and runs safety training from Kakkanad, Kochi — built on {{years}}+ years in the safety field.",
+    "logoAlt": "Alan Global Safety logo: two hands holding a water drop with the globe inside",
+    "name": {
+      "eyebrow": "Our mark",
+      "title": "Hands that protect the world.",
+      "p1": "Our logo shows two open hands holding a drop of water with the globe inside it. It stands for what we do every day: protect people, their workplaces and the world they live in.",
+      "p2": "Equipment and training sit under one name, so the gear your team wears and the way they use it come from the same people."
+    },
+    "motto": "Being Safety Today — Hello Tomorrow",
+    "statement": "For {{years}}+ years we have helped sites, factories and offices across Kerala choose the right protection — and taught their people to use it well.",
+    "stats": {
+      "years": "Years in safety",
+      "categories": "Product categories",
+      "programmes": "Training programmes",
+      "divisions": "Divisions"
+    },
+    "leader": {
+      "eyebrow": "Leadership",
+      "title": "Led by experience on the ground.",
+      "text": "Our founder brings {{years}}+ years in the safety field. That experience shapes every product we recommend and every session we run.",
+      "cta": "Talk to us",
+      "alt": "Founder of Alan Global Safety",
+      "badge": "In the field"
+    },
+    "values": {
+      "eyebrow": "How we work",
+      "title": "Four promises to every customer.",
+      "right": {
+        "title": "The right gear",
+        "text": "We recommend equipment that fits the job and the standard — not just what is on the shelf."
+      },
+      "trained": {
+        "title": "Trained people",
+        "text": "Equipment only works when people know how to use it. Training is half of what we do."
+      },
+      "honest": {
+        "title": "Straight answers",
+        "text": "Clear quotes, clear advice, and we tell you when something is not needed."
+      },
+      "fast": {
+        "title": "Quick response",
+        "text": "Message us on WhatsApp or call — we reply fast and deliver across Kerala."
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Let’s make your site safer.",
+    "lead": "Call, message or visit our office in Kakkanad. Tell us what you need — equipment, training or advice — and we’ll get back to you quickly.",
+    "channels": {
+      "call": {
+        "title": "Call us",
+        "text": "Talk to our team directly."
+      },
+      "whatsapp": {
+        "title": "WhatsApp",
+        "text": "Fastest way to get a reply.",
+        "cta": "Start a chat",
+        "hello": "Hello Alan Global Safety, I have an enquiry."
+      },
+      "email": {
+        "title": "Email",
+        "text": "General enquiries and training."
+      },
+      "visit": {
+        "title": "Visit us",
+        "cta": "Get directions"
+      }
+    },
+    "form": {
+      "title": "Send us a message",
+      "topic": "What is it about?",
+      "topics": {
+        "products": "Equipment",
+        "training": "Training",
+        "other": "Something else"
+      },
+      "message": "Your message",
+      "messageHint": "What do you need, for how many people, and by when?",
+      "messageError": "Please tell us what you need.",
+      "how": "Sending opens WhatsApp with your message ready to send.",
+      "submit": "Send message"
+    },
+    "message": {
+      "heading": "New enquiry for {{company}}",
+      "subject": "Website enquiry — {{name}} ({{topic}})"
+    },
+    "done": {
+      "title": "Message ready",
+      "text": "Press send in WhatsApp and our team will reply shortly.",
+      "again": "Send another",
+      "browse": "Browse products"
+    },
+    "mapTitle": "Map showing the Alan Global Safety office in Kakkanad"
+  }
+}

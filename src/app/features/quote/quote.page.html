@@ -1,0 +1,125 @@
+<section class="relative overflow-hidden pt-36 pb-12 sm:pt-44">
+  <div class="grid-lines absolute inset-0 -z-10 [mask-image:linear-gradient(to_bottom,black,transparent)]" aria-hidden="true"></div>
+  <div class="container-x">
+    <p class="eyebrow" reveal>{{ 'quote.eyebrow' | translate }}</p>
+    <h1 class="display mt-5 max-w-4xl text-[clamp(2.5rem,6vw,5.5rem)]" [splitReveal]="'quote.title' | translate"></h1>
+    <p class="mt-6 max-w-2xl leading-relaxed text-steel-400" reveal>{{ 'quote.lead' | translate }}</p>
+  </div>
+</section>
+
+<section class="pb-24 sm:pb-32">
+  <div class="container-x grid gap-8 lg:grid-cols-[1.05fr_1fr] lg:items-start">
+    <!-- ===== The list ===== -->
+    <div class="min-w-0 rounded-[2rem] border border-white/[0.08] bg-ink-800/60 p-4 sm:p-8 lg:sticky lg:top-28" reveal>
+      <div class="flex items-center justify-between gap-4">
+        <h2 class="display text-xl sm:text-2xl">{{ 'quote.listTitle' | translate }} <span class="text-hivis-500">({{ quote.count() }})</span></h2>
+        @if (quote.count()) {
+          <button type="button" (click)="quote.clear()" class="flex min-h-11 items-center gap-2 rounded-full px-3 text-sm text-steel-400 hover:bg-white/5 hover:text-white">
+            <app-icon name="trash" class="size-4" /> {{ 'quote.clear' | translate }}
+          </button>
+        }
+      </div>
+
+      @if (views().length) {
+        <ul class="mt-6 grid gap-2">
+          @for (v of views(); track v.line.id) {
+            <li class="quote-line flex flex-wrap items-center gap-2.5 rounded-2xl sm:flex-nowrap sm:gap-4 border border-white/[0.06] bg-ink-900/60 p-3 sm:p-4">
+              <span class="hidden size-12 shrink-0 place-items-center rounded-xl bg-white/[0.04] text-hivis-500 min-[400px]:grid"><app-icon [name]="v.icon" class="size-6" /></span>
+              <a [routerLink]="v.link" class="min-w-0 flex-1 basis-36">
+                <span class="block truncate font-semibold text-steel-100 hover:text-hivis-500">{{ v.title }}</span>
+                <span class="block truncate text-xs text-steel-400">{{ v.subtitle }}</span>
+              </a>
+              <div class="ml-auto flex items-center rounded-full border border-white/10" role="group" [attr.aria-label]="'quote.qtyFor' | translate: { name: v.title }">
+                <button type="button" (click)="step(v.line, -1)" [disabled]="v.line.qty <= 1" class="grid size-9 place-items-center rounded-full text-steel-300 hover:bg-white/5 disabled:opacity-30" [attr.aria-label]="'quote.decrease' | translate">
+                  <app-icon name="minus" class="size-4" [stroke]="2" />
+                </button>
+                <input type="number" inputmode="numeric" min="1" max="9999" [value]="v.line.qty" (change)="setQty(v.line, $any($event.target).value)"
+                       class="w-10 bg-transparent text-center text-base font-semibold text-steel-100 [appearance:textfield] focus:outline-none sm:text-sm [&::-webkit-inner-spin-button]:appearance-none"
+                       [attr.aria-label]="'quote.qty' | translate" />
+                <button type="button" (click)="step(v.line, 1)" class="grid size-9 place-items-center rounded-full text-steel-300 hover:bg-white/5" [attr.aria-label]="'quote.increase' | translate">
+                  <app-icon name="plus" class="size-4" [stroke]="2" />
+                </button>
+              </div>
+              <button type="button" (click)="quote.remove(v.line.id)" class="grid size-10 shrink-0 place-items-center rounded-full text-steel-400 hover:bg-white/5 hover:text-signal-400"
+                      [attr.aria-label]="'quote.removeNamed' | translate: { name: v.title }">
+                <app-icon name="close" class="size-4" />
+              </button>
+            </li>
+          }
+        </ul>
+        <a routerLink="/products" class="mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-hivis-500 hover:text-hivis-300"><app-icon name="plus" class="size-4" [stroke]="2" /> {{ 'quote.addMore' | translate }}</a>
+      } @else {
+        <div class="mt-6 grid place-items-center rounded-2xl border border-dashed border-white/15 px-6 py-14 text-center">
+          <app-icon name="clipboard" class="size-10 text-steel-400" />
+          <p class="mt-4 font-semibold text-steel-100">{{ 'quote.emptyTitle' | translate }}</p>
+          <p class="mt-1.5 max-w-xs text-sm text-steel-400">{{ 'quote.emptyText' | translate }}</p>
+          <a routerLink="/products" class="btn btn-ghost mt-6">{{ 'mega.all' | translate }}</a>
+        </div>
+      }
+    </div>
+
+    <!-- ===== Contact form ===== -->
+    @if (status() === 'idle') {
+      <form [formGroup]="form" (ngSubmit)="submit()" novalidate class="min-w-0 rounded-[2rem] bg-steel-100 p-5 text-ink-900 sm:p-10" reveal="right">
+        <h2 class="display text-2xl !text-ink-900 sm:text-3xl">{{ 'quote.form.title' | translate }}</h2>
+        <p class="mt-2 text-sm text-ink-900/65">{{ 'quote.form.lead' | translate }}</p>
+
+        <div class="mt-8 grid gap-5 sm:grid-cols-2">
+          <div class="sm:col-span-2">
+            <label for="q-name" class="field-label">{{ 'quote.form.name' | translate }} *</label>
+            <input id="q-name" class="field" formControlName="name" autocomplete="name" [attr.aria-invalid]="invalid('name')" />
+            @if (invalid('name')) { <p class="field-error">{{ 'form.errors.name' | translate }}</p> }
+          </div>
+          <div>
+            <label for="q-company" class="field-label">{{ 'quote.form.company' | translate }}</label>
+            <input id="q-company" class="field" formControlName="company" autocomplete="organization" />
+          </div>
+          <div>
+            <label for="q-location" class="field-label">{{ 'quote.form.location' | translate }}</label>
+            <input id="q-location" class="field" formControlName="location" autocomplete="address-level2" />
+          </div>
+          <div>
+            <label for="q-phone" class="field-label">{{ 'quote.form.phone' | translate }} *</label>
+            <input id="q-phone" type="tel" class="field" formControlName="phone" autocomplete="tel" placeholder="+91 98765 43210" [attr.aria-invalid]="invalid('phone')" />
+            @if (invalid('phone')) { <p class="field-error">{{ 'form.errors.phone' | translate }}</p> }
+          </div>
+          <div>
+            <label for="q-email" class="field-label">{{ 'quote.form.email' | translate }}</label>
+            <input id="q-email" type="email" class="field" formControlName="email" autocomplete="email" [attr.aria-invalid]="invalid('email')" />
+            @if (invalid('email')) { <p class="field-error">{{ 'form.errors.email' | translate }}</p> }
+          </div>
+          <div class="sm:col-span-2">
+            <label for="q-message" class="field-label">{{ 'quote.form.message' | translate }}</label>
+            <textarea id="q-message" rows="4" class="field resize-y" formControlName="message" [placeholder]="'quote.form.messageHint' | translate"></textarea>
+          </div>
+          <input type="text" formControlName="botcheck" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        </div>
+
+        <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <p class="max-w-xs text-xs leading-relaxed text-ink-900/60">{{ 'quote.form.how' | translate }}</p>
+          <button type="submit" magnetic class="btn btn-dark w-full sm:w-auto">
+            <app-icon name="whatsapp" class="size-4" /> {{ 'quote.form.submit' | translate }}
+          </button>
+        </div>
+      </form>
+    } @else {
+      <div id="quote-status" class="grid place-items-center rounded-[2rem] bg-steel-100 p-10 text-center text-ink-900 sm:p-14" role="status" aria-live="polite">
+        @if (status() === 'sending') {
+          <p class="text-ink-900/60">{{ 'form.sending' | translate }}</p>
+        } @else {
+          <div>
+            <span class="mx-auto grid size-16 place-items-center rounded-full bg-hivis-500"><app-icon name="check" class="size-8" [stroke]="2.2" /></span>
+            <h2 class="display mt-6 text-3xl !text-ink-900">{{ 'quote.done.title' | translate }}</h2>
+            <p class="mx-auto mt-3 max-w-sm text-ink-900/65">{{ 'quote.done.text' | translate }}</p>
+            @if (emailResult() === 'sent') { <p class="mt-2 text-sm text-ink-900/80">{{ 'form.emailSent' | translate }}</p> }
+            @if (emailResult() === 'failed') { <p class="mt-2 text-sm font-semibold text-signal-600">{{ 'form.emailFailed' | translate }}</p> }
+            <div class="mt-8 flex flex-wrap justify-center gap-3">
+              <button type="button" (click)="startOver(true)" class="btn btn-dark">{{ 'quote.done.clear' | translate }}</button>
+              <button type="button" (click)="startOver(false)" class="btn border border-ink-900/20">{{ 'quote.done.keep' | translate }}</button>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</section>
