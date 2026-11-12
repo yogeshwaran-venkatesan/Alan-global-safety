@@ -1508,7 +1508,7 @@
   "home": {
     "hero": {
       "eyebrow": "Kochi · Coimbatore — {{years}} years in safety",
-      "title": "Built for the worst day. Ready every day.",
+      "title": "Protecting people who build tomorrow.",
       "lead": "Personal protective equipment, emergency gear and hands-on safety training — supplied by one team with 25 years in the safety field.",
       "ctaProducts": "Explore products",
       "scroll": "Scroll",
@@ -1863,5 +1863,12 @@
     "waMessage": "Hello Alan Global Safety, I’d like a quote for the {{name}}.",
     "askWhatsapp": "Ask on WhatsApp",
     "users": "{{count}} users"
+  },
+  "fast": {
+    "eyebrow": "Fast-moving products",
+    "title": "Our most-ordered safety gear.",
+    "lead": "The items customers order most often — pick what you need, add it to your quote list and send it in one go.",
+    "showAll": "Show all {{count}}",
+    "openCategory": "Open {{name}}"
   }
 }

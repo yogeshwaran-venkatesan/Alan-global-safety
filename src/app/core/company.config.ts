@@ -140,21 +140,65 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
   cat('fire-hydrant', 'fire', 'hydrant', 'hose-reel-drum'),
   cat('emergency-rescue', 'fire', 'siren', 'scba-self-contained-breathing-apparatus'),
   cat('first-aid', 'emergency', 'firstAid', 'first-aid-box'),
-  cat('eyewash-shower', 'emergency', 'eyewash', 'portable-eye-wash'),
+  cat('eyewash-shower', 'emergency', 'eyewash', 'eye-wash-fountain-shower-ss-gi'),
   cat('sorbents-spill-kits', 'spill', 'sorbent', 'oil-spill-kit'),
-  cat('safety-cans-cabinets', 'spill', 'cabinet', 'safety-can-type-ii'),
-  cat('gas-detection', 'detection', 'detector', 'riken-keiki-gx-3r'),
+  cat('safety-cans-cabinets', 'spill', 'cabinet', 'safety-cabinet-blue-yellow'),
+  cat('gas-detection', 'detection', 'detector', 'riken-keiki-gx-force'),
   cat('fixed-online-gas-detector', 'detection', 'detector', 'rx-series-smart-gas-detector'),
-  cat('safe-lighting', 'detection', 'flashlight', 'pelican-9435'),
+  cat('safe-lighting', 'detection', 'flashlight', 'wolf-firefighter-torch'),
   cat('traffic-safety', 'site', 'cone', 'multipurpose-traffic-cone-with-link-chain'),
   cat('safety-signage', 'site', 'sign', 'auto-glow-signages'),
-  cat('electrical-safety', 'site', 'bolt', 'arc-flash-face-shield'),
+  cat('electrical-safety', 'site', 'bolt', 'arc-flash-suit'),
   cat('lockout-tagout', 'site', 'lockout', 'lockout-station'),
 ];
 
 import { CATALOG } from './catalog.data';
 export { CATALOG, catalogItem, catalogItems, DETAIL_PRODUCTS, PRODUCT_COUNT } from './catalog.data';
 export type { CatalogItem } from './catalog.data';
+
+/** A tab in the "Fast-moving products" section: a whole category, or a hand-picked list. */
+export interface FastMovingTab {
+  key: string;
+  icon: string;
+  /** Category shown in full (its name is the tab label). */
+  category?: string;
+  /** Hand-picked [section, itemId] pairs (label from products.groups.<key>). */
+  picks?: [string, string][];
+}
+
+/** Items the client sells most often, shown individually so visitors find them fast. */
+export const FAST_MOVING: FastMovingTab[] = [
+  {
+    key: 'ppe',
+    icon: 'helmet',
+    picks: [
+      ['head-protection', 'airvent-helmet'],
+      ['head-protection', 'bump-cap'],
+      ['head-protection', 'helmet-with-face-shield-earmuff'],
+      ['eye-protection', 'safety-spectacles-es006'],
+      ['eye-protection', 'chemical-splash-goggles-3m1621'],
+      ['eye-protection', 'welding-goggles-es003'],
+      ['ear-protection', 'corded-ear-plug-3m1110'],
+      ['ear-protection', 'earmuff-3m1426'],
+      ['respiratory-protection', '3m-9004in'],
+      ['respiratory-protection', '3m-8210'],
+      ['face-respirators', '3m-6200-half-face'],
+      ['hand-protection', 'cotton-knitted-gloves'],
+      ['hand-protection', 'nitrile-gloves'],
+      ['hand-protection', 'cut-resistant-gloves'],
+      ['hand-protection', 'leather-welding-gloves'],
+      ['body-protection', '3m-4530-coverall'],
+      ['body-protection', 'fr-reflective-vest'],
+      ['body-protection', 'pvc-apron'],
+    ],
+  },
+  { key: 'fall-protection', icon: 'harness', category: 'fall-protection' },
+  { key: 'electrical-safety', icon: 'bolt', category: 'electrical-safety' },
+  { key: 'traffic-safety', icon: 'cone', category: 'traffic-safety' },
+  { key: 'safe-lighting', icon: 'flashlight', category: 'safe-lighting' },
+  { key: 'safety-cans-cabinets', icon: 'cabinet', category: 'safety-cans-cabinets' },
+  { key: 'eyewash-shower', icon: 'eyewash', category: 'eyewash-shower' },
+];
 
 /** Photos from the client's current site, used as atmosphere in heroes and section bands. */
 export const PHOTOS = {

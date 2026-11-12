@@ -65,7 +65,7 @@
 
 <!-- ===================================================== PHOTO BAND (parallax) -->
 <section class="relative mb-24 h-[46vh] min-h-72 overflow-hidden sm:mb-36 sm:h-[70vh]" aria-hidden="true">
-  <img [src]="photos.ppeBanner" alt="" loading="lazy" decoding="async" class="absolute inset-x-0 -top-[15%] h-[130%] w-full object-cover" [parallax]="24" />
+  <img [src]="photos.refinery" alt="" loading="lazy" decoding="async" class="absolute inset-x-0 -top-[15%] h-[130%] w-full object-cover" [parallax]="24" />
   <div class="absolute inset-0 bg-gradient-to-b from-ink-900 via-transparent to-ink-900"></div>
   <div class="absolute inset-0 bg-ink-900/25"></div>
   <div class="hazard-animated absolute inset-x-0 bottom-0 h-1.5 opacity-80"></div>
@@ -78,12 +78,15 @@
       <a [routerLink]="d.link" (pointermove)="tilt($event)" (pointerleave)="untilt($event)"
          class="group relative isolate flex min-h-[30rem] flex-col justify-between overflow-hidden rounded-[2rem] border border-white/[0.08] bg-ink-800 p-8 transition-[box-shadow,border-color] duration-500 [transform-style:preserve-3d] hover:border-hivis-500/40 hover:shadow-glow sm:p-12">
         <!-- Real photo from the client's site, darkened so the copy stays readable -->
-        <img [src]="d.photo" alt="" loading="lazy" decoding="async" class="absolute inset-0 -z-20 size-full object-cover opacity-45 transition duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105 group-hover:opacity-60" />
-        <div class="absolute inset-0 -z-10 bg-gradient-to-t from-ink-900 via-ink-900/80 to-ink-900/30" aria-hidden="true"></div>
+        <img [src]="d.photo" alt="" loading="lazy" decoding="async" [style.object-position]="d.focus"
+             class="absolute inset-0 -z-20 size-full object-cover opacity-90 transition duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105 group-hover:opacity-100" />
+        <!-- Shade only behind the copy (left and bottom), so the photo itself stays bright -->
+        <div class="absolute inset-0 -z-10 bg-gradient-to-r from-ink-900/95 via-ink-900/65 to-ink-900/0" aria-hidden="true"></div>
+        <div class="absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t from-ink-900/90 to-transparent" aria-hidden="true"></div>
         <div>
           <span class="font-mono text-xs tracking-[0.25em] text-steel-400 uppercase">{{ d.no }}</span>
           <h2 class="display mt-4 text-4xl text-steel-100 sm:text-5xl">{{ 'home.divisions.' + d.key + '.title' | translate }}</h2>
-          <p class="mt-5 max-w-md leading-relaxed text-steel-400">{{ 'home.divisions.' + d.key + '.text' | translate }}</p>
+          <p class="mt-5 max-w-sm leading-relaxed text-steel-200">{{ 'home.divisions.' + d.key + '.text' | translate }}</p>
         </div>
         <div class="mt-10 flex items-end justify-between gap-6">
           <ul class="flex flex-wrap gap-2">
@@ -98,6 +101,11 @@
       </a>
     }
   </div>
+</section>
+
+<!-- ===================================================== FAST-MOVING PRODUCTS -->
+<section class="relative py-24 sm:py-32">
+  <div class="container-x"><app-fast-moving /></div>
 </section>
 
 <!-- ===================================================== PRODUCTS: ALL CATEGORIES AT A GLANCE -->

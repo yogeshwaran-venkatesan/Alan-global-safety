@@ -15,6 +15,7 @@ import {
   ScrubTextDirective,
   SplitRevealDirective,
 } from '../../shared/motion';
+import { FastMoving } from '../../shared/ui/fast-moving';
 import { HeroArt } from '../../shared/ui/hero-art';
 import { Icon } from '../../shared/ui/icon';
 import { Logo } from '../../shared/ui/logo';
@@ -32,8 +33,7 @@ import { Logo } from '../../shared/ui/logo';
     ScrubTextDirective,
     CountUpDirective,
     MagneticDirective,
-    ParallaxDirective,
-  ],
+    ParallaxDirective, FastMoving],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './home.page.html',
 })
@@ -51,8 +51,8 @@ export class HomePage implements OnDestroy {
   ];
 
   protected readonly divisions = [
-    { key: 'equipment', no: '01', icon: 'helmet', photo: PHOTOS.ppeFlatlay, link: '/products', tags: ['products.groups.ppe', 'products.groups.height', 'products.groups.detection'] },
-    { key: 'training', no: '02', icon: 'flame', photo: PHOTOS.firefighter, link: '/trainings', tags: ['home.divisions.training.tag1', 'home.divisions.training.tag2', 'home.divisions.training.tag3'] },
+    { key: 'equipment', no: '01', icon: 'helmet', photo: PHOTOS.workerMask, focus: '70% 20%', link: '/products', tags: ['products.groups.ppe', 'products.groups.height', 'products.groups.detection'] },
+    { key: 'training', no: '02', icon: 'flame', photo: PHOTOS.firefighter, focus: '75% 50%', link: '/trainings', tags: ['home.divisions.training.tag1', 'home.divisions.training.tag2', 'home.divisions.training.tag3'] },
   ];
 
   /** CONFIRM with client: describes how enquiries are handled. */

@@ -8,6 +8,7 @@ import { itemName } from '../../core/catalog-text';
 import { MotionService } from '../../core/motion';
 import { pageSeo } from '../../core/page-seo';
 import { MagneticDirective, RevealDirective, SplitRevealDirective } from '../../shared/motion';
+import { FastMoving } from '../../shared/ui/fast-moving';
 import { CategoryCard } from '../../shared/ui/category-card';
 import { Icon } from '../../shared/ui/icon';
 
@@ -15,7 +16,7 @@ type Filter = 'all' | ProductGroupId;
 
 @Component({
   selector: 'app-products-page',
-  imports: [RouterLink, TranslatePipe, Icon, CategoryCard, RevealDirective, SplitRevealDirective, MagneticDirective],
+  imports: [RouterLink, TranslatePipe, Icon, CategoryCard, FastMoving, RevealDirective, SplitRevealDirective, MagneticDirective],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <!-- Hero -->
@@ -31,6 +32,11 @@ type Filter = 'all' | ProductGroupId;
           <a [href]="company.brochureUrl" target="_blank" rel="noopener" magnetic class="btn btn-ghost mt-6"><app-icon name="download" class="size-4" /> {{ 'common.brochure' | translate }}</a>
         </div>
       </div>
+    </section>
+
+    <!-- Fast-moving products first, so they're found without searching -->
+    <section class="border-b border-white/[0.06] py-16 sm:py-20">
+      <div class="container-x"><app-fast-moving /></div>
     </section>
 
     <!-- Filter bar (sticks under the header) -->
