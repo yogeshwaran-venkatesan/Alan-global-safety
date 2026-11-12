@@ -162,6 +162,18 @@
       "lockout-tagout": {
         "name": "Lockout / Tagout",
         "short": "Padlocks, hasps and tags, valve, panel and breaker lockouts, key cabinets, stations and kits."
+      },
+      "fixed-online-gas-detector": {
+        "name": "Fixed / Online Gas Detector",
+        "short": "Fixed gas detectors and multi-channel gas monitors for combustible, toxic and oxygen gases, with alarms and relay outputs."
+      },
+      "fixed-line-system": {
+        "name": "Fixed Line System – Work at Height",
+        "short": "Permanent horizontal and vertical lifelines for continuous fall protection over trucks, trains, roofs, ladders and towers."
+      },
+      "portable-fixed-line-system": {
+        "name": "Portable Fixed Line System",
+        "short": "Movable overhead anchor systems — counterweight masts and gantries — for fall protection where no overhead structure exists."
       }
     },
     "items": {
@@ -462,6 +474,648 @@
         "siren": "Siren",
         "hand-operated-siren": "Hand Operated Siren",
         "afff-foam-unit": "AFFF Foam Unit"
+      },
+      "fixed-online-gas-detector": {
+        "rx-series-smart-gas-detector": "RX-Series Smart Gas Detector",
+        "tm-gd-hydrocarbon-gas-detector": "TM-GD Hydrocarbon Gas Detector",
+        "tm-800-1600-multi-channel-gas-monitor": "TM-800 / 1600 Multi Channel Gas Monitor",
+        "gazchamp-ultra-fixed-gas-monitor": "Gazchamp-ULTRA Fixed Gas Monitor"
+      },
+      "fixed-line-system": {
+        "horizontal-lifeline-over-the-head": "Horizontal Lifeline System — Over the Head",
+        "fall-arrest-over-the-head-open-to-sky": "Fall Arrest System — Over the Head (Open to Sky)",
+        "fall-arrest-over-the-roof": "Fall Arrest System — Over the Roof",
+        "vertical-flexible-rope": "Vertical Fall Arrest System — Flexible Rope",
+        "vertical-rigid-rail-guardall-i": "Vertical Fall Arrest System on Rigid Rail — Guardall I",
+        "vertical-rigid-rail-guardall-ii": "Vertical Fall Arrest System on Rigid Rail — Guardall II",
+        "vertical-rigid-cable": "Vertical Fall Arrest System — Rigid Cable"
+      },
+      "portable-fixed-line-system": {
+        "counter-pod-system": "Counter Pod™ System",
+        "modular-counter-pod-system": "Modular Counter Pod™ System",
+        "truck-flex-system": "Truck Flex™ System",
+        "porta-flex-system": "Port’A Flex™ System",
+        "gantry-flex-system": "Gantry Flex™ System",
+        "counterweight-c-frame-system": "Counterweight Block C-Frame System"
+      }
+    },
+    "details": {
+      "fixed-online-gas-detector": {
+        "rx-series-smart-gas-detector": {
+          "intro": "A smart, explosion-proof gas detector with a bright LED display for combustible, toxic and oxygen gases. It works on its own without a controller, is calibrated without opening the housing, and gives 4-20 mA and relay outputs.",
+          "specLabels": [
+            "Detection gases",
+            "Sensor type",
+            "Sampling",
+            "Display",
+            "Output signal",
+            "Alarm indication",
+            "Relays",
+            "Response time",
+            "Accuracy",
+            "Repeatability",
+            "Humidity",
+            "Operating temperature",
+            "Operating voltage",
+            "Cable",
+            "Mounting",
+            "Dimensions",
+            "Weight",
+            "Flameproof",
+            "Ingress protection",
+            "Certifications",
+            "Optional accessories"
+          ],
+          "specValues": [
+            "Combustible (RX-FL), Toxic (RX-TX), Oxygen (RX-OX)",
+            "Catalytic combustion or infrared (combustible); electrochemical, semiconductor, PID or IR (toxic); electrochemical or galvanic (oxygen)",
+            "Diffusion (suction sampling optional)",
+            "7-segment LED display",
+            "Analog 4-20 mA linear (non-isolated)",
+            "Individual LEDs for Alarm 1, Alarm 2, over-range and fault; programmable set points",
+            "SPDT contacts for Alarm 1, Alarm 2 and fault, 5 A 230 V AC",
+            "< 30 s (T90)",
+            "± 2%",
+            "± 1%",
+            "0 – 95% RH (non-condensing)",
+            "-20 °C to 70 °C",
+            "18 – 32 V DC",
+            "3 core × 1.5 sq.mm copper, armoured, screened",
+            "Surface mounting",
+            "210 × 200 × 110 mm (W × H × D)",
+            "1.5 kg (approx.)",
+            "Certified for gas groups IIA, IIB, IIC as per IS/IEC 60079",
+            "IP-66",
+            "CMRI / PESO / CE / ATEX",
+            "Rain canopy, mounting stand, mounting bracket, weatherproof cap, flasher / buzzer"
+          ],
+          "features": [
+            "Bright seven-segment LED display",
+            "Non-intrusive calibration with a magnetic wand",
+            "Works independently of a controller",
+            "Fully programmable with soft keys or magnetic wand",
+            "4-20 mA and relay outputs",
+            "For combustible, toxic and oxygen gases",
+            "Explosion-proof housing",
+            "IP-66 ingress protection"
+          ]
+        },
+        "tm-gd-hydrocarbon-gas-detector": {
+          "intro": "A field-mounted hydrocarbon gas detector with a pellistor sensor in a stainless steel flameproof enclosure, for continuous monitoring of combustible gases from 0 to 100% LEL.",
+          "specLabels": [
+            "Sensor type",
+            "Working principle",
+            "Range",
+            "Detector enclosure",
+            "Protection",
+            "Operating voltage",
+            "Output",
+            "Response time",
+            "Linearity",
+            "Accuracy",
+            "Long-term drift",
+            "Operating temperature",
+            "Operating humidity",
+            "Operating life",
+            "Mounting",
+            "Weather protection",
+            "Serviceability"
+          ],
+          "specValues": [
+            "Pellistor",
+            "Catalytic combustion (diffusion)",
+            "0 – 100% LEL hydrocarbons",
+            "SS 316 with flame arrestor",
+            "Certified flameproof / explosion-proof for IIA, IIB and IIC as per IS 2148",
+            "2.2 – 2.5 V DC",
+            "mV",
+            "T90 < 30 s",
+            "< 3% LEL",
+            "± 2% FSD",
+            "± 1% FSD",
+            "0 – 50 °C (typical)",
+            "0 – 95% RH, non-condensing",
+            "More than 5 years",
+            "Field mounted with accessories; junction box and cable gland certified IIA/IIB",
+            "Weatherproof canopy / cone",
+            "Replaceable sinter and sensor"
+          ],
+          "features": [
+            "Pellistor sensor for hydrocarbon gases",
+            "Stainless steel SS 316 enclosure with flame arrestor",
+            "Certified flameproof for gas groups IIA, IIB and IIC",
+            "Fast response: T90 under 30 seconds",
+            "Long operating life of more than 5 years",
+            "Replaceable sinter and sensor"
+          ]
+        },
+        "tm-800-1600-multi-channel-gas-monitor": {
+          "intro": "An 8 or 16 channel gas monitor with an individual display for each channel. It accepts any 4-20 mA gas transmitter, gives RS-485 Modbus output for logging and control, and has potential-free contacts to drive extra flashers or hooters.",
+          "specLabels": [
+            "Channels",
+            "Gas range — combustible",
+            "Gas range — toxic",
+            "Gas range — oxygen",
+            "Detector type",
+            "Sensor type",
+            "Alarms",
+            "Display",
+            "Indicators",
+            "Contacts",
+            "Output",
+            "Power supply",
+            "Dimensions — non-flameproof",
+            "Dimensions — flameproof",
+            "Mounting",
+            "Protection",
+            "Operating temperature",
+            "Humidity",
+            "Optional accessories"
+          ],
+          "specValues": [
+            "8 (TM-800) or 16 (TM-1600), individual display per channel",
+            "0 – 100% LEL",
+            "Cl₂ 0–5 up to 50 ppm, SO₂ 0–10 ppm, HCN 0–25 ppm, H₂S 0–100 ppm, CO 0–1000 ppm, VOC 0–1000 ppm, NH₃ 0–1000 ppm (others on request)",
+            "0 – 5, 10, 15, 20, 25, 30% V/V O₂, or 0 – 1000, 1999 ppm O₂",
+            "3-wire transmitter (combustible), 2-wire transmitter (toxic and oxygen)",
+            "Catalytic combustion or infrared; electrochemical, semiconductor or PID; electrochemical or galvanic",
+            "Two adjustable alarm levels",
+            "4-digit bright LED read-out for each channel",
+            "Red LEDs for Alarm 1 and 2, amber LED for fault",
+            "SPDT potential-free for Alarm 1, Alarm 2 and fault, 230 V AC 5 A",
+            "Modbus RTU, configurable 2-wire RS-485",
+            "230 V AC or 110 V AC, 50 Hz (others on request)",
+            "TM-800: 275 × 240 × 150 mm; TM-1600: 400 × 325 × 100 mm (H × W × D)",
+            "TM-800: 310 × 350 × 170 mm; TM-1600: 400 × 385 × 220 mm (H × W × D)",
+            "Wall / surface mounted",
+            "Dust and weatherproof IP-65 (flameproof optional)",
+            "0 – 60 °C",
+            "0 – 95% RH, non-condensing",
+            "PC software for logging and annunciation"
+          ],
+          "features": [
+            "8 or 16 channels with an individual display each",
+            "Accepts 4-20 mA inputs from any gas transmitter",
+            "Fully configurable alarm relays",
+            "Lamp test facility",
+            "RS-485 Modbus output",
+            "Built-in audio alarm with accept facility",
+            "Weatherproof and dustproof IP-65 enclosure, flameproof optional",
+            "Uses reliable long-life sensors"
+          ]
+        },
+        "gazchamp-ultra-fixed-gas-monitor": {
+          "intro": "A fixed gas monitor available as a single-channel unit or with up to 10 channels, each with its own monitor card, display and adjustable alarms, for combustible, toxic and oxygen gases.",
+          "specLabels": [
+            "Detection gases",
+            "Sampling",
+            "Number of channels",
+            "Display / resolution",
+            "Indicators",
+            "Alarm",
+            "Relays",
+            "Accuracy",
+            "Repeatability",
+            "Humidity",
+            "Operating temperature",
+            "Controls",
+            "Operating voltage",
+            "Cable",
+            "Mounting",
+            "Dimensions",
+            "Weight",
+            "Enclosure",
+            "Ingress protection",
+            "Certifications",
+            "Optional accessories"
+          ],
+          "specValues": [
+            "Combustible (catalytic combustion), toxic (electrochemical or semiconductor), oxygen (electrochemical or galvanic)",
+            "Diffusion",
+            "1 channel, or up to 10 channels",
+            "3-digit bright LED display per channel / 1 or 0.1",
+            "2 red LEDs for Alarm 1 and 2, amber LED for fault",
+            "Two alarm levels, factory set, user adjustable",
+            "Single channel: SPDT for Alarm 1 and 2; multi channel: SPDT for Alarm 1 per channel (240 V AC, 6 A)",
+            "± 2%",
+            "± 1%",
+            "0 – 95% RH (non-condensing)",
+            "-20 °C to 60 °C",
+            "Membrane push-buttons for setup and programming",
+            "230 V AC or 110 V AC, 50 Hz (others on request)",
+            "2 or 3 core × 1.5 sq.mm copper, armoured, screened",
+            "Surface mounting",
+            "Single channel: 92 × 198 × 61 mm; multi channel: 310 × 310 × 120 mm (W × H × D)",
+            "Single channel: 525 g; multi channel: 3 kg (approx.)",
+            "ABS polycarbonate",
+            "IP-65",
+            "CMRI / PESO / CE / ATEX",
+            "GSM auto dialler, repeater panel, hooter flasher"
+          ],
+          "features": [
+            "Single channel or multi channel (up to 10)",
+            "Fast response to gas leaks",
+            "Independent monitor card for each detector",
+            "Individual display reading",
+            "User-adjustable alarm levels",
+            "Relay contact for Alarm 1",
+            "Temperature compensation to avoid false alarms"
+          ]
+        }
+      },
+      "fixed-line-system": {
+        "horizontal-lifeline-over-the-head": {
+          "intro": "A stainless steel horizontal lifeline installed overhead, so workers can move continuously along a long span while staying connected.",
+          "features": [
+            "Complete SS 316 system",
+            "Continuous movement with complete fall protection over long spans",
+            "Shock absorber reduces jerk load on the user and the structure",
+            "ATEX approved for use in potentially explosive areas"
+          ],
+          "applications": [
+            "Truck loading and unloading",
+            "Work on top of trains",
+            "EOT cranes",
+            "Awkward workplaces needing horizontal and vertical safety"
+          ]
+        },
+        "fall-arrest-over-the-head-open-to-sky": {
+          "intro": "An overhead horizontal fall arrest system for open-to-sky areas, giving continuous protection over long spans.",
+          "features": [
+            "Complete SS 316 system",
+            "Continuous movement with complete fall protection over long spans",
+            "Shock absorber reduces jerk load on the user and the structure",
+            "ATEX approved for use in potentially explosive areas"
+          ],
+          "applications": [
+            "Truck loading and unloading",
+            "Truck tarpaulin work",
+            "Train gantries"
+          ]
+        },
+        "fall-arrest-over-the-roof": {
+          "intro": "A roof-mounted horizontal lifeline for safe movement across roofs and pre-engineered buildings, without compromising waterproofing.",
+          "features": [
+            "Complete SS 316 system",
+            "Continuous movement with complete fall protection over long spans",
+            "100% waterproofing",
+            "Available for standing seam roofs",
+            "Shock absorber reduces impact load on the user and the structure"
+          ],
+          "applications": [
+            "Roofs",
+            "Pre-engineered buildings"
+          ]
+        },
+        "vertical-flexible-rope": {
+          "intro": "A vertical fall arrest system on a flexible rope, for safe climbing on ladders, scaffolds and temporary installations.",
+          "features": [
+            "100% positive locking",
+            "Continuous movement with complete fall protection"
+          ],
+          "applications": [
+            "Ladders",
+            "Scaffolds",
+            "Temporary installations"
+          ]
+        },
+        "vertical-rigid-rail-guardall-i": {
+          "intro": "A vertical fall arrest system on a rigid rail, fixed to ladders and towers for continuous protection while climbing.",
+          "features": [
+            "100% positive locking",
+            "Continuous movement with complete fall protection",
+            "Corrosion-free anodized aluminium, GI or SS rails",
+            "Virtually no maintenance"
+          ],
+          "applications": [
+            "Ladders",
+            "Wind mills",
+            "Chimney stacks",
+            "Telecommunication towers",
+            "FM towers",
+            "Television transmission towers"
+          ]
+        },
+        "vertical-rigid-rail-guardall-ii": {
+          "intro": "A vertical fall arrest system on a rigid rail for ladders and tall towers, including transmission towers.",
+          "features": [
+            "100% positive locking",
+            "Continuous movement with complete fall protection",
+            "Corrosion-free anodized aluminium, GI or SS rails",
+            "Virtually no maintenance"
+          ],
+          "applications": [
+            "Ladders",
+            "Wind mills",
+            "Chimney stacks",
+            "Transmission towers",
+            "Telecommunication towers",
+            "FM towers",
+            "Television transmission towers"
+          ]
+        },
+        "vertical-rigid-cable": {
+          "intro": "A vertical fall arrest system on a rigid cable, for safe climbing on ladders, scaffolds and temporary installations.",
+          "features": [
+            "100% positive locking",
+            "Continuous movement with complete fall protection"
+          ],
+          "applications": [
+            "Ladders",
+            "Scaffolds",
+            "Temporary installations"
+          ]
+        }
+      },
+      "portable-fixed-line-system": {
+        "counter-pod-system": {
+          "intro": "A portable overhead anchor for areas where overhead obstructions — high-tension cables, EOT cranes and the like — prevent anchoring. A concrete-filled counterweight box keeps it stable; the mast rotates 360° and it can be installed for permanent or temporary use by one worker.",
+          "specLabels": [
+            "Anchor height",
+            "Cantilever length",
+            "Counterweight base",
+            "Counterweight",
+            "Anchorage",
+            "Lifting arrangement",
+            "Max. number of users",
+            "Max. weight capacity",
+            "Power required for movement",
+            "Material of construction",
+            "Compatible devices"
+          ],
+          "specValues": [
+            "6 m",
+            "2 m",
+            "1 × 1 m",
+            "RCC / PCC filled, approx. 900 kg",
+            "Single point anchor",
+            "Forklift pockets and four lifting hooks",
+            "1 person",
+            "150 kg",
+            "Forklift / overhead crane",
+            "High strength steel sections",
+            "Retractable fall arrest block with full body safety harness"
+          ],
+          "features": [
+            "Overhead anchoring for work at height — an effective, economical fall arrest system",
+            "Single point anchor with RCC / PCC filled counterweight box",
+            "Telescopic mast adjustable using an overhead crane or forklift",
+            "360° rotatable mast",
+            "Forklift pockets plus four lifting hooks for portability",
+            "Superior durability and weather resistance"
+          ],
+          "setup": [
+            "Lift the counterweight box by its fork pockets or lifting hooks and move the system to the work area.",
+            "Position it parallel to the work area, making sure there are no obstructions on the ground.",
+            "Raise the telescopic mast with a forklift and fit the clevis lock pin to fix the mast.",
+            "Pull down the snap hook with the fall arrest block's tag line and attach it to the safety harness — the system is ready.",
+            "For rotational movement, the mast turns through 360°."
+          ],
+          "applications": [
+            "Logistics",
+            "Construction",
+            "Mining",
+            "Transportation",
+            "Utilities"
+          ]
+        },
+        "modular-counter-pod-system": {
+          "intro": "A trolley-mounted overhead anchor for areas with limited space or no overhead anchoring structure. Removable metal counterweight blocks with handles make it easy to move, and four heavy-duty jacks keep it steady.",
+          "specLabels": [
+            "Anchor height",
+            "Cantilever length",
+            "Counterweight trolley / carriage",
+            "Counterweight",
+            "Anchorage",
+            "Lifting arrangement of mast",
+            "Max. number of users",
+            "Max. weight capacity",
+            "Power required for movement",
+            "Material of construction",
+            "Compatible devices"
+          ],
+          "specValues": [
+            "6 m",
+            "2.5 m",
+            "2 × 1 m",
+            "40 metal counterweight blocks (20 kg each)",
+            "Single point anchor",
+            "Overhead crane or forklift (one-time process)",
+            "1 person",
+            "150 kg",
+            "One person",
+            "High strength steel sections",
+            "Retractable fall arrest block with full body safety harness"
+          ],
+          "features": [
+            "Overhead anchoring for work at height — an effective, economical fall arrest system",
+            "Single point anchor with metal counterweight blocks with handles",
+            "360° rotatable mast, adjustable using an overhead crane or forklift",
+            "Cast iron core wheels with moulded PU for grip on uneven surfaces",
+            "Locking steer handle and three-wheel steering for easy moving"
+          ],
+          "setup": [
+            "Lift the telescopic mast with a forklift and fit the clevis lock pin (one-time process).",
+            "Lower the levelling jacks, then remove the steer handle lock pin.",
+            "Move the system into position at the work surface, refit the steering handle lock pin and raise the levelling jacks.",
+            "Pull down the snap hook with the fall arrest block's tag line and attach it to the safety harness — the system is ready.",
+            "For rotational movement, the mast turns through 360°."
+          ],
+          "applications": [
+            "Logistics",
+            "Construction",
+            "Mining",
+            "Transportation",
+            "Utilities"
+          ]
+        },
+        "truck-flex-system": {
+          "intro": "A portable fall protection system for truck loading, unloading and maintenance. It uses the vehicle's own weight for stability — no heavy counterweights — with a 360° rotating boom and an adjustable mast.",
+          "specLabels": [
+            "Anchor height",
+            "Cantilever length",
+            "Size of the ramp",
+            "Counterweight",
+            "Anchorage type",
+            "Shock absorbing arrangement",
+            "Mast arrangement",
+            "Lifting arrangement for mast",
+            "Max. number of users",
+            "Max. weight capacity",
+            "Power required for movement",
+            "Material of construction",
+            "Compatible devices"
+          ],
+          "specValues": [
+            "4.3 m minimum to 6 m maximum",
+            "2 m",
+            "1.6 m long × 0.9 m wide",
+            "Uses the vehicle's weight for secure anchorage",
+            "U-bolt",
+            "Shock absorber reduces impact force on the user",
+            "360° rotatable, height-adjustable mast",
+            "Overhead crane or forklift (one-time process)",
+            "1 person",
+            "100 kg",
+            "Forklift / manual by inbuilt steer wheel",
+            "High strength steel sections",
+            "Retractable fall arrest block with full body safety harness"
+          ],
+          "features": [
+            "Quick and easy connection for safe height access",
+            "No counterweights needed — uses the vehicle's weight",
+            "Lightweight at 370 kg",
+            "Telescopic mast extends 4.3–6 m in 0.5 m steps to clear obstacles",
+            "360° rotating boom reduces free-fall distance and swing hazard",
+            "Shock absorber minimises forces during a fall",
+            "Modular and portable — move with a forklift or the inbuilt steer wheel"
+          ],
+          "setup": [
+            "Position the system parallel to the work area with no obstructions on the ground, and drive the truck's rear wheel onto the pocket of the ramp.",
+            "Raise the telescopic mast to the required height with a forklift and fit the clevis lock pin.",
+            "Pull down the snap hook with the fall arrest block's tag line and attach it to the safety harness — the system is ready.",
+            "For rotational movement, the mast turns through 360°."
+          ],
+          "applications": [
+            "Truck loading, unloading and maintenance where no overhead structure exists",
+            "Safe overhead anchorage around vehicles",
+            "Replaces costly fixed overhead anchor systems"
+          ],
+          "limitations": [
+            "Wheel diameter under 1.8 m (6 ft), width under 0.91 m (36 in)",
+            "Truck ground clearance over 115 mm (4.5 in)"
+          ]
+        },
+        "porta-flex-system": {
+          "intro": "A wheeled overhead rail system for two workers, for areas where overhead obstructions prevent anchoring. Steering with steer locks on all four sides means it can be moved without turning the whole structure.",
+          "specLabels": [
+            "Anchor height",
+            "Rail length",
+            "Length of leg member",
+            "Height adjustment foot",
+            "Wheel",
+            "Steering type",
+            "Trolley and stopper",
+            "Max. number of users",
+            "Max. weight capacity",
+            "Power required for movement",
+            "Material of construction",
+            "Compatible devices"
+          ],
+          "specValues": [
+            "6 m",
+            "3 m (single rail with two trolleys)",
+            "3 m",
+            "Heavy-duty levelling jacks",
+            "7\" diameter, industrial-grade metal core with moulded PU",
+            "Steering with steer lock on all four sides",
+            "SS 316 rail trolley with spring-loaded stopper",
+            "2 persons",
+            "190 kg",
+            "2 persons",
+            "High strength steel sections",
+            "Retractable fall arrest block with full body safety harness"
+          ],
+          "features": [
+            "Overhead anchoring for work at height — an effective, economical fall arrest system",
+            "Rigid rail reduces fall clearance requirements",
+            "Cast iron core wheels with moulded PU for grip on uneven surfaces",
+            "Locking steer mechanism on all four sides for easy moving",
+            "Superior durability and weather resistance"
+          ],
+          "setup": [
+            "Remove the steer and handle lock pins on both front steering systems; leave the rear steering lock pins in place.",
+            "Move the system with both steerings in sync, position it at the work location and refit all lock pins.",
+            "Pull down the snap hook with the fall arrest block's tag line and attach it to the safety harness — the system is ready.",
+            "For horizontal movement, the channel trolley runs along the rail.",
+            "To move backwards, remove the rear steering lock pins, keep the front ones in place and move to the new location."
+          ],
+          "applications": [
+            "Railway workshops",
+            "Logistics",
+            "Transportation",
+            "Construction",
+            "General industry"
+          ]
+        },
+        "gantry-flex-system": {
+          "intro": "A mobile gantry for two workers with a height-adjustable, extendable access platform and telescopic ladder, for areas with insufficient overhead anchoring structures. Automobile-type steering and solid rubber wheels let it move over uneven ground.",
+          "specLabels": [
+            "Anchor height",
+            "Size of base trolley",
+            "Size of platform",
+            "Height adjustment range of platform",
+            "Max. extending length of platform",
+            "Rail length",
+            "Wheel",
+            "Max. number of users",
+            "Max. weight capacity",
+            "Power required for movement",
+            "Material of construction",
+            "Compatible devices"
+          ],
+          "specValues": [
+            "7.5 m",
+            "2.5 × 2 m",
+            "1.2 × 1 m",
+            "4 m to 6 m",
+            "1 m",
+            "5 m (single rail with two trolleys)",
+            "16\", fabricated steel rim with moulded solid rubber",
+            "2 persons",
+            "190 kg",
+            "2 persons",
+            "High strength steel sections",
+            "Retractable fall arrest block with full body safety harness"
+          ],
+          "features": [
+            "Overhead anchoring for work at height — an effective, economical fall arrest system",
+            "Height-adjustable, extendable platform with telescopic ladder for easy access",
+            "Self-locking manual worm winch for platform height adjustment",
+            "Solid rubber wheels for grip on uneven surfaces",
+            "Built-in automobile-type steering for easy turning and stable towers",
+            "Superior durability and weather resistance",
+            "Complies with OSHA 1926.502 and OSHA 1910.66"
+          ],
+          "setup": [
+            "Remove the steering handle lock pin, move the system to the work location and refit the lock pin.",
+            "Adjust the platform height with the winch, climb the telescopic ladder and extend the platform as needed.",
+            "Pull down the snap hook with the fall arrest block's tag line and attach it to the safety harness — the system is ready.",
+            "For horizontal movement, the channel trolley runs along the rail."
+          ],
+          "applications": [
+            "Mining",
+            "General industry",
+            "Transportation",
+            "Construction"
+          ]
+        },
+        "counterweight-c-frame-system": {
+          "intro": "A C-frame gantry on a mobile counterweight cart that creates an overhead anchor point for two workers, positioned close to the work surface without blocking the equipment being worked on.",
+          "specLabels": [
+            "Max. number of users",
+            "Rail",
+            "Counterweight",
+            "Levelling",
+            "Movement"
+          ],
+          "specValues": [
+            "2 persons",
+            "One rail with two trolleys and tag line assist",
+            "Mobile counterweight blocks cart",
+            "Levelling jacks",
+            "Manual, with steering handle"
+          ],
+          "features": [
+            "Easily creates an overhead anchor point for two workers",
+            "Mobile counterweight blocks cart",
+            "Levelling jacks included",
+            "Positions close to the work surface without obstructing the equipment",
+            "Great for areas with overhead obstructions",
+            "One rail with two trolleys and tag line assist",
+            "Moved manually with a steering handle"
+          ]
+        }
       }
     }
   },
@@ -967,6 +1621,9 @@
     "contact": {
       "title": "Contact Alan Global Safety — Kochi & Coimbatore",
       "description": "Call +91 87142 67507, message us on WhatsApp or visit our Kochi or Coimbatore office for safety equipment quotes and training bookings."
+    },
+    "product": {
+      "title": "{{name}} — {{section}} in Kochi"
     }
   },
   "catalogue": {
@@ -1191,5 +1848,20 @@
   "offices": {
     "kochi": "Kochi",
     "coimbatore": "Coimbatore"
+  },
+  "product": {
+    "specs": "Specifications",
+    "features": "Key features",
+    "setup": "Setup & functionality",
+    "applications": "Applications",
+    "limitations": "Limitations",
+    "photoSoon": "Photo coming soon",
+    "details": "View details",
+    "related": "More in {{section}}",
+    "all": "All {{section}}",
+    "datasheet": "Datasheet",
+    "waMessage": "Hello Alan Global Safety, I’d like a quote for the {{name}}.",
+    "askWhatsapp": "Ask on WhatsApp",
+    "users": "{{count}} users"
   }
 }

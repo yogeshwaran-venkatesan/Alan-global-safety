@@ -4,6 +4,7 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   { path: '', loadComponent: () => import('./features/home/home.page').then((m) => m.HomePage) },
   { path: 'products', loadComponent: () => import('./features/products/products.page').then((m) => m.ProductsPage) },
+  { path: 'products/:slug/:item', loadComponent: () => import('./features/products/product.page').then((m) => m.ProductPage) },
   { path: 'products/:slug', loadComponent: () => import('./features/products/category.page').then((m) => m.CategoryPage) },
   { path: 'trainings', loadComponent: () => import('./features/trainings/trainings.page').then((m) => m.TrainingsPage) },
   { path: 'trainings/:key', loadComponent: () => import('./features/trainings/training.page').then((m) => m.TrainingPage) },

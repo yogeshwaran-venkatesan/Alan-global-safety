@@ -61,7 +61,11 @@ import { NotFoundPage } from '../not-found/not-found.page';
               </svg>
               <!-- Product photo on a white "specimen plate" inside the rings -->
               <div class="absolute inset-[16%] grid place-items-center overflow-hidden rounded-full bg-paper shadow-[0_30px_80px_-20px_rgba(179,201,43,0.45)]" [parallax]="-10">
-                <img [src]="c.image" [alt]="name()" width="480" height="480" class="size-[78%] object-contain mix-blend-multiply" />
+                @if (c.image) {
+                  <img [src]="c.image" [alt]="name()" width="480" height="480" [class]="c.photo ? 'size-full object-cover' : 'size-[78%] object-contain mix-blend-multiply'" />
+                } @else {
+                  <span class="grid size-24 place-items-center rounded-3xl bg-ink-900 text-hivis-500"><app-icon [name]="c.icon" class="size-12" /></span>
+                }
               </div>
               <span class="absolute right-[12%] bottom-[14%] grid size-14 place-items-center rounded-2xl bg-hivis-500 text-ink-900 shadow-card"><app-icon [name]="c.icon" class="size-7" /></span>
             </div>
@@ -92,13 +96,28 @@ import { NotFoundPage } from '../not-found/not-found.page';
             @for (p of products(); track p.item.id; let i = $index) {
               <li class="group flex min-w-0 flex-col overflow-hidden rounded-[1.25rem] border border-white/[0.07] bg-ink-800/60 transition duration-500 hover:-translate-y-1 hover:border-white/20"
                   [class.hidden]="!p.match">
-                <div class="relative aspect-[4/3] overflow-hidden bg-paper">
-                  <img [src]="p.item.img" [alt]="p.name" [width]="p.item.w" [height]="p.item.h" loading="lazy" decoding="async"
-                       class="absolute inset-0 m-auto max-h-[78%] max-w-[84%] object-contain mix-blend-multiply transition duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.07]" />
+                <div class="relative grid aspect-[4/3] place-items-center overflow-hidden bg-paper">
+                  @if (p.item.img) {
+                    <img [src]="p.item.img" [alt]="p.name" [width]="p.item.w" [height]="p.item.h" loading="lazy" decoding="async"
+                         [class]="p.item.photo ? 'absolute inset-0 size-full object-cover transition duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.07]' : 'absolute inset-0 m-auto max-h-[78%] max-w-[84%] object-contain mix-blend-multiply transition duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.07]'" />
+                  } @else {
+                    <span class="grid size-12 place-items-center rounded-2xl bg-ink-900 text-hivis-500"><app-icon [name]="c.icon" class="size-6" /></span>
+                  }
                   <span class="absolute top-3 left-3 font-mono text-[0.65rem] text-ink-900/70">{{ pad(i + 1) }}</span>
                 </div>
                 <div class="flex flex-1 flex-col gap-3 p-3.5 sm:p-5">
-                  <h3 class="flex-1 font-sans text-sm leading-snug font-semibold text-steel-100 sm:text-[0.95rem]">{{ p.name }}</h3>
+                  <h3 class="flex-1 font-sans text-sm leading-snug font-semibold text-steel-100 sm:text-[0.95rem]">
+                    @if (p.item.detail) {
+                      <a [routerLink]="['/products', c.slug, p.item.id]" class="transition hover:text-hivis-500">{{ p.name }}</a>
+                    } @else {
+                      {{ p.name }}
+                    }
+                  </h3>
+                  @if (p.item.detail) {
+                    <a [routerLink]="['/products', c.slug, p.item.id]" class="inline-flex min-h-10 items-center justify-center gap-2 rounded-full bg-white/[0.06] px-3 text-xs font-semibold text-steel-100 transition hover:bg-hivis-500 hover:text-ink-900 sm:text-sm">
+                      {{ 'product.details' | translate }} <app-icon name="arrow" class="size-4" />
+                    </a>
+                  }
                   <button type="button" (click)="toggleItem(p.item.id, p.name)" [attr.aria-pressed]="itemInQuote(p.item.id)"
                           [attr.aria-label]="(itemInQuote(p.item.id) ? 'quote.removeNamed' : 'quote.addNamed') | translate: { name: p.name }"
                           class="flex min-h-10 items-center justify-center gap-2 rounded-full border px-3 text-xs font-semibold transition duration-300 sm:text-sm"

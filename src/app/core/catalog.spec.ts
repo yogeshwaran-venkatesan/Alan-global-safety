@@ -1,4 +1,4 @@
-import { CATALOG, PRODUCT_CATEGORIES, PRODUCT_COUNT, PRODUCT_GROUPS } from './company.config';
+import { CATALOG, DETAIL_PRODUCTS, PRODUCT_CATEGORIES, PRODUCT_COUNT, PRODUCT_GROUPS } from './company.config';
 import { TRAININGS } from './trainings.config';
 
 describe('Product catalogue (from the brochure)', () => {
@@ -16,23 +16,29 @@ describe('Product catalogue (from the brochure)', () => {
     }
   });
 
-  it('uses one of the section’s own products as its cover photo', () => {
+  it('uses one of the section’s own products as its cover photo (or none while photos are pending)', () => {
     for (const c of PRODUCT_CATEGORIES) {
-      expect(CATALOG[c.slug].some((i) => i.img === c.image)).withContext(c.slug).toBeTrue();
+      if (!c.image) expect(CATALOG[c.slug].every((i) => !i.img)).withContext(c.slug).toBeTrue();
+      else expect(CATALOG[c.slug].some((i) => i.img === c.image)).withContext(c.slug).toBeTrue();
     }
   });
 
   it('gives every product a unique id, a name and a photo in its section folder', () => {
-    expect(PRODUCT_COUNT).toBe(298);
+    expect(PRODUCT_COUNT).toBe(298 + 17);
     for (const [slug, items] of Object.entries(CATALOG)) {
       const ids = items.map((i) => i.id);
       expect(new Set(ids).size).withContext(slug).toBe(ids.length);
       for (const i of items) {
         expect(i.label.trim()).withContext(i.id).not.toBe('');
-        expect(i.img).toBe(`images/catalog/${slug}/${i.id}.webp`);
+        if (i.img) expect(i.img).toBe(`images/catalog/${slug}/${i.id}.webp`);
+        else expect(i.detail).withContext(i.id + ' has no photo, so it must have a datasheet page').toBeTrue();
         expect(i.w).toBeGreaterThan(0);
       }
     }
+  });
+
+  it('lists 17 products with their own datasheet page', () => {
+    expect(DETAIL_PRODUCTS.length).toBe(17);
   });
 
   it('has 25 training programmes with unique keys', () => {

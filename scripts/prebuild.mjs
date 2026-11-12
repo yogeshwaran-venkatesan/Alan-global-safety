@@ -47,7 +47,17 @@ if (!categories.length || !programmes.length) {
   console.error('prebuild: could not read product categories or training programmes for the sitemap');
   process.exit(1);
 }
-const paths = ['', ...top, ...categories, ...programmes];
+// Products with their own datasheet page: dt('<section>', '<id>' … ) or dtPhoto('<section>', '<id>' … ).
+const catalog = readFileSync(root + 'src/app/core/catalog.data.ts', 'utf8');
+const details = [];
+let section = '';
+for (const line of catalog.split('\n')) {
+  const sec = line.match(/^\s*'([a-z0-9-]+)': \[/);
+  if (sec) section = sec[1];
+  const dt = line.match(/\bdt(?:Photo)?\('([a-z0-9-]+)', '([a-z0-9-]+)'/);
+  if (dt) details.push(`products/${dt[1]}/${dt[2]}`);
+}
+const paths = ['', ...top, ...categories, ...details, ...programmes];
 const priority = (p) => (p === '' ? '1.0' : ['products', 'trainings'].includes(p) ? '0.9' : p.includes('/') ? '0.8' : '0.7');
 const lastmod = new Date().toISOString().slice(0, 10);
 

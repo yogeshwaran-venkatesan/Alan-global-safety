@@ -41,6 +41,10 @@ describe('Translations', () => {
     for (const t of TRAININGS) expect(EN.has(`trainings.programmes.${t.key}.title`)).withContext(t.key).toBeTrue();
   });
 
+  it('has a datasheet (intro at least) for every product with its own page', () => {
+    for (const [s, items] of Object.entries(CATALOG)) for (const i of items) if (i.detail) expect(EN.has(`products.details.${s}.${i.id}.intro`)).withContext(i.id).toBeTrue();
+  });
+
   it('only translates products that exist in the catalogue', () => {
     const known = new Set(Object.entries(CATALOG).flatMap(([s, items]) => items.map((i) => `products.items.${s}.${i.id}`)));
     for (const k of EN.keys()) if (k.startsWith('products.items.')) expect(known.has(k)).withContext(k).toBeTrue();

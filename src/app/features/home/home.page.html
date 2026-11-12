@@ -118,8 +118,12 @@
           <a [routerLink]="['/products', c.slug]"
              class="group relative flex h-full flex-col overflow-hidden rounded-[1.4rem] border border-white/[0.08] bg-ink-800 transition duration-500 hover:-translate-y-1 hover:border-hivis-500/50">
             <span class="relative block aspect-square overflow-hidden bg-paper">
-              <img [src]="c.image" alt="" width="480" height="480" loading="lazy" decoding="async"
-                   class="size-full object-contain p-5 mix-blend-multiply transition duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-110" />
+              @if (c.image) {
+                <img [src]="c.image" alt="" width="480" height="480" loading="lazy" decoding="async"
+                     [class]="c.photo ? 'size-full object-cover transition duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-110' : 'size-full object-contain p-5 mix-blend-multiply transition duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-110'" />
+              } @else {
+                <span class="grid size-full place-items-center"><span class="grid size-14 place-items-center rounded-2xl bg-ink-900/[0.06] text-ink-900/70"><app-icon [name]="c.icon" class="size-7" /></span></span>
+              }
               <span class="absolute top-3 left-3 font-mono text-[0.68rem] text-ink-900/75">{{ pad(i + 1) }}</span>
               <span class="absolute right-3 bottom-3 grid size-8 place-items-center rounded-full bg-ink-900 text-hivis-500 opacity-0 transition duration-500 group-hover:rotate-[-45deg] group-hover:opacity-100">
                 <app-icon name="arrow" class="size-3.5" />

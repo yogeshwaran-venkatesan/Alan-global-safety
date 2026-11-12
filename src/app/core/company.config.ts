@@ -101,14 +101,22 @@ export interface ProductCategory {
   slug: string;
   group: ProductGroupId;
   icon: string;
-  /** Cover photo: one of the section's products from the brochure. */
-  image: string;
+  /** Cover photo: one of the section's own products. Missing while photos are still to come. */
+  image?: string;
+  /** The cover is a real-life photo (fills its frame) rather than a cut-out on white. */
+  photo?: boolean;
 }
 
 const cover = (slug: string, id: string) => `images/catalog/${slug}/${id}.webp`;
-const cat = (slug: string, group: ProductGroupId, icon: string, coverId: string): ProductCategory => ({ slug, group, icon, image: cover(slug, coverId) });
+const cat = (slug: string, group: ProductGroupId, icon: string, coverId?: string): ProductCategory => ({
+  slug,
+  group,
+  icon,
+  image: coverId ? cover(slug, coverId) : undefined,
+  photo: !!CATALOG[slug]?.find((i) => i.id === coverId)?.photo,
+});
 
-/** The 29 sections of the company brochure, in brochure order within each group. */
+/** The 29 sections of the company brochure plus 3 added from manufacturer datasheets, grouped. */
 export const PRODUCT_CATEGORIES: ProductCategory[] = [
   cat('head-protection', 'ppe', 'helmet', 'airvent-helmet'),
   cat('eye-protection', 'ppe', 'goggles', 'chemical-splash-goggles-3m1621'),
@@ -126,6 +134,8 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
   cat('other-safety-shoes', 'footwear', 'boot', 'jcb-high-ankle'),
   cat('fall-protection', 'height', 'harness', 'tower-climbing-harness'),
   cat('fall-arresters-ladders', 'height', 'ladder', 'pn-800-tripod'),
+  cat('fixed-line-system', 'height', 'harness', 'horizontal-lifeline-over-the-head'),
+  cat('portable-fixed-line-system', 'height', 'tripod', 'gantry-flex-system'),
   cat('fire-extinguishers', 'fire', 'flame', 'abc-fire-extinguisher'),
   cat('fire-hydrant', 'fire', 'hydrant', 'hose-reel-drum'),
   cat('emergency-rescue', 'fire', 'siren', 'scba-self-contained-breathing-apparatus'),
@@ -134,6 +144,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
   cat('sorbents-spill-kits', 'spill', 'sorbent', 'oil-spill-kit'),
   cat('safety-cans-cabinets', 'spill', 'cabinet', 'safety-can-type-ii'),
   cat('gas-detection', 'detection', 'detector', 'riken-keiki-gx-3r'),
+  cat('fixed-online-gas-detector', 'detection', 'detector', 'rx-series-smart-gas-detector'),
   cat('safe-lighting', 'detection', 'flashlight', 'pelican-9435'),
   cat('traffic-safety', 'site', 'cone', 'multipurpose-traffic-cone-with-link-chain'),
   cat('safety-signage', 'site', 'sign', 'auto-glow-signages'),
@@ -141,7 +152,8 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
   cat('lockout-tagout', 'site', 'lockout', 'lockout-station'),
 ];
 
-export { CATALOG, catalogItem, catalogItems, PRODUCT_COUNT } from './catalog.data';
+import { CATALOG } from './catalog.data';
+export { CATALOG, catalogItem, catalogItems, DETAIL_PRODUCTS, PRODUCT_COUNT } from './catalog.data';
 export type { CatalogItem } from './catalog.data';
 
 /** Photos from the client's current site, used as atmosphere in heroes and section bands. */

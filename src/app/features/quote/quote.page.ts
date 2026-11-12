@@ -125,7 +125,7 @@ export class QuotePage {
     if (line.kind === 'item') {
       const item = line.itemId ? catalogItem(line.ref, line.itemId) : undefined;
       const name = item ? itemName(this.translate, line.ref, item) : catName;
-      return { line, icon: cat?.icon ?? 'shield', title: name, subtitle: catName, link: ['/products', line.ref] };
+      return { line, icon: cat?.icon ?? 'shield', title: name, subtitle: catName, link: item?.detail ? ['/products', line.ref, item.id] : ['/products', line.ref] };
     }
     return { line, icon: cat?.icon ?? 'shield', title: catName, subtitle: t('quote.kind.category'), link: ['/products', line.ref] };
   }

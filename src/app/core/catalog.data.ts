@@ -9,12 +9,21 @@ export interface CatalogItem {
   id: string;
   /** Name exactly as printed in the brochure (brand and model codes stay in English). */
   label: string;
-  img: string;
+  /** Photo path; missing while the client's photo is still to come (an icon is shown instead). */
+  img?: string;
   w: number;
   h: number;
+  /** Has its own page at /products/<section>/<id> with a full datasheet (i18n products.details.<section>.<id>). */
+  detail?: boolean;
+  /** A real-life photo (fills its frame) rather than a product cut-out on white. */
+  photo?: boolean;
 }
 
 const it = (section: string, id: string, label: string, w: number, h: number): CatalogItem => ({ id, label, img: `images/catalog/${section}/${id}.webp`, w, h });
+/** Product with its own datasheet page. */
+const dt = (section: string, id: string, label: string, w: number, h: number): CatalogItem => ({ ...it(section, id, label, w, h), detail: true });
+/** Product with its own datasheet page, shown with an in-use photo. */
+const dtPhoto = (section: string, id: string, label: string, w: number, h: number): CatalogItem => ({ ...dt(section, id, label, w, h), photo: true });
 
 export const CATALOG: Record<string, CatalogItem[]> = {
   'head-protection': [
@@ -373,8 +382,35 @@ export const CATALOG: Record<string, CatalogItem[]> = {
     it('fire-hydrant', 'hand-operated-siren', 'Hand Operated Siren', 122, 203),
     it('fire-hydrant', 'afff-foam-unit', 'AFFF Foam Unit', 204, 221),
   ],
+  // ---- Added from the manufacturer datasheets supplied by the client (not in the brochure) ----
+  'fixed-online-gas-detector': [
+    dt('fixed-online-gas-detector', 'rx-series-smart-gas-detector', 'RX-Series Smart Gas Detector', 900, 503),
+    dt('fixed-online-gas-detector', 'tm-gd-hydrocarbon-gas-detector', 'TM-GD Hydrocarbon Gas Detector', 348, 250),
+    dt('fixed-online-gas-detector', 'tm-800-1600-multi-channel-gas-monitor', 'TM-800 / 1600 Multi Channel Gas Monitor', 900, 399),
+    dt('fixed-online-gas-detector', 'gazchamp-ultra-fixed-gas-monitor', 'Gazchamp-ULTRA Fixed Gas Monitor', 900, 413),
+  ],
+  // In-use photos supplied by the client.
+  'fixed-line-system': [
+    dtPhoto('fixed-line-system', 'horizontal-lifeline-over-the-head', 'Horizontal Lifeline System — Over the Head', 660, 660),
+    dtPhoto('fixed-line-system', 'fall-arrest-over-the-head-open-to-sky', 'Fall Arrest System — Over the Head (Open to Sky)', 660, 660),
+    dtPhoto('fixed-line-system', 'fall-arrest-over-the-roof', 'Fall Arrest System — Over the Roof', 660, 660),
+    dtPhoto('fixed-line-system', 'vertical-flexible-rope', 'Vertical Fall Arrest System — Flexible Rope', 660, 660),
+    dtPhoto('fixed-line-system', 'vertical-rigid-rail-guardall-i', 'Vertical Fall Arrest System on Rigid Rail — Guardall I', 660, 660),
+    dtPhoto('fixed-line-system', 'vertical-rigid-rail-guardall-ii', 'Vertical Fall Arrest System on Rigid Rail — Guardall II', 660, 660),
+    dtPhoto('fixed-line-system', 'vertical-rigid-cable', 'Vertical Fall Arrest System — Rigid Cable', 660, 660),
+  ],
+  'portable-fixed-line-system': [
+    dt('portable-fixed-line-system', 'counter-pod-system', 'Counter Pod™ System', 411, 900),
+    dt('portable-fixed-line-system', 'modular-counter-pod-system', 'Modular Counter Pod™ System', 506, 900),
+    dt('portable-fixed-line-system', 'truck-flex-system', 'Truck Flex™ System', 407, 900),
+    dt('portable-fixed-line-system', 'porta-flex-system', 'Port’A Flex™ System', 900, 686),
+    dt('portable-fixed-line-system', 'gantry-flex-system', 'Gantry Flex™ System', 633, 900),
+    dt('portable-fixed-line-system', 'counterweight-c-frame-system', 'Counterweight Block C-Frame System', 850, 900),
+  ],
 };
 
 export const catalogItems = (section: string): CatalogItem[] => CATALOG[section] ?? [];
 export const catalogItem = (section: string, id: string): CatalogItem | undefined => catalogItems(section).find((i) => i.id === id);
+/** Every product that has its own datasheet page. */
+export const DETAIL_PRODUCTS = Object.entries(CATALOG).flatMap(([section, items]) => items.filter((i) => i.detail).map((item) => ({ section, item })));
 export const PRODUCT_COUNT = Object.values(CATALOG).reduce((n, items) => n + items.length, 0);
