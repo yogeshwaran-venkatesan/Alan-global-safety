@@ -39,10 +39,28 @@ export class RevealDirective implements OnDestroy {
     if (this.motion.isFirstPaint() && this.el.getBoundingClientRect().top < innerHeight * 0.9) return;
 
     const stagger = this.revealStagger();
-    const targets = stagger ? Array.from(this.el.children) : this.el;
+    const children = Array.from(this.el.children) as HTMLElement[];
+    const targets = stagger ? children : this.el;
+    const from = FROM[this.reveal() || 'up'];
+
+    // Long lists (product grids): reveal row by row as each enters the viewport,
+    // so nothing further down waits on a long stagger chain.
+    if (stagger && children.length > 8) {
+      this.ctx = kit.gsap.context(() => {
+        kit.gsap.set(children, from);
+        kit.ScrollTrigger.batch(children, {
+          start: 'top 94%',
+          once: true,
+          onEnter: (batch) =>
+            kit.gsap.to(batch, { x: 0, y: 0, scale: 1, autoAlpha: 1, clipPath: 'inset(0% 0% 0% 0%)', duration: 1, ease: 'expo.out', stagger: 0.07, clearProps: 'transform,opacity,visibility,clipPath' }),
+        });
+      });
+      return;
+    }
+
     this.ctx = kit.gsap.context(() => {
       kit.gsap.from(targets, {
-        ...FROM[this.reveal() || 'up'],
+        ...from,
         duration: 1.2,
         delay: this.revealDelay(),
         stagger: stagger ? 0.09 : 0,

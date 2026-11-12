@@ -2,9 +2,10 @@ import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/cor
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { COMPANY, mapsDirectionsUrl, mapsEmbedUrl, whatsappUrl } from '../../core/company.config';
+import { COMPANY, mapsDirectionsUrl, mapsEmbedUrl, OFFICES, officeDirectionsUrl, whatsappUrl } from '../../core/company.config';
 import { buildMessage, EmailResult, EnquiryService } from '../../core/enquiry';
 import { pageSeo } from '../../core/page-seo';
+import { officesSchema } from '../../core/schema';
 import { phoneValidator } from '../../shared/forms/validators';
 import { MagneticDirective, RevealDirective, SplitRevealDirective } from '../../shared/motion';
 import { Icon } from '../../shared/ui/icon';
@@ -20,7 +21,7 @@ type Topic = 'products' | 'training' | 'other';
     <!-- Hero -->
     <section class="relative isolate overflow-hidden pt-36 pb-16 sm:pt-48 sm:pb-20">
       <div class="grid-lines absolute inset-0 -z-10 opacity-40" aria-hidden="true"></div>
-      <div class="absolute -top-40 right-[-10%] -z-10 size-[36rem] rounded-full bg-[radial-gradient(circle,rgba(255,194,26,0.18),transparent_65%)] blur-2xl" aria-hidden="true"></div>
+      <div class="absolute -top-40 right-[-10%] -z-10 size-[36rem] rounded-full bg-[radial-gradient(circle,rgba(179,201,43,0.18),transparent_65%)] blur-2xl" aria-hidden="true"></div>
       <div class="container-x">
         <p class="eyebrow" reveal>{{ 'contact.eyebrow' | translate }}</p>
         <h1 class="display mt-5 max-w-4xl text-[clamp(2.5rem,6.4vw,6rem)]" [splitReveal]="'contact.title' | translate"></h1>
@@ -61,14 +62,45 @@ type Topic = 'products' | 'training' | 'other';
         <li class="flex min-w-0 flex-col rounded-[1.5rem] border border-white/[0.08] bg-ink-800/60 p-6">
           <span class="grid size-11 place-items-center rounded-xl bg-signal-500 text-white"><app-icon name="pin" class="size-5" /></span>
           <h2 class="mt-5 font-bold text-steel-100">{{ 'contact.channels.visit.title' | translate }}</h2>
-          <address class="mt-1 text-sm leading-relaxed not-italic text-steel-400">
-            {{ company.address.line1 }}, {{ company.address.line2 }}, {{ company.address.area }}, {{ company.address.city }} {{ company.address.pin }}
-          </address>
-          <a [href]="directions" target="_blank" rel="noopener" class="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-steel-100 transition hover:text-hivis-500">
-            {{ 'contact.channels.visit.cta' | translate }} <app-icon name="arrowUpRight" class="size-4" />
+          <p class="mt-1 text-sm leading-relaxed text-steel-400">{{ 'contact.channels.visit.text' | translate }}</p>
+          <a routerLink="/contact" fragment="offices" class="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-steel-100 transition hover:text-hivis-500">
+            {{ 'contact.channels.visit.cta' | translate }} <app-icon name="arrow" class="size-4 rotate-90" />
           </a>
         </li>
       </ul>
+    </section>
+
+    <!-- Offices -->
+    <section id="offices" class="scroll-mt-28 pb-20">
+      <div class="container-x">
+        <p class="eyebrow" reveal>{{ 'contact.offices.eyebrow' | translate }}</p>
+        <h2 class="display mt-4 text-[clamp(1.9rem,4vw,3.25rem)]" [splitReveal]="'contact.offices.title' | translate"></h2>
+        <div class="mt-10 grid gap-4 lg:grid-cols-2" reveal revealStagger>
+          @for (o of offices; track o.key; let i = $index) {
+            <article class="relative min-w-0 overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-gradient-to-br from-ink-700 to-ink-800 p-6 sm:p-8">
+              <span class="absolute top-0 left-0 h-1 w-full bg-gradient-to-r from-hivis-500 to-signal-500" aria-hidden="true"></span>
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="font-mono text-[0.7rem] tracking-[0.2em] text-hivis-500 uppercase">{{ (i === 0 ? 'contact.offices.head' : 'contact.offices.branch') | translate }}</p>
+                  <h3 class="display mt-2 text-3xl text-steel-100">{{ 'offices.' + o.key | translate }}</h3>
+                </div>
+                <span class="grid size-12 shrink-0 place-items-center rounded-2xl bg-hivis-500 text-ink-900"><app-icon name="pin" class="size-6" /></span>
+              </div>
+              <address class="mt-5 text-[0.95rem] leading-relaxed not-italic text-steel-300">
+                @for (l of o.lines; track l) { <span class="block">{{ l }}</span> }
+              </address>
+              <div class="mt-6 grid gap-2 border-t border-white/[0.08] pt-5 text-sm">
+                @for (p of o.phones; track p.href) {
+                  <a [href]="p.href" class="flex items-center gap-3 text-steel-100 hover:text-hivis-500"><app-icon name="phone" class="size-4 text-hivis-500" /> {{ p.label }}</a>
+                }
+                <a [href]="'mailto:' + o.email" class="flex items-center gap-3 break-all text-steel-100 hover:text-hivis-500"><app-icon name="mail" class="size-4 text-hivis-500" /> {{ o.email }}</a>
+                <p class="font-mono text-xs tracking-wider text-steel-400">GSTIN {{ o.gstin }}</p>
+              </div>
+              <a [href]="dir(o)" target="_blank" rel="noopener" class="btn btn-ghost mt-6">{{ 'contact.offices.directions' | translate }} <app-icon name="arrowUpRight" class="size-4" /></a>
+            </article>
+          }
+        </div>
+      </div>
     </section>
 
     <!-- Form + map -->
@@ -77,7 +109,7 @@ type Topic = 'products' | 'training' | 'other';
         @if (status() === 'idle') {
           <form [formGroup]="form" (ngSubmit)="submit()" novalidate class="min-w-0 rounded-[2rem] bg-steel-100 p-5 text-ink-900 sm:p-10" reveal>
             <h2 class="display text-2xl !text-ink-900 sm:text-3xl">{{ 'contact.form.title' | translate }}</h2>
-            <p class="mt-2 text-sm text-ink-900/65">{{ 'quote.form.lead' | translate }}</p>
+            <p class="mt-2 text-sm text-ink-900/75">{{ 'quote.form.lead' | translate }}</p>
 
             <fieldset class="mt-7">
               <legend class="field-label">{{ 'contact.form.topic' | translate }}</legend>
@@ -116,7 +148,7 @@ type Topic = 'products' | 'training' | 'other';
             </div>
 
             <div class="mt-8 flex flex-wrap items-center justify-between gap-4">
-              <p class="max-w-xs text-xs leading-relaxed text-ink-900/60">{{ 'contact.form.how' | translate }}</p>
+              <p class="max-w-xs text-xs leading-relaxed text-ink-900/75">{{ 'contact.form.how' | translate }}</p>
               <button type="submit" magnetic class="btn btn-dark">
                 <app-icon name="whatsapp" class="size-4" /> {{ 'contact.form.submit' | translate }}
               </button>
@@ -125,14 +157,14 @@ type Topic = 'products' | 'training' | 'other';
         } @else {
           <div id="contact-status" class="grid min-w-0 place-items-center rounded-[2rem] bg-steel-100 p-10 text-center text-ink-900 sm:p-14" role="status" aria-live="polite">
             @if (status() === 'sending') {
-              <p class="text-ink-900/60">{{ 'form.sending' | translate }}</p>
+              <p class="text-ink-900/75">{{ 'form.sending' | translate }}</p>
             } @else {
               <div>
                 <span class="mx-auto grid size-16 place-items-center rounded-full bg-hivis-500"><app-icon name="check" class="size-8" [stroke]="2.2" /></span>
                 <h2 class="display mt-6 text-3xl !text-ink-900">{{ 'contact.done.title' | translate }}</h2>
-                <p class="mx-auto mt-3 max-w-sm text-ink-900/65">{{ 'contact.done.text' | translate }}</p>
+                <p class="mx-auto mt-3 max-w-sm text-ink-900/75">{{ 'contact.done.text' | translate }}</p>
                 @if (emailResult() === 'sent') { <p class="mt-2 text-sm text-ink-900/80">{{ 'form.emailSent' | translate }}</p> }
-                @if (emailResult() === 'failed') { <p class="mt-2 text-sm font-semibold text-signal-600">{{ 'form.emailFailed' | translate }}</p> }
+                @if (emailResult() === 'failed') { <p class="mt-2 text-sm font-semibold text-danger-600">{{ 'form.emailFailed' | translate }}</p> }
                 <div class="mt-8 flex flex-wrap justify-center gap-3">
                   <button type="button" (click)="startOver()" class="btn btn-dark">{{ 'contact.done.again' | translate }}</button>
                   <a routerLink="/products" class="btn border border-ink-900/20">{{ 'contact.done.browse' | translate }}</a>
@@ -147,7 +179,7 @@ type Topic = 'products' | 'training' | 'other';
             class="absolute inset-0 size-full grayscale-[0.6] invert-[0.92] hue-rotate-180 contrast-[0.9]"></iframe>
           <div class="pointer-events-none absolute inset-x-4 bottom-4 flex justify-start">
             <a [href]="directions" target="_blank" rel="noopener" class="pointer-events-auto btn btn-hivis shadow-card">
-              <app-icon name="pin" class="size-4" /> {{ 'contact.channels.visit.cta' | translate }}
+              <app-icon name="pin" class="size-4" /> {{ 'contact.offices.directions' | translate }}
             </a>
           </div>
         </div>
@@ -162,6 +194,8 @@ export class ContactPage {
   protected readonly company = COMPANY;
   protected readonly mapUrl = mapsEmbedUrl();
   protected readonly directions = mapsDirectionsUrl();
+  protected readonly offices = OFFICES;
+  protected readonly dir = officeDirectionsUrl;
   protected readonly topics: Topic[] = ['products', 'training', 'other'];
 
   protected readonly form = this.fb.group({
@@ -179,7 +213,7 @@ export class ContactPage {
   protected readonly emailResult = signal<EmailResult>('skipped');
 
   constructor() {
-    pageSeo('contact', '/contact');
+    pageSeo('contact', '/contact', { structuredData: (t) => [{ '@type': 'ContactPage', name: t('seo.contact.title') }, ...officesSchema()] });
   }
 
   protected waHello(): string {

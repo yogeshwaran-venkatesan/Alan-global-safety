@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { ProductCategory } from '../../core/company.config';
+import { ProductCategory, catalogItems } from '../../core/company.config';
+import { itemName } from '../../core/catalog-text';
 import { categoryLineId, QuoteService } from '../../core/quote';
 import { ToastService } from '../../core/toast';
 import { Icon } from './icon';
@@ -18,8 +19,8 @@ import { Icon } from './icon';
       <div class="relative aspect-[5/4] overflow-hidden bg-paper">
         <img [src]="category().image" [alt]="'products.categories.' + category().slug + '.name' | translate" width="480" height="480" loading="lazy" decoding="async"
              class="size-full object-contain p-7 mix-blend-multiply transition duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-110" />
-        <span class="absolute top-4 left-4 font-mono text-xs text-ink-900/50">{{ number() }}</span>
-        <span class="absolute top-3.5 right-3.5 rounded-full bg-ink-900/[0.06] px-2.5 py-1 font-mono text-[0.6rem] tracking-wider text-ink-900/60 uppercase">{{ 'products.groups.' + category().group | translate }}</span>
+        <span class="absolute top-4 left-4 font-mono text-xs text-ink-900/75">{{ number() }}</span>
+        <span class="absolute top-3.5 right-3.5 rounded-full bg-ink-900/[0.06] px-2.5 py-1 font-mono text-[0.6rem] tracking-wider text-ink-900/75 uppercase">{{ 'products.groups.' + category().group | translate }}</span>
         <span class="absolute bottom-3.5 left-3.5 grid size-9 place-items-center rounded-xl bg-ink-900 text-hivis-500 transition duration-500 group-hover:rotate-[-8deg]"><app-icon [name]="category().icon" class="size-5" /></span>
       </div>
       <div class="flex flex-1 flex-col p-6 pr-16">
@@ -50,8 +51,8 @@ export class CategoryCard {
   protected readonly inQuote = computed(() => this.quote.lines() && this.quote.has(categoryLineId(this.category().slug)));
 
   protected items(): string {
-    const items = this.translate.instant(`products.categories.${this.category().slug}.items`);
-    return Array.isArray(items) ? items.join(' · ') : '';
+    const slug = this.category().slug;
+    return catalogItems(slug).slice(0, 4).map((i) => itemName(this.translate, slug, i)).join(' · ');
   }
 
   protected toggle(): void {

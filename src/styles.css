@@ -8,39 +8,44 @@
 
 /* ===================== Design tokens ===================== */
 @theme {
-  /* Ink: near-black industrial greys */
-  --color-ink-950: #07080a;
-  --color-ink-900: #0b0d10;
-  --color-ink-800: #111419;
-  --color-ink-700: #181c22;
-  --color-ink-600: #232831;
-  --color-ink-500: #353c47;
-  /* Steel: text on dark */
-  --color-steel-400: #8e96a3;
-  --color-steel-300: #b3bac5;
-  --color-steel-200: #d9dde3;
-  --color-steel-100: #eef0f3;
-  /* Paper: light sections */
-  --color-paper: #f2f1ec;
-  --color-paper-2: #e7e5dd;
-  /* Hi-vis yellow (backgrounds, accents on dark). hivis-800 is the text-safe tone on paper. */
-  --color-hivis-200: #fff0b3;
-  --color-hivis-300: #ffe27a;
-  --color-hivis-400: #ffd23f;
-  --color-hivis-500: #ffc21a;
-  --color-hivis-600: #e6a800;
-  --color-hivis-800: #7a5800;
-  /* Signal orange */
-  --color-signal-400: #ff8a3d;
-  --color-signal-500: #ff6a13;
-  --color-signal-600: #d9520a;
+  /* Ink: deep navy from the brochure (border #103B61, panels #25415B) */
+  --color-ink-950: #071a2e;
+  --color-ink-900: #0a2139;
+  --color-ink-800: #0e2a47;
+  --color-ink-700: #133456;
+  --color-ink-600: #1b4268;
+  --color-ink-500: #2d5880;
+  --color-navy: #103b61;
+  --color-navy-2: #25415b;
+  /* Steel: cool text on navy */
+  --color-steel-400: #93a6bb;
+  --color-steel-300: #b8c6d5;
+  --color-steel-200: #dbe3ec;
+  --color-steel-100: #eff3f7;
+  /* Paper: light sections (brochure greys) */
+  --color-paper: #f1f3f4;
+  --color-paper-2: #e4e8ea;
+  /* Brand lime (brochure #B3C92B). Token name kept as "hivis"; hivis-800 is the text-safe tone on paper. */
+  --color-hivis-200: #eef4c6;
+  --color-hivis-300: #dbe882;
+  --color-hivis-400: #c6d94e;
+  --color-hivis-500: #b3c92b;
+  --color-hivis-600: #9bb01c;
+  --color-hivis-800: #4a5708;
+  /* Signal: sky blue secondary accent */
+  --color-signal-400: #5fb0ea;
+  --color-signal-500: #2f8fd6;
+  --color-signal-600: #1d6fae;
+  /* Danger: form errors */
+  --color-danger-500: #e5484d;
+  --color-danger-600: #c62f35;
 
   --font-display: "Archivo Variable", "Noto Sans Malayalam Variable", "Noto Sans Tamil Variable", system-ui, sans-serif;
   --font-sans: "Inter Variable", "Noto Sans Malayalam Variable", "Noto Sans Tamil Variable", system-ui, sans-serif;
   --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --shadow-glow: 0 0 0 1px rgb(255 194 26 / 0.25), 0 20px 60px -20px rgb(255 194 26 / 0.45);
+  --shadow-glow: 0 0 0 1px rgb(179 201 43 / 0.25), 0 20px 60px -20px rgb(179 201 43 / 0.45);
   --shadow-card: 0 1px 0 rgb(255 255 255 / 0.04) inset, 0 30px 60px -30px rgb(0 0 0 / 0.6);
 
   --animate-marquee: marquee 40s linear infinite;
@@ -69,6 +74,8 @@
   /* Malayalam and Tamil: no expanded/uppercase display style, more line height. */
   html:is([lang='ml'], [lang='ta']) .display { font-stretch: 100% !important; text-transform: none !important; letter-spacing: 0 !important; line-height: 1.25 !important; }
   html:is([lang='ml'], [lang='ta']) .eyebrow { letter-spacing: 0.04em; }
+  /* Malayalam and Tamil words are long: let them wrap anywhere instead of widening the page on small phones. */
+  html:is([lang='ml'], [lang='ta']) body { overflow-wrap: anywhere; }
 }
 
 /* ===================== Utilities ===================== */
@@ -152,9 +159,21 @@ app-header { view-transition-name: site-header; }
   font-size: 1rem; /* 16px keeps iOS from zooming on focus */
   transition: border-color 0.25s, box-shadow 0.25s;
   &::placeholder { color: rgb(11 13 16 / 0.4); }
-  &:focus { outline: none; border-color: var(--color-ink-900); box-shadow: 0 0 0 4px rgb(255 194 26 / 0.55); }
+  &:focus { outline: none; border-color: var(--color-ink-900); box-shadow: 0 0 0 4px rgb(179 201 43 / 0.55); }
   &[aria-invalid='true'] { border-color: #c2410c; }
 }
 @utility field-error { margin-top: 0.35rem; font-size: 0.8rem; font-weight: 600; color: #b42318; }
 .quote-line { animation: line-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
 @keyframes line-in { from { opacity: 0; transform: translateY(8px); } }
+
+/* Unlayered so it beats the .btn utility: long Malayalam/Tamil labels wrap instead of widening small phones. */
+html:is([lang='ml'], [lang='ta']) .btn { white-space: normal; text-align: center; }
+
+/* Malayalam/Tamil headlines run long: on phones, size them so whole words fit instead of breaking mid-word. */
+@media (max-width: 40rem) {
+  html:is([lang='ml'], [lang='ta']) h1.display { font-size: clamp(1.6rem, 7vw, 3.2rem) !important; }
+  html:is([lang='ml'], [lang='ta']) h2.display, html:is([lang='ml'], [lang='ta']) p.display { font-size: clamp(1.3rem, 5.8vw, 2.4rem) !important; }
+  /* Tamil compounds are the longest: one step smaller again. */
+  html[lang='ta'] h1.display { font-size: clamp(1.35rem, 6.1vw, 3.2rem) !important; }
+  html[lang='ta'] h2.display, html[lang='ta'] p.display { font-size: clamp(1.15rem, 4.9vw, 2.4rem) !important; }
+}

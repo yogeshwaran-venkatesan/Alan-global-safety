@@ -81,9 +81,29 @@ export class MotionService {
         return l;
       });
 
+      // Links like /contact#offices: glide to the section, clear of the fixed header.
+      // Retried briefly so it also works on first load, while the page is still settling.
+      const scrollToAnchor = (id: string) => {
+        const go = (attempt: number) => {
+          const target = this.document.getElementById(id);
+          const off = target ? Math.abs(target.getBoundingClientRect().top - 110) : Infinity;
+          if (target && (attempt === 0 || (off > 40 && !lenis.isScrolling))) {
+            // Absolute position (Lenis' element mode also adds scroll-margin/padding, which double-counts).
+            const y = target.getBoundingClientRect().top + window.scrollY - 110;
+            lenis.scrollTo(Math.max(0, y), { force: true, immediate: attempt > 0 });
+          }
+          if (attempt < 3 && (!target || off > 40)) setTimeout(() => go(attempt + 1), 700);
+        };
+        setTimeout(() => go(0), 60);
+      };
+      // The first page's Scroll event fires before this engine has loaded: handle its #anchor here.
+      const hash = decodeURIComponent(this.document.location.hash.slice(1));
+      if (hash) scrollToAnchor(hash);
+
       // New page: jump to the top instantly and re-measure every trigger once it has rendered.
       this.router.events.pipe(filter((e): e is Scroll => e instanceof Scroll)).subscribe((e) => {
-        if (!e.anchor && !e.position) lenis.scrollTo(0, { immediate: true, force: true });
+        if (e.anchor) scrollToAnchor(e.anchor);
+        else if (!e.position) lenis.scrollTo(0, { immediate: true, force: true });
         requestAnimationFrame(() => requestAnimationFrame(() => ScrollTrigger.refresh()));
       });
       // Fonts change text metrics: re-measure once they're in.

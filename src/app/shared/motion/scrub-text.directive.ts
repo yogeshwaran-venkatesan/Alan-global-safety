@@ -36,10 +36,10 @@ export class ScrubTextDirective implements OnDestroy {
     await this.el.ownerDocument.fonts?.ready;
     this.teardown();
     this.ctx = kit.gsap.context(() => {
-      this.split = kit.SplitText.create(this.el, { type: 'words', wordsClass: 'scrub-word' });
+      this.split = kit.SplitText.create(this.el, { type: 'words', wordsClass: 'scrub-word', aria: 'none' });
       kit.gsap.fromTo(
         this.split.words,
-        { opacity: 0.14 },
+        { opacity: 0.38 },
         {
           opacity: 1,
           ease: 'none',

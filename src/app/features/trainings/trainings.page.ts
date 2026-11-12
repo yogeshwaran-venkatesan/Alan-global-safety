@@ -6,7 +6,7 @@ import { map } from 'rxjs';
 import { COMPANY, PHOTOS } from '../../core/company.config';
 import { MotionService } from '../../core/motion';
 import { pageSeo } from '../../core/page-seo';
-import { TRAINING_THEMES, TrainingTheme, TRAININGS } from '../../core/trainings.config';
+import { TRAINING_PHOTOS, TRAINING_THEMES, TrainingTheme, TRAININGS } from '../../core/trainings.config';
 import { MagneticDirective, ParallaxDirective, RevealDirective, SplitRevealDirective } from '../../shared/motion';
 import { Icon } from '../../shared/ui/icon';
 import { TrainingCard } from '../../shared/ui/training-card';
@@ -53,7 +53,7 @@ type Filter = 'all' | TrainingTheme;
             <button type="button" (click)="setFilter(f)" [attr.aria-pressed]="filter() === f"
                     class="min-h-10 shrink-0 rounded-full border px-4 text-sm font-semibold whitespace-nowrap transition duration-300"
                     [class]="filter() === f ? 'border-hivis-500 bg-hivis-500 text-ink-900' : 'border-white/10 text-steel-300 hover:border-white/30 hover:text-white'">
-              {{ 'trainings.themes.' + f | translate }} <span class="ml-1 opacity-60">{{ countFor(f) }}</span>
+              {{ 'trainings.themes.' + f | translate }} <span class="ml-1 opacity-80">{{ countFor(f) }}</span>
             </button>
           }
         </div>
@@ -63,8 +63,9 @@ type Filter = 'all' | TrainingTheme;
       </div>
     </div>
 
-    <section class="py-12 sm:py-16">
+    <section class="py-12 sm:py-16" aria-labelledby="programme-list">
       <div class="container-x">
+        <h2 id="programme-list" class="sr-only">{{ 'trainings.listTitle' | translate }}</h2>
         <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" reveal revealStagger>
           @for (t of trainings; track t.key) {
             <li #card [class.hidden]="!isVisible(t.key)"><app-training-card [training]="t" /></li>
@@ -81,6 +82,25 @@ type Filter = 'all' | TrainingTheme;
       </div>
     </section>
 
+    <!-- Photo strip from the brochure's in-house training page -->
+    <section class="marquee relative overflow-hidden border-y border-white/[0.06] bg-ink-950 py-14 sm:py-20" [attr.aria-label]="'trainings.photos' | translate">
+      <div class="container-x mb-8 flex flex-wrap items-end justify-between gap-4">
+        <p class="eyebrow" reveal>{{ 'trainings.photos' | translate }}</p>
+        <p class="max-w-md text-sm text-steel-400" reveal>{{ 'trainings.photosText' | translate }}</p>
+      </div>
+      <div class="marquee-track flex w-max animate-[marquee_60s_linear_infinite] motion-reduce:animate-none">
+        @for (half of [0, 1]; track half) {
+          <ul class="flex shrink-0 gap-4 pr-4" [attr.aria-hidden]="half === 1">
+            @for (src of stripPhotos; track src) {
+              <li class="h-44 w-64 shrink-0 overflow-hidden rounded-[1.25rem] sm:h-56 sm:w-80">
+                <img [src]="src" alt="" loading="lazy" decoding="async" class="size-full object-cover transition duration-700 hover:scale-105" />
+              </li>
+            }
+          </ul>
+        }
+      </div>
+    </section>
+
     <!-- How sessions run (CONFIRM wording with the client) -->
     <section class="relative overflow-hidden bg-paper py-24 text-ink-900 sm:py-32">
       <div class="container-x">
@@ -89,10 +109,10 @@ type Filter = 'all' | TrainingTheme;
         <ol class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" reveal revealStagger>
           @for (s of steps; track s.key; let i = $index) {
             <li class="relative overflow-hidden rounded-[1.5rem] bg-white p-7 shadow-[0_20px_50px_-30px_rgba(0,0,0,0.35)]">
-              <span class="display absolute -top-3 right-3 text-7xl text-ink-900/[0.06]" aria-hidden="true">0{{ i + 1 }}</span>
+              <span class="display absolute -top-3 right-3 text-7xl text-ink-900/[0.06] before:content-[attr(data-n)]" [attr.data-n]="'0' + (i + 1)" aria-hidden="true"></span>
               <span class="grid size-12 place-items-center rounded-2xl bg-ink-900 text-hivis-500"><app-icon [name]="s.icon" class="size-6" /></span>
               <h3 class="mt-6 text-lg font-bold !text-ink-900">{{ 'trainings.how.' + s.key + '.title' | translate }}</h3>
-              <p class="mt-2 text-sm leading-relaxed text-ink-900/65">{{ 'trainings.how.' + s.key + '.text' | translate }}</p>
+              <p class="mt-2 text-sm leading-relaxed text-ink-900/75">{{ 'trainings.how.' + s.key + '.text' | translate }}</p>
             </li>
           }
         </ol>
@@ -103,6 +123,7 @@ type Filter = 'all' | TrainingTheme;
 export class TrainingsPage {
   protected readonly company = COMPANY;
   protected readonly photos = PHOTOS;
+  protected readonly stripPhotos = TRAINING_PHOTOS;
   protected readonly trainings = TRAININGS;
   protected readonly filters: Filter[] = ['all', ...TRAINING_THEMES.map((t) => t.id)];
   protected readonly steps = [

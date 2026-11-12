@@ -78,19 +78,19 @@ import { NAV } from './nav';
     <div id="mega-menu" class="pointer-events-none absolute inset-x-0 top-full hidden lg:block">
       <div class="border-b border-white/[0.06] bg-ink-900/[0.97] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.7)] backdrop-blur-xl transition duration-500 ease-[cubic-bezier(.16,1,.3,1)]" (pointerenter)="openMega()" (pointerleave)="closeMegaSoon()"
            [class]="mega() ? 'pointer-events-auto visible translate-y-0 opacity-100' : 'invisible -translate-y-3 opacity-0'">
-        <div class="container-x grid grid-cols-[1fr_18rem] gap-10 py-10">
-          <div class="grid grid-cols-3 gap-x-8 gap-y-8">
+        <div class="container-x grid grid-cols-[1fr_16rem] gap-8 py-8 xl:grid-cols-[1fr_18rem] xl:gap-10">
+          <div class="max-h-[calc(100dvh-9rem)] columns-4 gap-x-6 overflow-y-auto overscroll-contain">
             @for (g of groups; track g.id; let gi = $index) {
-              <div class="transition duration-700" [style.transition-delay.ms]="mega() ? 60 + gi * 40 : 0"
+              <div class="mb-6 break-inside-avoid transition duration-700" [style.transition-delay.ms]="mega() ? 60 + gi * 30 : 0"
                    [class]="mega() ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'">
                 <p class="eyebrow !text-[0.68rem]">{{ 'products.groups.' + g.id | translate }}</p>
-                <ul class="mt-3 grid gap-0.5">
+                <ul class="mt-2.5 grid">
                   @for (c of byGroup(g.id); track c.slug) {
                     <li>
                       <a [routerLink]="['/products', c.slug]" (click)="closeAll()"
-                         class="group flex items-center gap-3 rounded-xl px-2 py-2 text-sm text-steel-200 transition hover:bg-white/[0.04] hover:text-white">
-                        <span class="grid size-8 place-items-center rounded-lg bg-white/[0.04] text-steel-300 transition group-hover:bg-hivis-500 group-hover:text-ink-900">
-                          <app-icon [name]="c.icon" class="size-[1.1rem]" />
+                         class="group flex items-center gap-2.5 rounded-xl px-2 py-1.5 text-[0.84rem] leading-tight text-steel-200 transition hover:bg-white/[0.04] hover:text-white">
+                        <span class="grid size-7 shrink-0 place-items-center rounded-lg bg-white/[0.04] text-steel-300 transition group-hover:bg-hivis-500 group-hover:text-ink-900">
+                          <app-icon [name]="c.icon" class="size-4" />
                         </span>
                         {{ 'products.categories.' + c.slug + '.name' | translate }}
                       </a>

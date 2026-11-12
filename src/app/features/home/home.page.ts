@@ -5,6 +5,8 @@ import type { gsap } from 'gsap';
 import { COMPANY, FEATURED_TRAININGS, PHOTOS, PRODUCT_CATEGORIES, TRAINING_COUNT } from '../../core/company.config';
 import { MotionService } from '../../core/motion';
 import { pageSeo } from '../../core/page-seo';
+import { absoluteUrl } from '../../core/seo';
+import { officesSchema, organizationSchema } from '../../core/schema';
 import {
   CountUpDirective,
   MagneticDirective,
@@ -75,7 +77,7 @@ export class HomePage implements OnDestroy {
   private destroyed = false;
 
   constructor() {
-    pageSeo('home', '/');
+    pageSeo('home', '/', { structuredData: (t) => [organizationSchema(t('seo.home.description')), ...officesSchema(), { '@type': 'WebSite', name: COMPANY.name, url: absoluteUrl('/'), inLanguage: ['en', 'ml', 'ta'] }] });
     afterNextRender(() => void this.animate());
   }
 
@@ -83,11 +85,6 @@ export class HomePage implements OnDestroy {
     return String(n).padStart(2, '0');
   }
 
-  /** First three typical items of a category, joined for the card subtitle. */
-  protected itemsLine(slug: string): string {
-    const items = this.translate.instant(`products.categories.${slug}.items`);
-    return Array.isArray(items) ? items.slice(0, 3).join(' · ') : '';
-  }
 
   /** Subtle 3D tilt for the division cards (fine pointers only). */
   protected tilt(e: PointerEvent): void {

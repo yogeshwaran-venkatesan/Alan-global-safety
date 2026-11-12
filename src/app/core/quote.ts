@@ -3,19 +3,21 @@ import { computed, effect, inject, Injectable, PLATFORM_ID, signal } from '@angu
 
 /** One line on the quote list: a whole product category, one typical item, or a training programme. */
 export interface QuoteLine {
-  /** Stable id: "p:<slug>", "p:<slug>:<itemIndex>" or "t:<key>". */
+  /** Stable id: "p:<slug>", "p:<slug>:<itemId>" or "t:<key>". */
   id: string;
   kind: 'category' | 'item' | 'training';
   /** Category slug or training key. */
   ref: string;
-  itemIndex?: number;
+  /** Catalogue item id within the category (kind "item"). */
+  itemId?: string;
   qty: number;
 }
 
-const STORAGE_KEY = 'ags.quote.v1';
+/** v2: catalogue rebuilt from the brochure (items are referenced by id, not index). */
+const STORAGE_KEY = 'ags.quote.v2';
 
 export const categoryLineId = (slug: string) => `p:${slug}`;
-export const itemLineId = (slug: string, index: number) => `p:${slug}:${index}`;
+export const itemLineId = (slug: string, itemId: string) => `p:${slug}:${itemId}`;
 export const trainingLineId = (key: string) => `t:${key}`;
 
 /**

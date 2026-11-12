@@ -3,7 +3,8 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { map } from 'rxjs';
-import { COMPANY, PRODUCT_CATEGORIES, PRODUCT_GROUPS, ProductGroupId } from '../../core/company.config';
+import { catalogItems, COMPANY, PRODUCT_CATEGORIES, PRODUCT_GROUPS, ProductGroupId } from '../../core/company.config';
+import { itemName } from '../../core/catalog-text';
 import { MotionService } from '../../core/motion';
 import { pageSeo } from '../../core/page-seo';
 import { MagneticDirective, RevealDirective, SplitRevealDirective } from '../../shared/motion';
@@ -52,7 +53,7 @@ type Filter = 'all' | ProductGroupId;
                     class="min-h-10 shrink-0 rounded-full border px-4 text-sm font-semibold whitespace-nowrap transition duration-300"
                     [class]="filter() === f ? 'border-hivis-500 bg-hivis-500 text-ink-900' : 'border-white/10 text-steel-300 hover:border-white/30 hover:text-white'">
               {{ (f === 'all' ? 'catalogue.all' : 'products.groups.' + f) | translate }}
-              <span class="ml-1 opacity-60">{{ countFor(f) }}</span>
+              <span class="ml-1 opacity-80">{{ countFor(f) }}</span>
             </button>
           }
         </div>
@@ -63,8 +64,9 @@ type Filter = 'all' | ProductGroupId;
     </div>
 
     <!-- Results -->
-    <section class="relative py-12 sm:py-16">
+    <section class="relative py-12 sm:py-16" aria-labelledby="catalogue-list">
       <div class="container-x">
+        <h2 id="catalogue-list" class="sr-only">{{ 'catalogue.listTitle' | translate }}</h2>
         <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" reveal revealStagger>
           @for (c of categories; track c.slug; let i = $index) {
             <li #card [class.hidden]="!isVisible(c.slug)" [attr.data-flip-id]="c.slug">
@@ -123,8 +125,8 @@ export class ProductsPage {
     return new Map(
       this.categories.map((c) => {
         const t = (k: string) => this.translate.instant(`products.categories.${c.slug}.${k}`);
-        const items = t('items');
-        return [c.slug, [t('name'), t('short'), Array.isArray(items) ? items.join(' ') : '', ...(c.brands ?? [])].join(' ').toLowerCase()];
+        const items = catalogItems(c.slug).flatMap((i) => [i.label, itemName(this.translate, c.slug, i)]);
+        return [c.slug, [t('name'), t('short'), ...items].join(' ').toLowerCase()];
       }),
     );
   });

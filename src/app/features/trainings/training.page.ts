@@ -25,7 +25,7 @@ import { NotFoundPage } from '../not-found/not-found.page';
       <section class="relative isolate overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28">
         <div class="grid-lines absolute inset-0 -z-20 [mask-image:radial-gradient(ellipse_at_80%_30%,black_10%,transparent_70%)]" aria-hidden="true"></div>
         <!-- giant outlined programme code -->
-        <span class="display pointer-events-none absolute top-24 right-[-2vw] -z-10 text-[34vw] leading-none text-transparent [-webkit-text-stroke:1px_rgb(255_194_26/0.18)] select-none lg:text-[22rem]" aria-hidden="true">{{ t.code.replace('ATP', '') }}</span>
+        <span class="display pointer-events-none absolute top-24 right-[-2vw] -z-10 text-[34vw] leading-none text-transparent [-webkit-text-stroke:1px_rgb(179_201_43/0.18)] select-none lg:text-[22rem]" aria-hidden="true">{{ t.code.replace('ATP', '') }}</span>
         <div class="container-x">
           <nav class="font-mono text-xs tracking-wider text-steel-400 uppercase" [attr.aria-label]="'category.breadcrumb' | translate" reveal="fade">
             <ol class="flex flex-wrap items-center gap-2">
@@ -58,9 +58,9 @@ import { NotFoundPage } from '../not-found/not-found.page';
             <p class="eyebrow" reveal>{{ 'trainings.detail.learnEyebrow' | translate }}</p>
             <h2 class="display mt-5 text-4xl sm:text-5xl" [splitReveal]="'trainings.detail.learnTitle' | translate"></h2>
             <p class="mt-5 font-mono text-sm text-steel-400" reveal>{{ 'trainings.topics' | translate: { count: objectives().length } }}</p>
-            <div class="relative mt-10 hidden overflow-hidden rounded-[1.5rem] lg:block" reveal="scale">
-              <img [src]="photo()" alt="" loading="lazy" class="aspect-[4/3] w-full object-cover opacity-80" />
-              <div class="absolute inset-0 bg-gradient-to-t from-ink-950 to-transparent"></div>
+            <div class="relative mt-10 overflow-hidden rounded-[1.5rem] border border-white/[0.08]" reveal="scale">
+              <img [src]="photo()" alt="" loading="lazy" class="aspect-[4/3] w-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-transparent to-transparent"></div>
             </div>
           </div>
           <ol class="relative pl-10" #topics>
@@ -156,7 +156,9 @@ export class TrainingPage implements OnDestroy {
   });
   protected readonly booked = computed(() => this.quote.lines() && this.quote.has(trainingLineId(this.key())));
   protected readonly photo = computed(() => {
-    const theme = this.training()?.theme;
+    const t = this.training();
+    if (t?.photo) return t.photo;
+    const theme = t?.theme;
     return theme === 'fire' || theme === 'emergency' ? PHOTOS.firefighter : theme === 'highRisk' ? PHOTOS.workerMask : PHOTOS.engineer;
   });
   protected readonly related = computed(() => {

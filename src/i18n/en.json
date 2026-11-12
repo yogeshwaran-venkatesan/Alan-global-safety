@@ -29,7 +29,7 @@
   "footer": {
     "ctaEyebrow": "Let’s talk safety",
     "ctaTitle": "Make every shift a safe one.",
-    "about": "Safety equipment supply and hands-on safety training from Kakkanad, Kochi — backed by over two decades in the safety field.",
+    "about": "Safety equipment supply and in-house safety training from Kochi and Coimbatore — backed by 25 years in the safety field.",
     "products": "Products",
     "company": "Company",
     "reach": "Reach us",
@@ -42,221 +42,427 @@
       "emergency": "Emergency & first aid",
       "spill": "Spill & storage",
       "detection": "Detection & lighting",
-      "site": "Site & electrical"
+      "site": "Site & electrical",
+      "footwear": "Safety footwear",
+      "fire": "Fire & rescue"
     },
     "categories": {
       "head-protection": {
         "name": "Head Protection",
-        "short": "Helmets and accessories that take the knock so your team doesn’t.",
-        "items": [
-          "Safety helmets",
-          "Bump caps",
-          "Chin straps",
-          "Helmet accessories"
-        ]
+        "short": "Airvent helmets, helmet inners, face-shield and earmuff combinations, and bump caps."
       },
       "eye-protection": {
         "name": "Eye Protection",
-        "short": "Clear, comfortable protection against dust, splashes and impact.",
-        "items": [
-          "Safety spectacles",
-          "Goggles",
-          "Face shields",
-          "Welding eye protection"
-        ]
+        "short": "Safety spectacles, chemical splash and welding goggles, and 3M Virtua and Honeywell A700 eyewear."
       },
       "ear-protection": {
         "name": "Ear Protection",
-        "short": "Hearing protection for noisy plants, workshops and sites.",
-        "items": [
-          "Ear plugs",
-          "Ear muffs",
-          "Helmet-mounted muffs"
-        ]
+        "short": "Corded and reusable ear plugs, dispensers, Peltor ear defenders and 3M earmuffs."
       },
       "respiratory-protection": {
         "name": "Respiratory Protection",
-        "short": "Masks and respirators for dust, fumes and vapours.",
-        "items": [
-          "Disposable masks",
-          "Half face-piece respirators",
-          "Full face-piece respirators",
-          "Filters & cartridges"
-        ]
+        "short": "3M disposable respirators — 9004, 8710, 8210, 9913, 8511, 8822 and 8246."
       },
-      "airline-respirators": {
-        "name": "Airline Respirators",
-        "short": "Supplied-air protection for confined spaces and hazardous atmospheres.",
-        "items": [
-          "Airline respirators",
-          "Supplied-air hoods",
-          "Air hoses & regulators"
-        ]
+      "face-respirators": {
+        "name": "Half / Full Face Respirators & Cartridges",
+        "short": "3M, Honeywell and Venus half and full face-piece respirators with matching cartridges and filters."
+      },
+      "airline-respiratory": {
+        "name": "Airline Respiratory Protection",
+        "short": "Airline masks, compressor panels, hoses, cooling and flow units, blasting hoods and head tops."
       },
       "hand-protection": {
         "name": "Hand Protection",
-        "short": "The right glove for every task — from general handling to chemicals.",
-        "items": [
-          "General-purpose gloves",
-          "Cut-resistant gloves",
-          "Chemical gloves",
-          "Heat-resistant gloves"
-        ]
+        "short": "Gloves for every task — surgical, nitrile, cotton, latex, PVC, welding, Kevlar, cut-resistant and cryogenic."
       },
       "body-protection": {
         "name": "Body Protection",
-        "short": "Workwear that keeps people seen and shielded.",
-        "items": [
-          "Coveralls",
-          "High-visibility vests",
-          "Aprons",
-          "Chemical suits"
-        ]
+        "short": "3M disposable coveralls, aprons, flame-resistant clothing, FR coveralls and reflective vests."
       },
-      "safety-footwear": {
-        "name": "Safety Footwear",
-        "short": "Safety shoes from Allen Cooper, Acme and other trusted brands.",
-        "items": [
-          "Allen Cooper",
-          "Acme",
-          "Safety shoes & boots"
-        ]
+      "welding-safety": {
+        "name": "Welding Safety Equipment",
+        "short": "Welding shields and face shields, respirators, leather aprons, gloves and goggles."
+      },
+      "safety-shoes-allen-cooper": {
+        "name": "Safety Shoes — Allen Cooper",
+        "short": "Allen Cooper safety shoes, including hi-ankle and ladies’ models."
+      },
+      "safety-shoes-acme": {
+        "name": "Safety Shoes — Acme",
+        "short": "The Acme safety shoe range, from Storm and Tan X to iSquare boots and the Ozone ladies’ shoe."
+      },
+      "safety-jogger": {
+        "name": "Safety Jogger",
+        "short": "Safety Jogger Modulo S3 and Fuel Aqua sporty safety shoes."
+      },
+      "coffer-safety": {
+        "name": "Coffer Safety",
+        "short": "Coffer safety shoes with PU and nitrile rubber soles, plus Liberty SHATI-01."
+      },
+      "other-safety-shoes": {
+        "name": "Other Safety Shoes",
+        "short": "Tiger, JCB, FS and Liberty safety shoes."
       },
       "fall-protection": {
         "name": "Fall Protection",
-        "short": "Harnesses and connectors for safe work at height.",
-        "items": [
-          "Full-body harnesses",
-          "Lanyards",
-          "Anchors",
-          "Lifelines"
-        ]
+        "short": "Full body and climbing harnesses, rescue and window cleaning kits, lifelines and 3M DBI-SALA systems."
       },
       "fall-arresters-ladders": {
         "name": "Fall Arresters & Ladders",
-        "short": "Arrest systems and ladders for climbing and access.",
-        "items": [
-          "Fall arresters",
-          "Self-retracting lifelines",
-          "Ladders"
-        ]
+        "short": "Fall arresters, tripods, descenders, safety and shade nets, and FRP, aluminium and roof-top ladders."
       },
-      "first-aid": {
-        "name": "First Aid",
-        "short": "Kits and equipment to act fast when it matters.",
-        "items": [
-          "First-aid kits",
-          "Stretchers",
-          "Burn care"
-        ]
+      "fire-extinguishers": {
+        "name": "Fire Extinguishers",
+        "short": "Water-CO2, mechanical foam, ABC, CO2 and clean agent fire extinguishers."
       },
-      "eye-wash-shower": {
-        "name": "Eye Wash & Showers",
-        "short": "Emergency decontamination stations for chemical areas.",
-        "items": [
-          "Eye-wash stations",
-          "Combination showers",
-          "Portable eye wash"
-        ]
+      "fire-hydrant": {
+        "name": "Fire Hydrant Accessories",
+        "short": "Hydrant valves, monitors, couplings, nozzles, hose reels, hose boxes, sirens and foam units."
       },
       "emergency-rescue": {
-        "name": "Emergency Rescue",
-        "short": "Rescue equipment for confined spaces and emergencies.",
-        "items": [
-          "Rescue tripods",
-          "Rescue stretchers",
-          "Emergency kits"
-        ]
+        "name": "Emergency Rescue Equipment",
+        "short": "SCBA, EEBA, defibrillators, blowers and ducts, fire and protective suits, helmets and evacuation chairs."
       },
-      "spill-control": {
-        "name": "Spill Control",
-        "short": "Sorbents and spill kits for oil and chemical leaks.",
-        "items": [
-          "Oil sorbents",
-          "Chemical sorbents",
-          "Spill kits",
-          "Booms & pads"
-        ]
+      "first-aid": {
+        "name": "First Aid Equipment",
+        "short": "First aid boxes, stretchers, spine boards, rescue hoods, blankets, oxygen and resuscitation equipment."
+      },
+      "eyewash-shower": {
+        "name": "Eyewash & Shower",
+        "short": "Eye wash fountains and showers, portable and wall-mounted eye wash, and bottles."
+      },
+      "sorbents-spill-kits": {
+        "name": "Sorbents — Oil & Chemical Spill Kits",
+        "short": "Petroleum, chemical and maintenance sorbents, plus oil and chemical spill kits."
       },
       "safety-cans-cabinets": {
         "name": "Safety Cans & Cabinets",
-        "short": "Safe storage for flammable and hazardous liquids.",
-        "items": [
-          "Safety cans",
-          "Flammable storage cabinets"
-        ]
+        "short": "Safety cans, storage cans, safety cabinets, spill pallets, drum trolleys and containment caddies."
       },
       "gas-detection": {
-        "name": "Gas Detection",
-        "short": "Detectors and instruments that warn before it’s too late.",
-        "items": [
-          "Single-gas detectors",
-          "Multi-gas detectors",
-          "Instrumentation"
-        ]
-      },
-      "traffic-safety": {
-        "name": "Traffic Safety",
-        "short": "Cones, barriers and signs that control site traffic.",
-        "items": [
-          "Traffic cones",
-          "Barricades",
-          "Warning tape",
-          "Safety signs"
-        ]
-      },
-      "electrical-safety": {
-        "name": "Electrical Safety",
-        "short": "Protection for anyone working near live equipment.",
-        "items": [
-          "Electrical gloves",
-          "Insulating mats",
-          "Voltage detectors"
-        ]
-      },
-      "lockout-tagout": {
-        "name": "Lockout Tagout",
-        "short": "Isolate energy sources safely during maintenance.",
-        "items": [
-          "Safety padlocks",
-          "Hasps",
-          "Valve & breaker lockouts",
-          "Tags"
-        ]
-      },
-      "welding-safety": {
-        "name": "Welding Safety",
-        "short": "Protection for welders and anyone near hot work.",
-        "items": [
-          "Welding helmets & shields",
-          "Welding gloves",
-          "Welding goggles",
-          "Protective aprons"
-        ]
+        "name": "Gas Detectors & Instruments",
+        "short": "RIKEN KEIKI gas detectors, fixed gas monitoring, and noise, temperature, wind and light meters."
       },
       "safe-lighting": {
         "name": "Intrinsically Safe Lighting",
-        "short": "Torches and head-lamps built for hazardous and flammable areas.",
-        "items": [
-          "Intrinsically safe torches",
-          "Head-lamps",
-          "Hazardous-area lighting"
-        ]
+        "short": "Wolf and Pelican torches, remote area lighting and helmet-mounted head lamps."
+      },
+      "traffic-safety": {
+        "name": "Traffic Safety Equipment",
+        "short": "Cones, barriers, road studs, posts, mirrors, metal detectors, tapes, speed bumps and more."
       },
       "safety-signage": {
-        "name": "Safety Signage",
-        "short": "Clear signs for exits, assembly points, hazards and PPE rules.",
-        "items": [
-          "Emergency exit signs",
-          "Assembly point signs",
-          "Fire safety signs",
-          "Glow-in-the-dark signs"
-        ]
+        "name": "Signages",
+        "short": "Auto-glow signs and tape, vinyl stickers and boards, emergency lights and ERP boards."
+      },
+      "electrical-safety": {
+        "name": "Electrical Safety Protection",
+        "short": "Electrical gloves, arc flash suits and shields, dielectric boots, insulating ladders, tools and mats."
+      },
+      "lockout-tagout": {
+        "name": "Lockout / Tagout",
+        "short": "Padlocks, hasps and tags, valve, panel and breaker lockouts, key cabinets, stations and kits."
       }
     },
-    "gallery": {
-      "halfFull": "Half & full face-piece",
-      "otherBrands": "Other brands"
+    "items": {
+      "head-protection": {
+        "airvent-helmet": "Airvent Helmet",
+        "helmet-inner": "Helmet Inner",
+        "helmet-with-face-shield-earmuff": "Helmet with Face Shield & Earmuff",
+        "face-shield": "Face Shield",
+        "helmet-with-earmuff": "Helmet with Earmuff",
+        "bump-cap": "Bump Cap"
+      },
+      "eye-protection": {
+        "safety-spectacles-es006": "Safety Spectacles ES006",
+        "safety-spectacles-3m1709": "Safety Spectacles 3M1709",
+        "chemical-splash-goggles-3m1621": "Chemical Splash Goggles 3M1621",
+        "chemical-splash-goggles-es008": "Chemical Splash Goggles ES008",
+        "welding-goggles-es003": "Welding Goggles ES003",
+        "welding-goggles-es004": "Welding Goggles ES004",
+        "virtua-goggles-3m11880-clear": "Virtua Goggles 3M11880 Clear",
+        "virtua-goggles-smoked": "Virtua Goggles Smoked",
+        "honeywell-a700-clear": "Honeywell A700 Clear",
+        "honeywell-a700-smoked": "Honeywell A700 Smoked"
+      },
+      "ear-protection": {
+        "corded-ear-plug-3m1110": "Corded Ear Plug 3M1110",
+        "reusable-ear-plug-3m1270": "Reusable Ear Plug 3M1270",
+        "ear-plug-dispenser": "Ear Plug Dispenser",
+        "peltor-ear-defenders": "Peltor Ear Defenders",
+        "earmuff-3m1426": "Earmuff 3M1426",
+        "earmuff-leightning-l2": "Earmuff Leightning L2",
+        "earmuff-3m-h7a": "Earmuff 3M H7A",
+        "earmuff-3m-h9a": "Earmuff 3M H9A",
+        "earmuff-3m-h10a": "Earmuff 3M H10A"
+      },
+      "face-respirators": {
+        "3m-6200-half-face": "3M 6200 Half Face",
+        "3m-7502-half-face": "3M 7502 Half Face",
+        "3m-6800-full-face": "3M 6800 Full Face",
+        "3m-6001-cartridge": "3M 6001 Cartridge",
+        "3m-6002-cartridge": "3M 6002 Cartridge",
+        "3m-6003-cartridge": "3M 6003 Cartridge",
+        "3m-6004-cartridge": "3M 6004 Cartridge",
+        "3m-6005-cartridge": "3M 6005 Cartridge",
+        "3m-6006-cartridge": "3M 6006 Cartridge",
+        "3m-6009-cartridge": "3M 6009 Cartridge",
+        "3m-501-5n11-filter": "3M 501 / 5N11 Filter",
+        "honeywell-5500-series": "Honeywell 5500 Series",
+        "honeywell-7700-series": "Honeywell 7700 Series",
+        "n75003l-cartridge": "N75003L Cartridge",
+        "p100-filter": "P100 Filter",
+        "7583p100l-cartridge": "7583P100L Cartridge"
+      },
+      "airline-respiratory": {
+        "sa-2000-face-mask-breathing-tube-with-neck-band": "SA 2000 Face Mask Breathing Tube with Neck Band",
+        "compressor-regulator-panel": "Compressor & Regulator Panel",
+        "w-9435-airline-hose": "W 9435 Airline Hose",
+        "vortex-cooling-system": "Vortex Cooling System",
+        "flow-stream-regulator-unit": "Flow Stream Regulator Unit",
+        "abrasive-blasting-hood": "Abrasive Blasting Hood",
+        "rpb-full-face-sand-blasting-set": "RPB Full Face Sand Blasting Set",
+        "head-top": "Head Top",
+        "breathing-tube": "Breathing Tube",
+        "h401-402-head-top": "H401/402 Head Top"
+      },
+      "hand-protection": {
+        "surgical-gloves": "Surgical Gloves",
+        "thin-nitrile-gloves": "Thin Nitrile Gloves",
+        "cotton-knitted-gloves": "Cotton Knitted Gloves",
+        "latex-gloves": "Latex Gloves",
+        "nitrile-gloves": "Nitrile Gloves",
+        "pvc-gloves": "PVC Gloves",
+        "leather-welding-gloves": "Leather Welding Gloves",
+        "impact-resistant-gloves": "Impact Resistant Gloves",
+        "kevlar-gloves": "Kevlar Gloves",
+        "cut-resistant-gloves": "Cut Resistant Gloves",
+        "leather-palm-reinforcement-gloves": "Leather Palm Reinforcement Gloves",
+        "neoprene-gloves": "Neoprene Gloves",
+        "cryo-tempshield-gloves": "Cryo-Tempshield Gloves"
+      },
+      "body-protection": {
+        "3m-4530-coverall": "3M 4530 Coverall",
+        "3m-4560-coverall": "3M 4560 Coverall",
+        "3m-4540-coverall": "3M 4540 Coverall",
+        "3m-50425-coverall": "3M 50425 Coverall",
+        "pvc-apron": "PVC Apron",
+        "tempshield-cryo-apron": "Tempshield Cryo Apron",
+        "kevlar-apron": "Kevlar Apron",
+        "flame-resistant-t-shirts-trousers": "Flame Resistant T-Shirts & Trousers",
+        "fr-coverall": "FR Coverall",
+        "fr-reflective-vest": "FR Reflective Vest"
+      },
+      "fall-protection": {
+        "full-body-harness-pn-16": "Full Body Harness PN 16",
+        "full-body-harness-pn-56": "Full Body Harness PN 56",
+        "full-body-harness-ki01": "Full Body Harness KI01",
+        "full-body-harness-pn-42": "Full Body Harness PN 42",
+        "climbing-harness": "Climbing Harness",
+        "oil-dust-water-repellent-harness-pn-56": "Oil, Dust & Water Repellent Harness PN 56",
+        "tower-climbing-harness": "Tower Climbing Harness",
+        "pn-652-rescue-kit": "PN 652 Rescue Kit",
+        "window-cleaning-kit": "Window Cleaning Kit",
+        "horizontal-fixed-lifeline-system-pn-4000": "Horizontal Fixed Lifeline System PN 4000",
+        "vertical-lifeline-pn-7000": "Vertical Lifeline PN 7000",
+        "3m-dbi-sala-confined-space-kit": "3M DBI-SALA Confined Space Kit",
+        "3m-dbi-sala-rescue-positioning-system-100-ft": "3M DBI-SALA Rescue Positioning System 100 ft"
+      },
+      "fall-arresters-ladders": {
+        "retractable-fall-arrester": "Retractable Fall Arrester",
+        "fall-arrester-pn-2000": "Fall Arrester PN 2000",
+        "pn-800-tripod": "PN 800 Tripod",
+        "frp-ladder": "FRP Ladder",
+        "grip-descender": "Grip Descender",
+        "safety-net": "Safety Net",
+        "shade-net": "Shade Net",
+        "roof-top-ladder": "Roof Top Ladder",
+        "aluminium-ladder": "Aluminium Ladder"
+      },
+      "sorbents-spill-kits": {
+        "petroleum-sorbents": "Petroleum Sorbents",
+        "chemical-sorbents": "Chemical Sorbents",
+        "maintenance-sorbents": "Maintenance Sorbents",
+        "oil-spill-kit": "Oil Spill Kit",
+        "chemical-spill-kit": "Chemical Spill Kit"
+      },
+      "first-aid": {
+        "first-aid-box": "First Aid Box",
+        "aluminium-stretcher": "Aluminium Stretcher",
+        "wheel-chair": "Wheel Chair",
+        "rescue-stretcher": "Rescue Stretcher",
+        "spine-board-for-emergency": "Spine Board for Emergency",
+        "scoop-stretcher": "Scoop Stretcher",
+        "rescue-hood": "Rescue Hood",
+        "waterjel-blanket": "Waterjel Blanket",
+        "fire-blanket": "Fire Blanket",
+        "oxygen-cylinder": "Oxygen Cylinder",
+        "artificial-resuscitator": "Artificial Resuscitator",
+        "life-oxy-pack": "Life Oxy Pack",
+        "cervical-collar": "Cervical Collar"
+      },
+      "gas-detection": {
+        "online-gas-detector": "Online Gas Detector",
+        "gas-monitoring-system": "Gas Monitoring System",
+        "noise-level-meter": "Noise Level Meter",
+        "infrared-thermometer": "Infrared Thermometer",
+        "anemometer": "Anemometer",
+        "lux-meter": "LUX Meter"
+      },
+      "safety-cans-cabinets": {
+        "safety-can-type-i": "Safety Can Type I",
+        "safety-can-type-ii": "Safety Can Type II",
+        "plunger-can": "Plunger Can",
+        "chemical-storage-can": "Chemical Storage Can",
+        "oily-waste-can": "Oily Waste Can",
+        "laboratory-safety-can": "Laboratory Safety Can",
+        "drum-trolley": "Drum Trolley",
+        "safety-cabinet-blue-yellow": "Safety Cabinet Blue & Yellow",
+        "safety-cabinet": "Safety Cabinet",
+        "spill-pallets": "Spill Pallets",
+        "spill-containment-caddy": "Spill Containment Caddy"
+      },
+      "traffic-safety": {
+        "multipurpose-traffic-cone-with-link-chain": "Multipurpose Traffic Cone with Link Chain",
+        "road-safety-barrier": "Road Safety Barrier",
+        "road-stud": "Road Stud",
+        "hand-held-metal-detector-hhmd": "Hand Held Metal Detector (HHMD)",
+        "door-frame-metal-detector-dfmd": "Door Frame Metal Detector (DFMD)",
+        "floor-marking-tape": "Floor Marking Tape",
+        "anti-skid-tape": "Anti-skid Tape",
+        "q-post": "Q Post",
+        "spring-post": "Spring Post",
+        "reflective-jacket": "Reflective Jacket",
+        "led-baton-light": "LED Baton Light",
+        "convex-mirror": "Convex Mirror",
+        "dome-mirror": "Dome Mirror",
+        "megaphone": "Megaphone",
+        "life-buoy": "Life Buoy",
+        "life-jacket": "Life Jacket",
+        "snake-catcher": "Snake Catcher",
+        "wind-sock": "Wind Sock",
+        "under-vehicle-inspection-mirror": "Under Vehicle Inspection Mirror",
+        "speed-bump": "Speed Bump",
+        "solar-blinker": "Solar Blinker",
+        "spark-arrester": "Spark Arrester",
+        "floor-stand": "Floor Stand"
+      },
+      "safety-shoes-allen-cooper": {
+        "allen-cooper-1284-brown": "Allen Cooper 1284 Brown",
+        "allen-cooper-1008-hi-ankle": "Allen Cooper 1008 Hi-Ankle",
+        "allen-cooper-hi-ankle-ac-1157": "Allen Cooper Hi-Ankle AC 1157",
+        "allen-cooper-ladies-shoe-ac-1298": "Allen Cooper Ladies Shoe AC 1298"
+      },
+      "safety-shoes-acme": {
+        "acme-ozone-ladies-shoe": "Acme Ozone Ladies Shoe"
+      },
+      "safety-jogger": {
+        "safety-jogger-modulo-s3s-high-ankle": "Safety Jogger Modulo S3S High Ankle",
+        "safety-jogger-fuel-aqua-blue": "Safety Jogger Fuel Aqua Blue",
+        "safety-jogger-fuel-aqua-black": "Safety Jogger Fuel Aqua Black"
+      },
+      "coffer-safety": {
+        "coffer-1162-pu-with-nitrile-rubber-sole": "Coffer 1162 PU with Nitrile Rubber Sole",
+        "coffer-1163-pu-with-nitrile-rubber-sole": "Coffer 1163 PU with Nitrile Rubber Sole"
+      },
+      "other-safety-shoes": {
+        "tiger-high-ankle": "Tiger High Ankle",
+        "jcb-high-ankle": "JCB High Ankle"
+      },
+      "electrical-safety": {
+        "electrical-gloves": "Electrical Gloves",
+        "leather-protector": "Leather Protector",
+        "arc-flash-suit": "ARC Flash Suit",
+        "dielectric-boot": "Dielectric Boot",
+        "arc-flash-face-shield": "ARC Flash Face Shield",
+        "rescue-hook": "Rescue Hook",
+        "voltage-detector": "Voltage Detector",
+        "insulating-frp-ladder": "Insulating FRP Ladder",
+        "insulating-tool-kit": "Insulating Tool Kit",
+        "insulating-mat": "Insulating Mat",
+        "earth-discharging-rod": "Earth Discharging Rod"
+      },
+      "lockout-tagout": {
+        "padlock-steel-dielectric": "Padlock – Steel / Dielectric",
+        "hasp-lock-tag": "HASP, Lock & Tag",
+        "ball-valve-lockout": "Ball Valve Lockout",
+        "electrical-panel-lockout": "Electrical Panel Lockout",
+        "mcb-set": "MCB Set",
+        "adjustable-ball-valve-lockout": "Adjustable Ball Valve Lockout",
+        "mcb-lockout": "MCB Lockout",
+        "key-cabinet": "Key Cabinet",
+        "circuit-breaker-lockout": "Circuit Breaker Lockout",
+        "lockout-station": "Lockout Station",
+        "lockout-kit-mechanical-electrical": "Lockout Kit – Mechanical & Electrical"
+      },
+      "safe-lighting": {
+        "wolf-firefighter-torch": "Wolf Firefighter Torch",
+        "wolf-safety-rechargeable-torch": "Wolf Safety Rechargeable Torch",
+        "pelican-9435-remote-area-lighting-system": "Pelican 9435 Remote Area Lighting System",
+        "helmet-mounted-head-lamp": "Helmet Mounted Head Lamp"
+      },
+      "welding-safety": {
+        "helmet-attached-welding-shield": "Helmet Attached Welding Shield",
+        "welding-face-shield": "Welding Face Shield",
+        "3m-8822-respirator": "3M 8822 Respirator",
+        "leather-apron": "Leather Apron",
+        "leather-welding-gloves": "Leather Welding Gloves",
+        "welding-goggles": "Welding Goggles"
+      },
+      "eyewash-shower": {
+        "eye-wash-fountain-ss-gi": "Eye Wash Fountain (SS & GI)",
+        "eye-wash-fountain-shower-ss-gi": "Eye Wash Fountain & Shower (SS & GI)",
+        "portable-eye-wash": "Portable Eye Wash",
+        "eye-wash-bottle": "Eye Wash Bottle",
+        "wall-mounted-eye-wash": "Wall Mounted Eye Wash"
+      },
+      "emergency-rescue": {
+        "scba-self-contained-breathing-apparatus": "SCBA (Self-Contained Breathing Apparatus)",
+        "eeba-emergency-escape-breathing-apparatus": "EEBA (Emergency Escape Breathing Apparatus)",
+        "automated-external-defibrillator": "Automated External Defibrillator",
+        "blower": "Blower",
+        "duct": "Duct",
+        "blower-with-duct": "Blower with Duct",
+        "nomex-fire-suit": "Nomex Fire Suit",
+        "aluminized-suit": "Aluminized Suit",
+        "cold-storage-suit": "Cold Storage Suit",
+        "gas-tight-suit": "Gas Tight Suit",
+        "fireman-helmet": "Fireman Helmet",
+        "evacuation-chair": "Evacuation Chair"
+      },
+      "safety-signage": {
+        "auto-glow-signages": "Auto Glow Signages",
+        "vinyl-sticker-board": "Vinyl Sticker & Board",
+        "emergency-light": "Emergency Light",
+        "auto-glow-with-led-light": "Auto Glow with LED Light",
+        "erp-board": "ERP Board",
+        "auto-glow-tape": "Auto Glow Tape"
+      },
+      "fire-extinguishers": {
+        "water-co2-fire-extinguisher": "Water-CO2 Fire Extinguisher",
+        "mechanical-foam-fire-extinguisher": "Mechanical Foam Fire Extinguisher",
+        "abc-fire-extinguisher": "ABC Fire Extinguisher",
+        "co2-fire-extinguisher": "CO2 Fire Extinguisher",
+        "clean-agent-fire-extinguisher": "Clean Agent Fire Extinguisher"
+      },
+      "fire-hydrant": {
+        "single-headed-hydrant-valve": "Single Headed Hydrant Valve",
+        "double-headed-hydrant-valve": "Double Headed Hydrant Valve",
+        "portable-ground-monitor": "Portable Ground Monitor",
+        "4-way-fire-brigade-connection": "4 Way Fire Brigade Connection",
+        "hose-reel-drum": "Hose Reel Drum",
+        "instantaneous-male-female-coupling": "Instantaneous Male / Female Coupling",
+        "triple-purpose-nozzle": "Triple Purpose Nozzle",
+        "branch-pipe": "Branch Pipe",
+        "sprinkler": "Sprinkler",
+        "hose-box": "Hose Box",
+        "fire-hose": "Fire Hose",
+        "fire-bucket-with-stand": "Fire Bucket with Stand",
+        "multi-purpose-nozzle": "Multi Purpose Nozzle",
+        "siren": "Siren",
+        "hand-operated-siren": "Hand Operated Siren",
+        "afff-foam-unit": "AFFF Foam Unit"
+      }
     }
   },
   "trainings": {
@@ -640,13 +846,16 @@
       "pager": "Other programmes",
       "bookTitle": "Book it for your team",
       "bookText": "Add it to your booking request, add more programmes or equipment if you like, then send everything in one go."
-    }
+    },
+    "photos": "From our sessions",
+    "photosText": "Photos from our in-house training programmes — fire, first aid, rescue, confined space, electrical and more.",
+    "listTitle": "All training programmes"
   },
   "home": {
     "hero": {
-      "eyebrow": "Kakkanad · Kochi — {{years}} years in safety",
+      "eyebrow": "Kochi · Coimbatore — {{years}} years in safety",
       "title": "Built for the worst day. Ready every day.",
-      "lead": "Personal protective equipment, emergency gear and hands-on safety training — supplied by one team that has spent over two decades in the safety field.",
+      "lead": "Personal protective equipment, emergency gear and hands-on safety training — supplied by one team with 25 years in the safety field.",
       "ctaProducts": "Explore products",
       "scroll": "Scroll",
       "chips": {
@@ -727,7 +936,7 @@
   "seo": {
     "home": {
       "title": "Alan Global Safety — Safety Equipment & Training in Kochi, Kerala",
-      "description": "Personal protective equipment, fall protection, gas detection, first aid and fire-safety training from Kakkanad, Kochi. Over 20 years in the safety field. Get a quote today."
+      "description": "Personal protective equipment, fall protection, gas detection, first aid and fire-safety training from Kochi and Coimbatore. 25 years in the safety field. Get a quote today."
     },
     "notFound": {
       "title": "Page not found",
@@ -735,7 +944,7 @@
     },
     "products": {
       "title": "Safety Equipment & PPE Catalogue",
-      "description": "Browse 22 categories of safety equipment — helmets, respirators, gloves, harnesses, gas detectors, spill kits, signage, lockout tagout and more. Request a quote from Alan Global Safety, Kochi."
+      "description": "Browse 29 categories of safety equipment — helmets, respirators, gloves, harnesses, gas detectors, spill kits, signage, lockout tagout and more. Request a quote from Alan Global Safety, Kochi."
     },
     "quote": {
       "title": "Request a Quote",
@@ -753,11 +962,11 @@
     },
     "about": {
       "title": "About Alan Global Safety — Safety Experts in Kochi",
-      "description": "Alan Global Safety supplies safety equipment and runs safety training from Kakkanad, Kochi, with over 20 years in the safety field."
+      "description": "Alan Global Safety supplies safety equipment and runs in-house safety training from Kochi and Coimbatore, with 25 years in the safety field and 1000+ trainings delivered."
     },
     "contact": {
-      "title": "Contact Alan Global Safety — Kakkanad, Kochi",
-      "description": "Call +91 87142 67507, message us on WhatsApp or visit our Kakkanad office for safety equipment quotes and training bookings."
+      "title": "Contact Alan Global Safety — Kochi & Coimbatore",
+      "description": "Call +91 87142 67507, message us on WhatsApp or visit our Kochi or Coimbatore office for safety equipment quotes and training bookings."
     }
   },
   "catalogue": {
@@ -773,22 +982,24 @@
     "emptyTitle": "Nothing matches that",
     "emptyText": "Try another word, or tell us what you need — we’ll source it.",
     "reset": "Show everything",
-    "sourceText": "If it keeps people safe at work, we can probably supply it. Send us the item, brand or specification."
+    "sourceText": "If it keeps people safe at work, we can probably supply it. Send us the item, brand or specification.",
+    "listTitle": "All product categories"
   },
   "category": {
     "breadcrumb": "Breadcrumb",
     "addCategory": "Add to quote",
     "askWhatsapp": "Ask on WhatsApp",
-    "supplyEyebrow": "What we supply",
-    "supplyTitle": "Typical items",
-    "supplyText": "Add the whole category or just the items you need to your quote list, with quantities.",
-    "brands": "Brands",
-    "indicative": "This list is indicative. Tell us the exact specification, size or brand and we’ll quote for it.",
+    "supplyEyebrow": "From our catalogue",
+    "supplyTitle": "{{count}} products",
+    "supplyText": "Every product in this section of our catalogue. Add the ones you need to your quote list and set quantities there.",
+    "indicative": "Models and photos are from our current catalogue. Tell us the size, specification or brand you need and we’ll confirm availability and price.",
     "related": "More in {{group}}",
     "pager": "Other categories",
     "prev": "Previous",
     "next": "Next",
-    "waMessage": "Hello Alan Global Safety, I need a quote for {{name}}."
+    "waMessage": "Hello Alan Global Safety, I need a quote for {{name}}.",
+    "search": "Search this section",
+    "noMatch": "No product in this section matches that. Try another word, or ask us on WhatsApp."
   },
   "quote": {
     "added": "{{name}} added to your quote",
@@ -854,55 +1065,75 @@
   "about": {
     "eyebrow": "About us",
     "title": "Safety is the whole job.",
-    "lead": "Alan Global Safety supplies safety equipment and runs safety training from Kakkanad, Kochi — built on {{years}}+ years in the safety field.",
+    "lead": "Safety equipment and in-house safety training from Kochi and Coimbatore — built on {{years}}+ years in the safety field.",
     "logoAlt": "Alan Global Safety logo: two hands holding a water drop with the globe inside",
     "name": {
-      "eyebrow": "Our mark",
-      "title": "Hands that protect the world.",
-      "p1": "Our logo shows two open hands holding a drop of water with the globe inside it. It stands for what we do every day: protect people, their workplaces and the world they live in.",
-      "p2": "Equipment and training sit under one name, so the gear your team wears and the way they use it come from the same people."
+      "eyebrow": "Our name",
+      "title": "Harmony, together.",
+      "p1": "“Alan Global Safety” means “harmony of peaceful existence together in the world”. It is a name meant to reach our customers’ hearts and build a safer, better working environment.",
+      "p2": "Our logo shows two open hands holding a drop of water with the globe inside — protecting people, their workplaces and the world they live in."
     },
     "motto": "Being Safety Today — Hello Tomorrow",
-    "statement": "For {{years}}+ years we have helped sites, factories and offices across Kerala choose the right protection — and taught their people to use it well.",
+    "statement": "For {{years}}+ years we have played a pivotal role in industrial productivity and risk prevention — supplying the right equipment and training the people who use it.",
     "stats": {
       "years": "Years in safety",
-      "categories": "Product categories",
-      "programmes": "Training programmes",
-      "divisions": "Divisions"
+      "inHouse": "In-house trainings",
+      "centralized": "Centralised programmes",
+      "offices": "Offices"
     },
-    "leader": {
-      "eyebrow": "Leadership",
-      "title": "Led by experience on the ground.",
-      "text": "Our founder brings {{years}}+ years in the safety field. That experience shapes every product we recommend and every session we run.",
+    "scope": {
+      "eyebrow": "Scope of our venture",
+      "title": "{{years}} years in the safety field.",
+      "lead": "What every customer gets when they work with us.",
+      "items": [
+        "A pivotal role in industrial productivity and risk prevention",
+        "Deep product knowledge and communication skills",
+        "Safety audits, inspections and demonstrations",
+        "Attended national and international safety exhibitions",
+        "More than 1000 in-house training programmes conducted",
+        "More than 100 centralised training programmes initiated",
+        "A strong sales, service and admin team",
+        "Logistics and stock",
+        "Manpower and transport",
+        "Infrastructure"
+      ]
+    },
+    "divisions": {
+      "eyebrow": "Divisions",
+      "title": "Four divisions. One goal: safe people.",
+      "ppe": {
+        "title": "Personal protective safety equipment",
+        "text": "Standard safety equipment from head to toe for every kind of site."
+      },
+      "extinguishers": {
+        "title": "Fire extinguishers",
+        "text": "Water-CO2, foam, ABC powder, CO2 and clean-agent extinguishers."
+      },
+      "hydrant": {
+        "title": "Hydrant accessories",
+        "text": "Hydrant valves, couplings, nozzles, hose reels, hose boxes and foam units."
+      },
+      "training": {
+        "title": "Training",
+        "text": "In-house and centralised programmes in fire safety, first aid, rescue and more."
+      },
+      "text": "Our safety equipment shapes a productive, intuitively safe culture from the root level. Providing comprehensive, standard safety equipment from head to toe is our priority — our way of helping secure a bright future for employees and their families."
+    },
+    "ceo": {
+      "eyebrow": "From our CEO",
+      "role": "Chief Executive Officer",
+      "badge": "In the field",
       "cta": "Talk to us",
-      "alt": "Founder of Alan Global Safety",
-      "badge": "In the field"
-    },
-    "values": {
-      "eyebrow": "How we work",
-      "title": "Four promises to every customer.",
-      "right": {
-        "title": "The right gear",
-        "text": "We recommend equipment that fits the job and the standard — not just what is on the shelf."
-      },
-      "trained": {
-        "title": "Trained people",
-        "text": "Equipment only works when people know how to use it. Training is half of what we do."
-      },
-      "honest": {
-        "title": "Straight answers",
-        "text": "Clear quotes, clear advice, and we tell you when something is not needed."
-      },
-      "fast": {
-        "title": "Quick response",
-        "text": "Message us on WhatsApp or call — we reply fast and deliver across Kerala."
-      }
+      "alt": "{{name}}, Chief Executive Officer of Alan Global Safety",
+      "p1": "Our training evolution builds an ambitious environment and reaches the goal in a practical way. Joining hands with you is a privilege — together we can bring contentment to work in every corner of the site.",
+      "p2": "In this drive we commit to on-time supply and dependable service, with continuous improvement at all times.",
+      "p3": "Reinforcing cognitive safety solutions is our prime objective — it drives our ingenuity."
     }
   },
   "contact": {
     "eyebrow": "Contact",
     "title": "Let’s make your site safer.",
-    "lead": "Call, message or visit our office in Kakkanad. Tell us what you need — equipment, training or advice — and we’ll get back to you quickly.",
+    "lead": "Call, message or visit us in Kochi or Coimbatore. Tell us what you need — equipment, training or advice — and we’ll get back to you quickly.",
     "channels": {
       "call": {
         "title": "Call us",
@@ -920,7 +1151,8 @@
       },
       "visit": {
         "title": "Visit us",
-        "cta": "Get directions"
+        "cta": "See both offices",
+        "text": "Offices in Kochi (Kakkanad) and Coimbatore."
       }
     },
     "form": {
@@ -947,6 +1179,17 @@
       "again": "Send another",
       "browse": "Browse products"
     },
-    "mapTitle": "Map showing the Alan Global Safety office in Kakkanad"
+    "mapTitle": "Map showing the Alan Global Safety office in Kakkanad, Kochi",
+    "offices": {
+      "eyebrow": "Our offices",
+      "title": "Two offices. Kerala and Tamil Nadu.",
+      "head": "Head office",
+      "branch": "Branch office",
+      "directions": "Get directions"
+    }
+  },
+  "offices": {
+    "kochi": "Kochi",
+    "coimbatore": "Coimbatore"
   }
 }

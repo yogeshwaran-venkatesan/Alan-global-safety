@@ -1,7 +1,7 @@
 <!-- ===================================================== HERO -->
 <section #hero class="relative isolate flex min-h-[100svh] items-center overflow-hidden pt-24 pb-16">
   <div class="grid-lines absolute inset-0 -z-20 [mask-image:radial-gradient(ellipse_at_60%_40%,black_20%,transparent_75%)]" aria-hidden="true"></div>
-  <div class="absolute -top-40 right-[-10%] -z-10 size-[48rem] rounded-full bg-[radial-gradient(circle,rgba(255,106,19,0.16),transparent_60%)]" aria-hidden="true"></div>
+  <div class="absolute -top-40 right-[-10%] -z-10 size-[48rem] rounded-full bg-[radial-gradient(circle,rgba(47,143,214,0.16),transparent_60%)]" aria-hidden="true"></div>
 
   <div class="container-x grid items-center gap-12 lg:grid-cols-[1.35fr_1fr]">
     <div data-hero-copy>
@@ -37,7 +37,7 @@
 
 <!-- ===================================================== CAUTION-TAPE MARQUEE -->
 <section class="relative z-10 -my-6 overflow-hidden py-10" aria-label="{{ 'home.marquee.label' | translate }}">
-  <div class="marquee -rotate-2 border-y-2 border-ink-900 bg-hivis-500 py-4 text-ink-900 shadow-[0_20px_60px_-20px_rgba(255,194,26,0.5)]" #tape>
+  <div class="marquee -rotate-2 border-y-2 border-ink-900 bg-hivis-500 py-4 text-ink-900 shadow-[0_20px_60px_-20px_rgba(179,201,43,0.5)]" #tape>
     <div class="marquee-track flex w-max animate-marquee">
       @for (half of [0, 1]; track half) {
         <ul class="flex shrink-0 items-center" [attr.aria-hidden]="half === 1">
@@ -120,7 +120,7 @@
             <span class="relative block aspect-square overflow-hidden bg-paper">
               <img [src]="c.image" alt="" width="480" height="480" loading="lazy" decoding="async"
                    class="size-full object-contain p-5 mix-blend-multiply transition duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-110" />
-              <span class="absolute top-3 left-3 font-mono text-[0.68rem] text-ink-900/45">{{ pad(i + 1) }}</span>
+              <span class="absolute top-3 left-3 font-mono text-[0.68rem] text-ink-900/75">{{ pad(i + 1) }}</span>
               <span class="absolute right-3 bottom-3 grid size-8 place-items-center rounded-full bg-ink-900 text-hivis-500 opacity-0 transition duration-500 group-hover:rotate-[-45deg] group-hover:opacity-100">
                 <app-icon name="arrow" class="size-3.5" />
               </span>
@@ -174,8 +174,8 @@
     <div class="relative mt-16" #process>
       <!-- the line draws itself as you scroll -->
       <svg class="absolute top-7 left-0 hidden h-2 w-full lg:block" preserveAspectRatio="none" viewBox="0 0 100 2" aria-hidden="true">
-        <line x1="0" y1="1" x2="100" y2="1" stroke="rgba(11,13,16,.12)" stroke-width="2" vector-effect="non-scaling-stroke" />
-        <line #processLine x1="0" y1="1" x2="100" y2="1" stroke="#0b0d10" stroke-width="2" vector-effect="non-scaling-stroke" pathLength="1" stroke-dasharray="1" stroke-dashoffset="0" />
+        <line x1="0" y1="1" x2="100" y2="1" stroke="rgba(10,33,57,.12)" stroke-width="2" vector-effect="non-scaling-stroke" />
+        <line #processLine x1="0" y1="1" x2="100" y2="1" stroke="#0a2139" stroke-width="2" vector-effect="non-scaling-stroke" pathLength="1" stroke-dasharray="1" stroke-dashoffset="0" />
       </svg>
       <ol class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4" reveal revealStagger>
         @for (s of steps; track s.key; let i = $index) {
@@ -183,9 +183,9 @@
             <span class="relative z-10 grid size-14 place-items-center rounded-2xl bg-ink-900 text-hivis-500 shadow-[0_0_0_8px_var(--color-paper)]">
               <app-icon [name]="s.icon" class="size-6" />
             </span>
-            <span class="mt-6 block font-mono text-xs tracking-[0.25em] text-ink-900/50 uppercase">{{ 'home.process.step' | translate }} {{ pad(i + 1) }}</span>
+            <span class="mt-6 block font-mono text-xs tracking-[0.25em] text-ink-900/75 uppercase">{{ 'home.process.step' | translate }} {{ pad(i + 1) }}</span>
             <h3 class="mt-2 text-xl font-bold !text-ink-900">{{ 'home.process.' + s.key + '.title' | translate }}</h3>
-            <p class="mt-2 text-sm leading-relaxed text-ink-900/65">{{ 'home.process.' + s.key + '.text' | translate }}</p>
+            <p class="mt-2 text-sm leading-relaxed text-ink-900/75">{{ 'home.process.' + s.key + '.text' | translate }}</p>
           </li>
         }
       </ol>
@@ -196,9 +196,9 @@
 <!-- ===================================================== BROCHURE -->
 <section class="relative overflow-hidden bg-paper pb-24 text-ink-900 sm:pb-36">
   <div class="container-x">
-    <div class="relative grid items-center gap-12 overflow-hidden rounded-[2rem] bg-ink-900 p-8 text-steel-300 sm:p-14 lg:grid-cols-2" reveal="scale">
+    <div class="relative grid items-center gap-12 overflow-hidden rounded-[2rem] bg-ink-900 p-6 text-steel-300 sm:p-14 lg:grid-cols-2" reveal="scale">
       <div class="hazard-animated absolute inset-x-0 top-0 h-1.5" aria-hidden="true"></div>
-      <div>
+      <div class="min-w-0">
         <p class="eyebrow">{{ 'home.brochure.eyebrow' | translate }}</p>
         <h2 class="display mt-5 text-4xl sm:text-5xl">{{ 'home.brochure.title' | translate }}</h2>
         <p class="mt-5 max-w-md leading-relaxed text-steel-400">{{ 'home.brochure.text' | translate }}</p>
@@ -208,7 +208,7 @@
         </div>
       </div>
       <!-- stacked catalogue mock-up -->
-      <div class="relative mx-auto h-72 w-60 [perspective:1200px] sm:h-80 sm:w-64" aria-hidden="true" [parallax]="-14">
+      <div class="relative mx-auto h-60 w-48 [perspective:1200px] min-[380px]:h-72 min-[380px]:w-60 sm:h-80 sm:w-64" aria-hidden="true" [parallax]="-14">
         @for (n of [2, 1, 0]; track n) {
           <div class="absolute inset-0 rounded-2xl border border-white/10 transition duration-700"
                [style.transform]="'rotateY(-18deg) rotateX(6deg) translateX(' + n * 18 + 'px) translateZ(' + -n * 30 + 'px)'"

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
-import { COMPANY, mapsDirectionsUrl, PRODUCT_CATEGORIES, whatsappUrl } from '../core/company.config';
+import { COMPANY, OFFICES, officeDirectionsUrl, PRODUCT_CATEGORIES, whatsappUrl } from '../core/company.config';
 import { MagneticDirective, RevealDirective, SplitRevealDirective } from '../shared/motion';
 import { Icon } from '../shared/ui/icon';
 import { Logo } from '../shared/ui/logo';
@@ -57,16 +57,20 @@ import { Logo } from '../shared/ui/logo';
 
       <div>
         <h2 class="font-mono text-xs font-semibold tracking-[0.2em] text-steel-100 uppercase">{{ 'footer.reach' | translate }}</h2>
-        <address class="mt-5 grid gap-1 text-sm not-italic">
-          <a [href]="directions" target="_blank" rel="noopener" class="flex gap-3 py-1.5 leading-relaxed hover:text-steel-100">
-            <app-icon name="pin" class="mt-0.5 size-4 text-hivis-500" />
-            <span>{{ company.address.line1 }}, {{ company.address.line2 }}, {{ company.address.area }}, {{ company.address.city }} – {{ company.address.pin }}</span>
-          </a>
-          @for (p of company.phones; track p.href) {
-            <a [href]="p.href" class="flex items-center gap-3 py-1.5 hover:text-steel-100"><app-icon name="phone" class="size-4 text-hivis-500" /> {{ p.label }}</a>
+        <address class="mt-5 grid gap-4 text-sm not-italic">
+          @for (o of offices; track o.key) {
+            <a [href]="dir(o)" target="_blank" rel="noopener" class="flex gap-3 leading-relaxed hover:text-steel-100">
+              <app-icon name="pin" class="mt-0.5 size-4 shrink-0 text-hivis-500" />
+              <span><span class="block font-semibold text-steel-100">{{ 'offices.' + o.key | translate }}</span>{{ o.lines.join(', ') }}</span>
+            </a>
           }
-          <a [href]="'mailto:' + company.emails.info" class="flex items-center gap-3 py-1.5 break-all hover:text-steel-100"><app-icon name="mail" class="size-4 text-hivis-500" /> {{ company.emails.info }}</a>
-          <a [href]="'mailto:' + company.emails.training" class="flex items-center gap-3 py-1.5 break-all hover:text-steel-100"><app-icon name="mail" class="size-4 text-hivis-500" /> {{ company.emails.training }}</a>
+          <div class="grid gap-1">
+            @for (p of company.phones; track p.href) {
+              <a [href]="p.href" class="flex items-center gap-3 py-1 hover:text-steel-100"><app-icon name="phone" class="size-4 text-hivis-500" /> {{ p.label }}</a>
+            }
+            <a [href]="'mailto:' + company.emails.info" class="flex items-center gap-3 py-1 break-all hover:text-steel-100"><app-icon name="mail" class="size-4 text-hivis-500" /> {{ company.emails.info }}</a>
+            <a [href]="'mailto:' + company.emails.training" class="flex items-center gap-3 py-1 break-all hover:text-steel-100"><app-icon name="mail" class="size-4 text-hivis-500" /> {{ company.emails.training }}</a>
+          </div>
         </address>
       </div>
     </div>
@@ -77,17 +81,18 @@ import { Logo } from '../shared/ui/logo';
     <div class="border-t border-white/[0.06]">
       <div class="container-x flex flex-col gap-2 pt-6 pb-[calc(5.5rem+env(safe-area-inset-bottom))] text-xs sm:flex-row sm:justify-between sm:pb-6">
         <p>© {{ year }} {{ company.name }}. {{ 'footer.rights' | translate }}</p>
-        <p class="font-mono tracking-wider">{{ company.address.area }} · {{ company.address.city }}</p>
+        <p class="font-mono tracking-wider">{{ 'offices.kochi' | translate }} · {{ 'offices.coimbatore' | translate }}</p>
       </div>
     </div>
   `,
 })
 export class Footer {
   protected readonly company = COMPANY;
-  protected readonly directions = mapsDirectionsUrl();
+  protected readonly offices = OFFICES;
+  protected readonly dir = officeDirectionsUrl;
   protected readonly year = new Date().getFullYear();
   protected readonly topCategories = PRODUCT_CATEGORIES.filter((c) =>
-    ['head-protection', 'respiratory-protection', 'fall-protection', 'gas-detection', 'safety-footwear', 'first-aid'].includes(c.slug),
+    ['head-protection', 'respiratory-protection', 'safety-shoes-allen-cooper', 'fall-protection', 'fire-extinguishers', 'gas-detection'].includes(c.slug),
   );
   protected readonly wa = whatsappUrl('Hello Alan Global Safety, I would like a quote for safety equipment.');
 }

@@ -35,15 +35,26 @@ write(
     `export const SITE_URL = '${siteUrl}';\n`,
 );
 
-// Page paths come straight from the router config, so the sitemap never drifts.
+// Page paths come straight from the router config and the catalogue/training
+// configs, so the sitemap never drifts. The quote list is personal, so it's left out.
 const routes = readFileSync(root + 'src/app/app.routes.ts', 'utf8');
-const paths = ['', ...[...routes.matchAll(/path: '([a-z0-9-]+)'/g)].map((m) => m[1]).filter((p) => p !== '404')];
-const priority = (p) => (p === '' ? '1.0' : ['rooms', 'book'].includes(p) ? '0.9' : '0.7');
+const company = readFileSync(root + 'src/app/core/company.config.ts', 'utf8');
+const trainings = readFileSync(root + 'src/app/core/trainings.config.ts', 'utf8');
+const top = [...routes.matchAll(/path: '([a-z0-9-]+)'/g)].map((m) => m[1]).filter((p) => !['404', 'quote'].includes(p));
+const categories = [...company.matchAll(/^\s*cat\('([a-z0-9-]+)'/gm)].map((m) => `products/${m[1]}`);
+const programmes = [...trainings.matchAll(/key: '([a-z0-9-]+)'/g)].map((m) => `trainings/${m[1]}`);
+if (!categories.length || !programmes.length) {
+  console.error('prebuild: could not read product categories or training programmes for the sitemap');
+  process.exit(1);
+}
+const paths = ['', ...top, ...categories, ...programmes];
+const priority = (p) => (p === '' ? '1.0' : ['products', 'trainings'].includes(p) ? '0.9' : p.includes('/') ? '0.8' : '0.7');
+const lastmod = new Date().toISOString().slice(0, 10);
 
 write(
   'public/sitemap.xml',
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
-    paths.map((p) => `  <url><loc>${siteUrl}/${p}</loc><priority>${priority(p)}</priority></url>`).join('\n') +
+    paths.map((p) => `  <url><loc>${siteUrl}/${p}</loc><lastmod>${lastmod}</lastmod><priority>${priority(p)}</priority></url>`).join('\n') +
     `\n</urlset>\n`,
 );
 

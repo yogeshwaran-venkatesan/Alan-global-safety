@@ -23,7 +23,7 @@ import { Icon } from '../shared/ui/icon';
     } @else {
       <button type="button" (click)="open.set(!open())" [attr.aria-expanded]="open()" aria-haspopup="true"
               class="flex min-h-11 items-center gap-2 rounded-full px-3 text-sm font-semibold text-steel-200 transition hover:bg-white/5 hover:text-white"
-              [attr.aria-label]="'nav.language' | translate">
+              [attr.aria-label]="current().short + ' — ' + ('nav.language' | translate)">
         <app-icon name="globe" class="size-4" />
         <span [attr.lang]="lang.current()">{{ current().short }}</span>
         <app-icon name="chevronDown" class="size-3.5 transition" [class.rotate-180]="open()" />

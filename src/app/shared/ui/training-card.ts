@@ -15,7 +15,7 @@ import { Icon } from './icon';
   template: `
     <article class="group relative isolate flex h-full min-h-[19rem] flex-col overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-ink-800 p-7 transition duration-500 hover:-translate-y-1.5 hover:border-hivis-500/50 hover:shadow-glow">
       <!-- outlined code number in the background -->
-      <span class="display pointer-events-none absolute -right-2 -bottom-6 -z-10 text-[7.5rem] leading-none text-transparent transition duration-700 [-webkit-text-stroke:1px_rgb(255_255_255/0.07)] group-hover:[-webkit-text-stroke:1px_rgb(255_194_26/0.35)]" aria-hidden="true">{{ training().code.replace('ATP', '') }}</span>
+      <span class="display pointer-events-none absolute -right-2 -bottom-6 -z-10 text-[7.5rem] leading-none text-transparent transition duration-700 [-webkit-text-stroke:1px_rgb(255_255_255/0.07)] group-hover:[-webkit-text-stroke:1px_rgb(179_201_43/0.35)]" aria-hidden="true">{{ training().code.replace('ATP', '') }}</span>
       <div class="flex items-start justify-between gap-3">
         <span class="grid size-12 place-items-center rounded-2xl bg-white/[0.04] text-hivis-500 transition duration-500 group-hover:bg-hivis-500 group-hover:text-ink-900">
           <app-icon [name]="training().icon" class="size-6" />

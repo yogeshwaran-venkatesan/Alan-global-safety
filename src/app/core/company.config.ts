@@ -6,19 +6,24 @@
 export const COMPANY = {
   name: 'Alan Global Safety',
   shortName: 'Alan Global',
-  /** From the current site: "21 years experience in safety field". */
-  experienceYears: 21,
+  /** From the company brochure: "Having 25 years experience in safety field". */
+  experienceYears: 25,
+  /** Training programmes conducted, from the brochure. */
+  inHouseTrainings: 1000,
+  centralizedTrainings: 100,
+  ceo: { name: 'RK Parthikumar', role: 'Chief Executive Officer' },
+  /** Head office (Kochi). Kept as `address` because the footer, contact page and SEO read it. */
   address: {
-    line1: '103-B, First Floor, PSARA',
-    line2: 'Opp. Padamugal U.P. School Road, Near Sariga Club',
-    area: 'Thanapadam, Kakkanad P.O.',
+    line1: 'Door No: 2219, Kalladaayithadam Building',
+    line2: 'Near T.V Center, CSEZ Post',
+    area: 'Kakkanad',
     city: 'Ernakulam',
     state: 'Kerala',
-    pin: '682030',
+    pin: '682037',
   },
   phones: [
     { label: '+91 87142 67507', href: 'tel:+918714267507' },
-    { label: '+91 87140 58108', href: 'tel:+918714058108' },
+    { label: '+91 78459 02100', href: 'tel:+917845902100' },
   ],
   emails: { info: 'info@alanglobalsafety.com', training: 'training@alanglobalsafety.com' },
   whatsapp: '918714267507',
@@ -26,8 +31,40 @@ export const COMPANY = {
   brochureUrl: '/alan-global-safety-catalogue.pdf',
   /** TODO: free Web3Forms access key so enquiries are also emailed (web3forms.com). */
   web3formsKey: 'YOUR-WEB3FORMS-ACCESS-KEY',
-  mapsQuery: 'Alan Global Safety, Thanapadam, Kakkanad, Ernakulam 682030',
+  mapsQuery: 'Kalladaayithadam Building, Near TV Center, CSEZ, Kakkanad, Ernakulam 682037',
 } as const;
+
+export interface Office {
+  key: 'kochi' | 'coimbatore';
+  lines: string[];
+  phones: { label: string; href: string }[];
+  email: string;
+  gstin: string;
+  mapsQuery: string;
+}
+
+/** Both offices, as printed on the back of the brochure. */
+export const OFFICES: Office[] = [
+  {
+    key: 'kochi',
+    lines: ['Door No: 2219, Kalladaayithadam Building', 'Near T.V Center, CSEZ Post, Kakkanad', 'Ernakulam – 682037, Kerala'],
+    phones: [...COMPANY.phones],
+    email: COMPANY.emails.info,
+    gstin: '32AWYPP7470R1Z9',
+    mapsQuery: COMPANY.mapsQuery,
+  },
+  {
+    key: 'coimbatore',
+    lines: ['40/4B, Shop #3, Thiruchendur Murugan Complex', 'Palani Goundan Pudur, Virundheeswarar Nagar', 'Pannimadai Road, K. Vadamadurai (Post)', 'Coimbatore – 641017, Tamil Nadu'],
+    phones: [COMPANY.phones[0]],
+    email: 'rkp@alanglobalsafety.com',
+    gstin: '33AWYPP7470R1Z7',
+    mapsQuery: 'Thiruchendur Murugan Complex, Pannimadai Road, K. Vadamadurai, Coimbatore 641017',
+  },
+];
+
+export const officeDirectionsUrl = (o: Office): string =>
+  `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(o.mapsQuery)}`;
 
 export const whatsappUrl = (message: string): string =>
   `https://wa.me/${COMPANY.whatsapp}?text=${encodeURIComponent(message)}`;
@@ -41,17 +78,18 @@ export const mapsDirectionsUrl = (): string =>
 /* Product catalogue                                                   */
 /* ------------------------------------------------------------------ */
 
-export type ProductGroupId = 'ppe' | 'height' | 'emergency' | 'spill' | 'detection' | 'site';
+export type ProductGroupId = 'ppe' | 'footwear' | 'height' | 'fire' | 'emergency' | 'spill' | 'detection' | 'site';
 
 export interface ProductGroup {
   id: ProductGroupId;
   icon: string;
 }
 
-/** Categories are grouped so 19 items stay easy to scan (mega-menu, catalogue filters). */
 export const PRODUCT_GROUPS: ProductGroup[] = [
   { id: 'ppe', icon: 'helmet' },
+  { id: 'footwear', icon: 'boot' },
   { id: 'height', icon: 'harness' },
+  { id: 'fire', icon: 'hydrant' },
   { id: 'emergency', icon: 'firstAid' },
   { id: 'spill', icon: 'sorbent' },
   { id: 'detection', icon: 'detector' },
@@ -59,60 +97,52 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
 ];
 
 export interface ProductCategory {
-  /** URL slug and i18n key under "products.categories". */
+  /** URL slug, i18n key under "products.categories" and key into CATALOG. */
   slug: string;
   group: ProductGroupId;
   icon: string;
-  /** Product photo from the client's current site (public/images/products). */
+  /** Cover photo: one of the section's products from the brochure. */
   image: string;
-  /** Brands named on the current site. */
-  brands?: string[];
-  /** Extra product photos shown on the category page (label = i18n key or brand name). */
-  gallery?: { src: string; label: string }[];
 }
 
-const img = (name: string) => `images/products/${name}.webp`;
+const cover = (slug: string, id: string) => `images/catalog/${slug}/${id}.webp`;
+const cat = (slug: string, group: ProductGroupId, icon: string, coverId: string): ProductCategory => ({ slug, group, icon, image: cover(slug, coverId) });
 
-/**
- * The categories on the current site and its media library (the three
- * safety-shoe entries are merged into one "Safety footwear" category with its
- * brands; welding safety, signage and safe lighting come from uploaded photos).
- * Descriptions and typical items in the i18n files are CONFIRM.
- */
+/** The 29 sections of the company brochure, in brochure order within each group. */
 export const PRODUCT_CATEGORIES: ProductCategory[] = [
-  { slug: 'head-protection', group: 'ppe', icon: 'helmet', image: img('head-protection') },
-  { slug: 'eye-protection', group: 'ppe', icon: 'goggles', image: img('eye-protection') },
-  { slug: 'ear-protection', group: 'ppe', icon: 'earmuff', image: img('ear-protection') },
-  {
-    slug: 'respiratory-protection', group: 'ppe', icon: 'mask', image: img('respiratory-protection'),
-    gallery: [{ src: img('respirators-half-full'), label: 'products.gallery.halfFull' }],
-  },
-  { slug: 'airline-respirators', group: 'ppe', icon: 'airline', image: img('airline-respirators') },
-  { slug: 'hand-protection', group: 'ppe', icon: 'glove', image: img('hand-protection') },
-  { slug: 'body-protection', group: 'ppe', icon: 'vest', image: img('body-protection') },
-  { slug: 'welding-safety', group: 'ppe', icon: 'weld', image: img('welding-safety') },
-  {
-    slug: 'safety-footwear', group: 'ppe', icon: 'boot', image: img('shoe-allen-cooper'), brands: ['Allen Cooper', 'Acme'],
-    gallery: [
-      { src: img('shoe-allen-cooper'), label: 'Allen Cooper' },
-      { src: img('shoe-acme'), label: 'Acme' },
-      { src: img('shoe-other'), label: 'products.gallery.otherBrands' },
-    ],
-  },
-  { slug: 'fall-protection', group: 'height', icon: 'harness', image: img('fall-protection') },
-  { slug: 'fall-arresters-ladders', group: 'height', icon: 'ladder', image: img('fall-arresters-ladders') },
-  { slug: 'first-aid', group: 'emergency', icon: 'firstAid', image: img('first-aid') },
-  { slug: 'eye-wash-shower', group: 'emergency', icon: 'eyewash', image: img('eye-wash-shower') },
-  { slug: 'emergency-rescue', group: 'emergency', icon: 'tripod', image: img('emergency-rescue') },
-  { slug: 'spill-control', group: 'spill', icon: 'sorbent', image: img('spill-control') },
-  { slug: 'safety-cans-cabinets', group: 'spill', icon: 'cabinet', image: img('safety-cans-cabinets') },
-  { slug: 'gas-detection', group: 'detection', icon: 'detector', image: img('gas-detection') },
-  { slug: 'safe-lighting', group: 'detection', icon: 'flashlight', image: img('safe-lighting') },
-  { slug: 'traffic-safety', group: 'site', icon: 'cone', image: img('traffic-safety') },
-  { slug: 'safety-signage', group: 'site', icon: 'sign', image: img('safety-signage') },
-  { slug: 'electrical-safety', group: 'site', icon: 'bolt', image: img('electrical-safety') },
-  { slug: 'lockout-tagout', group: 'site', icon: 'lockout', image: img('lockout-tagout') },
+  cat('head-protection', 'ppe', 'helmet', 'airvent-helmet'),
+  cat('eye-protection', 'ppe', 'goggles', 'chemical-splash-goggles-3m1621'),
+  cat('ear-protection', 'ppe', 'earmuff', 'earmuff-3m-h9a'),
+  cat('respiratory-protection', 'ppe', 'mask', '3m-8210'),
+  cat('face-respirators', 'ppe', 'mask', '3m-6800-full-face'),
+  cat('airline-respiratory', 'ppe', 'airline', 'abrasive-blasting-hood'),
+  cat('hand-protection', 'ppe', 'glove', 'impact-resistant-gloves'),
+  cat('body-protection', 'ppe', 'vest', 'fr-coverall'),
+  cat('welding-safety', 'ppe', 'weld', 'helmet-attached-welding-shield'),
+  cat('safety-shoes-allen-cooper', 'footwear', 'boot', 'allen-cooper-ac-1284'),
+  cat('safety-shoes-acme', 'footwear', 'boot', 'acme-tan-x'),
+  cat('safety-jogger', 'footwear', 'boot', 'safety-jogger-modulo-s3s-high-ankle'),
+  cat('coffer-safety', 'footwear', 'boot', 'coffer-1163-pu-with-nitrile-rubber-sole'),
+  cat('other-safety-shoes', 'footwear', 'boot', 'jcb-high-ankle'),
+  cat('fall-protection', 'height', 'harness', 'tower-climbing-harness'),
+  cat('fall-arresters-ladders', 'height', 'ladder', 'pn-800-tripod'),
+  cat('fire-extinguishers', 'fire', 'flame', 'abc-fire-extinguisher'),
+  cat('fire-hydrant', 'fire', 'hydrant', 'hose-reel-drum'),
+  cat('emergency-rescue', 'fire', 'siren', 'scba-self-contained-breathing-apparatus'),
+  cat('first-aid', 'emergency', 'firstAid', 'first-aid-box'),
+  cat('eyewash-shower', 'emergency', 'eyewash', 'portable-eye-wash'),
+  cat('sorbents-spill-kits', 'spill', 'sorbent', 'oil-spill-kit'),
+  cat('safety-cans-cabinets', 'spill', 'cabinet', 'safety-can-type-ii'),
+  cat('gas-detection', 'detection', 'detector', 'riken-keiki-gx-3r'),
+  cat('safe-lighting', 'detection', 'flashlight', 'pelican-9435'),
+  cat('traffic-safety', 'site', 'cone', 'multipurpose-traffic-cone-with-link-chain'),
+  cat('safety-signage', 'site', 'sign', 'auto-glow-signages'),
+  cat('electrical-safety', 'site', 'bolt', 'arc-flash-face-shield'),
+  cat('lockout-tagout', 'site', 'lockout', 'lockout-station'),
 ];
+
+export { CATALOG, catalogItem, catalogItems, PRODUCT_COUNT } from './catalog.data';
+export type { CatalogItem } from './catalog.data';
 
 /** Photos from the client's current site, used as atmosphere in heroes and section bands. */
 export const PHOTOS = {
@@ -125,7 +155,10 @@ export const PHOTOS = {
   helmetHands: 'images/photos/helmet-hands.webp',
   /** CONFIRM name and role with the client before publishing. */
   founder: 'images/photos/founder.webp',
-  clientLogo: 'images/client-logo.png',
+  /** The company's logo badge (updated logo supplied by the client). */
+  clientLogo: 'images/logo/logo-1024.webp',
+  /** PNG copy for search engines and structured data. */
+  logoPng: 'images/logo/logo-512.png',
 } as const;
 
 /* ------------------------------------------------------------------ */

@@ -1,11 +1,13 @@
-import { ChangeDetectionStrategy, Component, computed, effect, inject, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, inject, input, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { map, startWith } from 'rxjs';
-import { categoryBySlug, PRODUCT_CATEGORIES, whatsappUrl } from '../../core/company.config';
+import { catalogItems, categoryBySlug, PRODUCT_CATEGORIES, whatsappUrl } from '../../core/company.config';
+import { itemName } from '../../core/catalog-text';
 import { categoryLineId, itemLineId, QuoteService } from '../../core/quote';
 import { absoluteUrl, SeoService } from '../../core/seo';
+import { MotionService } from '../../core/motion';
 import { ToastService } from '../../core/toast';
 import { MagneticDirective, ParallaxDirective, RevealDirective, SplitRevealDirective } from '../../shared/motion';
 import { CategoryCard } from '../../shared/ui/category-card';
@@ -48,17 +50,17 @@ import { NotFoundPage } from '../not-found/not-found.page';
 
             <!-- Icon "specimen" on a rotating stage -->
             <div class="relative mx-auto aspect-square w-full max-w-[26rem]" reveal="scale">
-              <div class="absolute inset-[10%] rounded-full bg-[radial-gradient(circle,rgba(255,194,26,0.28),rgba(255,106,19,0.08)_50%,transparent_70%)] blur-2xl"></div>
+              <div class="absolute inset-[10%] rounded-full bg-[radial-gradient(circle,rgba(179,201,43,0.28),rgba(47,143,214,0.08)_50%,transparent_70%)] blur-2xl"></div>
               <svg viewBox="0 0 400 400" class="absolute inset-0 size-full">
                 <g class="origin-center animate-spin-slow" style="transform-box: fill-box">
                   <circle cx="200" cy="200" r="185" fill="none" stroke="rgba(255,255,255,.1)" stroke-dasharray="2 9" />
-                  <path d="M200 15a185 185 0 0 1 160 92" fill="none" stroke="#ffc21a" stroke-width="2" stroke-linecap="round" />
+                  <path d="M200 15a185 185 0 0 1 160 92" fill="none" stroke="#b3c92b" stroke-width="2" stroke-linecap="round" />
                 </g>
                 <circle cx="200" cy="200" r="140" fill="rgba(255,255,255,.02)" stroke="rgba(255,255,255,.08)" />
                 <path d="M200 8v16M200 376v16M8 200h16M376 200h16" stroke="rgba(255,255,255,.25)" stroke-width="1.5" />
               </svg>
               <!-- Product photo on a white "specimen plate" inside the rings -->
-              <div class="absolute inset-[16%] grid place-items-center overflow-hidden rounded-full bg-paper shadow-[0_30px_80px_-20px_rgba(255,194,26,0.45)]" [parallax]="-10">
+              <div class="absolute inset-[16%] grid place-items-center overflow-hidden rounded-full bg-paper shadow-[0_30px_80px_-20px_rgba(179,201,43,0.45)]" [parallax]="-10">
                 <img [src]="c.image" [alt]="name()" width="480" height="480" class="size-[78%] object-contain mix-blend-multiply" />
               </div>
               <span class="absolute right-[12%] bottom-[14%] grid size-14 place-items-center rounded-2xl bg-hivis-500 text-ink-900 shadow-card"><app-icon [name]="c.icon" class="size-7" /></span>
@@ -67,48 +69,51 @@ import { NotFoundPage } from '../not-found/not-found.page';
         </div>
       </section>
 
-      <!-- What we supply -->
+      <!-- Products from the brochure -->
       <section class="border-t border-white/[0.06] bg-ink-950 py-20 sm:py-28">
-        <div class="container-x grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-          <div class="lg:sticky lg:top-28 lg:self-start">
-            <p class="eyebrow" reveal>{{ 'category.supplyEyebrow' | translate }}</p>
-            <h2 class="display mt-5 text-4xl sm:text-5xl" [splitReveal]="'category.supplyTitle' | translate"></h2>
-            <p class="mt-5 max-w-md leading-relaxed text-steel-400" reveal>{{ 'category.supplyText' | translate }}</p>
-            @if (c.brands?.length) {
-              <div class="mt-8" reveal>
-                <p class="font-mono text-xs tracking-[0.2em] text-steel-400 uppercase">{{ 'category.brands' | translate }}</p>
-                <ul class="mt-3 flex flex-wrap gap-2">
-                  @for (b of c.brands; track b) { <li class="rounded-full border border-hivis-500/40 px-4 py-2 font-semibold text-hivis-500">{{ b }}</li> }
-                </ul>
-              </div>
-            }
-            @if (c.gallery?.length) {
-              <ul class="mt-8 grid grid-cols-3 gap-3" reveal revealStagger>
-                @for (g of c.gallery; track g.src) {
-                  <li class="overflow-hidden rounded-2xl bg-paper">
-                    <img [src]="g.src" [alt]="label(g.label)" width="480" height="480" loading="lazy" class="aspect-square w-full object-contain p-3 mix-blend-multiply" />
-                    <p class="bg-ink-800 px-3 py-2 text-center text-xs font-semibold text-steel-200">{{ label(g.label) }}</p>
-                  </li>
-                }
-              </ul>
+        <div class="container-x">
+          <div class="flex flex-wrap items-end justify-between gap-6">
+            <div class="max-w-2xl">
+              <p class="eyebrow" reveal>{{ 'category.supplyEyebrow' | translate }}</p>
+              <h2 class="display mt-5 text-4xl sm:text-5xl" [splitReveal]="'category.supplyTitle' | translate: { count: products().length }"></h2>
+              <p class="mt-5 leading-relaxed text-steel-400" reveal>{{ 'category.supplyText' | translate }}</p>
+            </div>
+            @if (products().length > 8) {
+              <label class="relative block w-full sm:w-72" reveal>
+                <span class="sr-only">{{ 'category.search' | translate }}</span>
+                <app-icon name="search" class="pointer-events-none absolute top-1/2 left-4 size-4 -translate-y-1/2 text-steel-400" />
+                <input type="search" [value]="query()" (input)="query.set($any($event.target).value)" [placeholder]="'category.search' | translate"
+                       class="h-12 w-full rounded-full border border-white/10 bg-ink-800 pr-4 pl-11 text-base text-steel-100 placeholder:text-steel-400 focus:border-hivis-500 focus:outline-none sm:text-sm" />
+              </label>
             }
           </div>
-          <ul class="grid gap-3" reveal revealStagger>
-            @for (item of items(); track $index; let i = $index) {
-              <li class="group flex items-center gap-5 rounded-2xl border border-white/[0.07] bg-ink-800/60 p-5 transition duration-500 hover:border-white/20 sm:p-6">
-                <span class="font-mono text-sm text-hivis-500">{{ pad(i + 1) }}</span>
-                <span class="flex-1 text-lg font-semibold text-steel-100">{{ item }}</span>
-                <button type="button" (click)="toggleItem(i, item)" [attr.aria-pressed]="itemInQuote(i)"
-                        [attr.aria-label]="(itemInQuote(i) ? 'quote.removeNamed' : 'quote.addNamed') | translate: { name: item }"
-                        class="flex min-h-11 items-center gap-2 rounded-full border px-4 text-sm font-semibold transition duration-300"
-                        [class]="itemInQuote(i) ? 'border-hivis-500 bg-hivis-500 text-ink-900' : 'border-white/15 text-steel-200 hover:border-hivis-500 hover:text-hivis-500'">
-                  <app-icon [name]="itemInQuote(i) ? 'check' : 'plus'" class="size-4" [stroke]="2" />
-                  <span class="hidden sm:inline">{{ (itemInQuote(i) ? 'quote.added_short' : 'quote.add') | translate }}</span>
-                </button>
+
+          <ul class="mt-12 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4" reveal revealStagger>
+            @for (p of products(); track p.item.id; let i = $index) {
+              <li class="group flex min-w-0 flex-col overflow-hidden rounded-[1.25rem] border border-white/[0.07] bg-ink-800/60 transition duration-500 hover:-translate-y-1 hover:border-white/20"
+                  [class.hidden]="!p.match">
+                <div class="relative aspect-[4/3] overflow-hidden bg-paper">
+                  <img [src]="p.item.img" [alt]="p.name" [width]="p.item.w" [height]="p.item.h" loading="lazy" decoding="async"
+                       class="absolute inset-0 m-auto max-h-[78%] max-w-[84%] object-contain mix-blend-multiply transition duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.07]" />
+                  <span class="absolute top-3 left-3 font-mono text-[0.65rem] text-ink-900/70">{{ pad(i + 1) }}</span>
+                </div>
+                <div class="flex flex-1 flex-col gap-3 p-3.5 sm:p-5">
+                  <h3 class="flex-1 font-sans text-sm leading-snug font-semibold text-steel-100 sm:text-[0.95rem]">{{ p.name }}</h3>
+                  <button type="button" (click)="toggleItem(p.item.id, p.name)" [attr.aria-pressed]="itemInQuote(p.item.id)"
+                          [attr.aria-label]="(itemInQuote(p.item.id) ? 'quote.removeNamed' : 'quote.addNamed') | translate: { name: p.name }"
+                          class="flex min-h-10 items-center justify-center gap-2 rounded-full border px-3 text-xs font-semibold transition duration-300 sm:text-sm"
+                          [class]="itemInQuote(p.item.id) ? 'border-hivis-500 bg-hivis-500 text-ink-900' : 'border-white/15 text-steel-200 hover:border-hivis-500 hover:text-hivis-500'">
+                    <app-icon [name]="itemInQuote(p.item.id) ? 'check' : 'plus'" class="size-4" [stroke]="2" />
+                    {{ (itemInQuote(p.item.id) ? 'quote.added_short' : 'quote.add') | translate }}
+                  </button>
+                </div>
               </li>
             }
-            <li class="rounded-2xl border border-dashed border-white/15 p-5 text-sm leading-relaxed text-steel-400 sm:p-6">{{ 'category.indicative' | translate }}</li>
           </ul>
+          @if (!anyMatch()) {
+            <p class="mt-6 rounded-2xl border border-white/10 p-6 text-center text-steel-300" role="status">{{ 'category.noMatch' | translate }}</p>
+          }
+          <p class="mt-8 rounded-2xl border border-dashed border-white/15 p-5 text-sm leading-relaxed text-steel-400 sm:p-6" reveal>{{ 'category.indicative' | translate }}</p>
         </div>
       </section>
 
@@ -156,6 +161,7 @@ export class CategoryPage {
   private readonly quote = inject(QuoteService);
   private readonly toast = inject(ToastService);
   private readonly seo = inject(SeoService);
+  private readonly motion = inject(MotionService);
 
   protected readonly total = PRODUCT_CATEGORIES.length;
   protected readonly category = computed(() => categoryBySlug(this.slug()));
@@ -166,11 +172,17 @@ export class CategoryPage {
     this.lang();
     return this.translate.instant(`products.categories.${this.slug()}.name`) as string;
   });
-  protected readonly items = computed<string[]>(() => {
+  protected readonly query = signal('');
+  /** Brochure products with names in the current language, flagged by the in-page search. */
+  protected readonly products = computed(() => {
     this.lang();
-    const v = this.translate.instant(`products.categories.${this.slug()}.items`);
-    return Array.isArray(v) ? v : [];
+    const q = this.query().trim().toLowerCase();
+    return catalogItems(this.slug()).map((item) => {
+      const name = itemName(this.translate, this.slug(), item);
+      return { item, name, match: !q || name.toLowerCase().includes(q) || item.label.toLowerCase().includes(q) };
+    });
   });
+  protected readonly anyMatch = computed(() => this.products().some((p) => p.match));
 
   protected readonly inQuote = computed(() => this.quote.lines() && this.quote.has(categoryLineId(this.slug())));
   protected readonly related = computed(() => {
@@ -191,6 +203,11 @@ export class CategoryPage {
   protected readonly wa = computed(() => whatsappUrl(this.translate.instant('category.waMessage', { name: this.name() })));
 
   constructor() {
+    // Search shows cards that were hidden: let row-by-row reveals re-measure.
+    effect(() => {
+      this.query();
+      void this.motion.ready().then((kit) => kit && requestAnimationFrame(() => kit.ScrollTrigger.refresh()));
+    });
     // SEO is set once the route input is known (also during prerendering).
     effect(() => {
       const c = this.category();
@@ -200,10 +217,10 @@ export class CategoryPage {
       }
       const t = (k: string) => this.translate.instant(k) as string;
       const name = t(`products.categories.${c.slug}.name`);
-      const items = this.translate.instant(`products.categories.${c.slug}.items`) as string[];
+      const items = catalogItems(c.slug).map((i) => i.label);
       this.seo.set({
         title: t('seo.category.title').replace('{{name}}', name),
-        description: `${t(`products.categories.${c.slug}.short`)} ${Array.isArray(items) ? items.join(', ') + '.' : ''}`,
+        description: `${t(`products.categories.${c.slug}.short`)} ${items.slice(0, 8).join(', ')}.`,
         path: `/products/${c.slug}`,
         structuredData: [
           {
@@ -219,11 +236,6 @@ export class CategoryPage {
     });
   }
 
-  /** Gallery labels are either i18n keys or brand names. */
-  protected label(key: string): string {
-    return key.includes('.') ? (this.translate.instant(key) as string) : key;
-  }
-
   protected pad(n: number): string {
     return String(n).padStart(2, '0');
   }
@@ -232,8 +244,8 @@ export class CategoryPage {
     return PRODUCT_CATEGORIES.findIndex((c) => c.slug === slug);
   }
 
-  protected itemInQuote(i: number): boolean {
-    return this.quote.lines() && this.quote.has(itemLineId(this.slug(), i));
+  protected itemInQuote(id: string): boolean {
+    return this.quote.lines() && this.quote.has(itemLineId(this.slug(), id));
   }
 
   protected toggleCategory(): void {
@@ -242,9 +254,9 @@ export class CategoryPage {
     }
   }
 
-  protected toggleItem(i: number, item: string): void {
-    if (this.quote.toggle({ id: itemLineId(this.slug(), i), kind: 'item', ref: this.slug(), itemIndex: i })) {
-      this.toast.show({ message: 'quote.added', params: { name: item }, link: { path: '/quote', label: 'quote.view' } });
+  protected toggleItem(id: string, name: string): void {
+    if (this.quote.toggle({ id: itemLineId(this.slug(), id), kind: 'item', ref: this.slug(), itemId: id })) {
+      this.toast.show({ message: 'quote.added', params: { name }, link: { path: '/quote', label: 'quote.view' } });
     }
   }
 }

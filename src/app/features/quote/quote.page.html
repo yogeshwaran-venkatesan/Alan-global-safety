@@ -62,7 +62,7 @@
     @if (status() === 'idle') {
       <form [formGroup]="form" (ngSubmit)="submit()" novalidate class="min-w-0 rounded-[2rem] bg-steel-100 p-5 text-ink-900 sm:p-10" reveal="right">
         <h2 class="display text-2xl !text-ink-900 sm:text-3xl">{{ 'quote.form.title' | translate }}</h2>
-        <p class="mt-2 text-sm text-ink-900/65">{{ 'quote.form.lead' | translate }}</p>
+        <p class="mt-2 text-sm text-ink-900/75">{{ 'quote.form.lead' | translate }}</p>
 
         <div class="mt-8 grid gap-5 sm:grid-cols-2">
           <div class="sm:col-span-2">
@@ -96,7 +96,7 @@
         </div>
 
         <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <p class="max-w-xs text-xs leading-relaxed text-ink-900/60">{{ 'quote.form.how' | translate }}</p>
+          <p class="max-w-xs text-xs leading-relaxed text-ink-900/75">{{ 'quote.form.how' | translate }}</p>
           <button type="submit" magnetic class="btn btn-dark w-full sm:w-auto">
             <app-icon name="whatsapp" class="size-4" /> {{ 'quote.form.submit' | translate }}
           </button>
@@ -105,14 +105,14 @@
     } @else {
       <div id="quote-status" class="grid place-items-center rounded-[2rem] bg-steel-100 p-10 text-center text-ink-900 sm:p-14" role="status" aria-live="polite">
         @if (status() === 'sending') {
-          <p class="text-ink-900/60">{{ 'form.sending' | translate }}</p>
+          <p class="text-ink-900/75">{{ 'form.sending' | translate }}</p>
         } @else {
           <div>
             <span class="mx-auto grid size-16 place-items-center rounded-full bg-hivis-500"><app-icon name="check" class="size-8" [stroke]="2.2" /></span>
             <h2 class="display mt-6 text-3xl !text-ink-900">{{ 'quote.done.title' | translate }}</h2>
-            <p class="mx-auto mt-3 max-w-sm text-ink-900/65">{{ 'quote.done.text' | translate }}</p>
+            <p class="mx-auto mt-3 max-w-sm text-ink-900/75">{{ 'quote.done.text' | translate }}</p>
             @if (emailResult() === 'sent') { <p class="mt-2 text-sm text-ink-900/80">{{ 'form.emailSent' | translate }}</p> }
-            @if (emailResult() === 'failed') { <p class="mt-2 text-sm font-semibold text-signal-600">{{ 'form.emailFailed' | translate }}</p> }
+            @if (emailResult() === 'failed') { <p class="mt-2 text-sm font-semibold text-danger-600">{{ 'form.emailFailed' | translate }}</p> }
             <div class="mt-8 flex flex-wrap justify-center gap-3">
               <button type="button" (click)="startOver(true)" class="btn btn-dark">{{ 'quote.done.clear' | translate }}</button>
               <button type="button" (click)="startOver(false)" class="btn border border-ink-900/20">{{ 'quote.done.keep' | translate }}</button>

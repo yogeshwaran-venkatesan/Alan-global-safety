@@ -4,7 +4,8 @@ import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angula
 import { RouterLink } from '@angular/router';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { map, startWith } from 'rxjs';
-import { categoryBySlug, COMPANY, whatsappUrl } from '../../core/company.config';
+import { catalogItem, categoryBySlug, COMPANY, whatsappUrl } from '../../core/company.config';
+import { itemName } from '../../core/catalog-text';
 import { buildMessage, EmailResult, EnquiryService } from '../../core/enquiry';
 import { pageSeo } from '../../core/page-seo';
 import { QuoteLine, QuoteService } from '../../core/quote';
@@ -122,8 +123,8 @@ export class QuotePage {
     const cat = categoryBySlug(line.ref);
     const catName = t(`products.categories.${line.ref}.name`);
     if (line.kind === 'item') {
-      const items = t(`products.categories.${line.ref}.items`);
-      const name = Array.isArray(items) ? items[line.itemIndex ?? 0] : catName;
+      const item = line.itemId ? catalogItem(line.ref, line.itemId) : undefined;
+      const name = item ? itemName(this.translate, line.ref, item) : catName;
       return { line, icon: cat?.icon ?? 'shield', title: name, subtitle: catName, link: ['/products', line.ref] };
     }
     return { line, icon: cat?.icon ?? 'shield', title: catName, subtitle: t('quote.kind.category'), link: ['/products', line.ref] };
