@@ -20,7 +20,7 @@ export const organizationSchema = (description: string): object => ({
 
 const ADDRESS: Record<string, object> = {
   kochi: { streetAddress: 'Door No: 2219, Kalladaayithadam Building, Near T.V Center, CSEZ Post, Kakkanad', addressLocality: 'Ernakulam', addressRegion: 'Kerala', postalCode: '682037', addressCountry: 'IN' },
-  coimbatore: { streetAddress: '40/4B, Shop #3, Thiruchendur Murugan Complex, Palani Goundan Pudur, Virundheeswarar Nagar, Pannimadai Road, K. Vadamadurai (Post)', addressLocality: 'Coimbatore', addressRegion: 'Tamil Nadu', postalCode: '641017', addressCountry: 'IN' },
+  coimbatore: { streetAddress: '40/4B, Shop #3, Thiruchendur Murugan Complex, Palani Goundan Pudur, Virundheeswarar Nagar, Pannirmadai Road, K. Vadamadurai (Post)', addressLocality: 'Coimbatore', addressRegion: 'Tamil Nadu', postalCode: '641017', addressCountry: 'IN' },
 };
 
 /** Both offices as LocalBusiness entries, linked to the Organization. */
@@ -33,7 +33,7 @@ export const officesSchema = (): object[] =>
     url: absoluteUrl('/contact'),
     image: absoluteUrl(PHOTOS.logoPng),
     telephone: o.phones.map((p) => p.href.replace('tel:', '')),
-    email: o.email,
+    email: o.emails[0],
     taxID: o.gstin,
     address: { '@type': 'PostalAddress', ...ADDRESS[o.key] },
     hasMap: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(o.mapsQuery)}`,

@@ -174,6 +174,10 @@
       "portable-fixed-line-system": {
         "name": "Portable Fixed Line System",
         "short": "Movable overhead anchor systems — counterweight masts and gantries — for fall protection where no overhead structure exists."
+      },
+      "aed-defibrillators": {
+        "name": "AED – Defibrillators",
+        "short": "Philips HeartStart automated external defibrillators with voice and CPR guidance, for workplaces, schools and public spaces."
       }
     },
     "items": {
@@ -497,6 +501,10 @@
         "porta-flex-system": "Port’A Flex™ System",
         "gantry-flex-system": "Gantry Flex™ System",
         "counterweight-c-frame-system": "Counterweight Block C-Frame System"
+      },
+      "aed-defibrillators": {
+        "philips-heartstart-frx": "Philips HeartStart FRx AED",
+        "philips-heartstart-hs1": "Philips HeartStart HS1 AED"
       }
     },
     "details": {
@@ -1114,6 +1122,104 @@
             "Great for areas with overhead obstructions",
             "One rail with two trolleys and tag line assist",
             "Moved manually with a steering handle"
+          ]
+        }
+      },
+      "aed-defibrillators": {
+        "philips-heartstart-frx": {
+          "intro": "A rugged, lightweight AED with step-by-step voice instructions, CPR guidance and an audible metronome. Pre-connected SMART Pads II work for adults and children, and it is built to handle rough use, dust, water and extreme temperatures.",
+          "specLabels": [
+            "Model number",
+            "Waveform",
+            "Therapy – adult",
+            "Therapy – child",
+            "Quick Shock",
+            "Pads",
+            "Battery",
+            "Size",
+            "Weight",
+            "Operating temperature",
+            "Sealing",
+            "Durability"
+          ],
+          "specValues": [
+            "861304",
+            "SMART truncated exponential biphasic, adjusted to each patient's impedance",
+            "32 A peak current (150 J nominal) into a 50 ohm load",
+            "19 A peak current (50 J nominal) with the optional infant/child key",
+            "Delivers a shock typically within 8 seconds after CPR",
+            "Pre-connected SMART Pads II, adult and child",
+            "Typically 4 years standby life",
+            "6 × 18 × 22 cm (H × D × W)",
+            "1.5 kg with battery and pads case; 1.2 kg without",
+            "0 – 50 °C",
+            "IPX5 water-jet proof, dust protected",
+            "Withstands 500 kg crush and 1.2 m drops"
+          ],
+          "features": [
+            "Step-by-step voice instructions with CPR guidance and metronome",
+            "Quick Shock: typically shocks within 8 seconds after CPR",
+            "SMART Pads II for adults and children — no pad change needed",
+            "Infant/child key adjusts instructions and energy",
+            "Rugged: water-jet proof, dust protected, survives drops and crush",
+            "Daily, weekly and monthly automatic self-tests"
+          ],
+          "setup": [
+            "Press the green On/Off button to start voice instructions.",
+            "Place the pads on the patient's bare chest as shown on the pads.",
+            "When the AED advises, press the orange Shock button, then follow the CPR guidance."
+          ],
+          "applications": [
+            "Factories and industrial sites",
+            "Offices and commercial buildings",
+            "Schools and colleges",
+            "Hospitals and clinics",
+            "Public places and transport hubs"
+          ]
+        },
+        "philips-heartstart-hs1": {
+          "intro": "An easy-to-use AED designed for ordinary people in an extraordinary moment. It coaches the responder with clear, step-by-step voice commands and real-time CPR guidance, and arrives ready to use with battery and pads pre-installed.",
+          "specLabels": [
+            "Waveform",
+            "Therapy – adult",
+            "Therapy – child",
+            "Quick Shock",
+            "Shock-to-shock time",
+            "Battery",
+            "Pads",
+            "Controls",
+            "Kit contents"
+          ],
+          "specValues": [
+            "SMART truncated exponential biphasic, adjusted to patient impedance",
+            "32 A peak current (150 J nominal) into a 50 ohm load",
+            "19 A peak current (50 J nominal) with the optional infant/child SMART Pads cartridge",
+            "Delivers a shock typically within 8 seconds after CPR",
+            "Typically under 20 seconds",
+            "9 V DC, 4.2 Ah lithium; minimum 200 shocks or 4 hours operating time; 4 years typical standby",
+            "SMART Pads cartridge, 85 cm² each; adult cable 137 cm",
+            "Green pads handle, green On/Off, blue i-button, orange Shock button",
+            "Defibrillator, battery and pads pre-installed, set-up guide, owner's manual, quick reference guide"
+          ],
+          "features": [
+            "Ready-Pack: battery and pads come pre-installed",
+            "Voice commands adapt to the responder's pace",
+            "Real-time CPR coaching with metronome",
+            "Infant/child pads cartridge automatically adjusts energy and instructions",
+            "Automatic daily, weekly and monthly self-tests",
+            "Quick Shock: typically shocks within 8 seconds after CPR"
+          ],
+          "setup": [
+            "Pull the green tab to start, then press the green On/Off button.",
+            "Place the pads on the patient as shown — the AED follows your pace.",
+            "Press the orange Shock button when advised and continue CPR as guided."
+          ],
+          "applications": [
+            "Offices and workplaces",
+            "Schools and sports facilities",
+            "Shops, malls and hotels",
+            "Homes and housing societies",
+            "Public places"
           ]
         }
       }

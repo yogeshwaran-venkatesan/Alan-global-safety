@@ -57,26 +57,27 @@ import { Logo } from '../shared/ui/logo';
 
       <div>
         <h2 class="font-mono text-xs font-semibold tracking-[0.2em] text-steel-100 uppercase">{{ 'footer.reach' | translate }}</h2>
-        <address class="mt-5 grid gap-4 text-sm not-italic">
+        <address class="mt-5 grid gap-6 text-sm not-italic">
           @for (o of offices; track o.key) {
-            <a [href]="dir(o)" target="_blank" rel="noopener" class="flex gap-3 leading-relaxed hover:text-steel-100">
-              <app-icon name="pin" class="mt-0.5 size-4 shrink-0 text-hivis-500" />
-              <span><span class="block font-semibold text-steel-100">{{ 'offices.' + o.key | translate }}</span>{{ o.lines.join(', ') }}</span>
-            </a>
+            <div class="grid gap-1">
+              <a [href]="dir(o)" target="_blank" rel="noopener" class="flex gap-3 leading-relaxed hover:text-steel-100">
+                <app-icon name="pin" class="mt-0.5 size-4 shrink-0 text-hivis-500" />
+                <span><span class="block font-semibold text-steel-100">{{ 'offices.' + o.key | translate }}</span>{{ o.lines.join(', ') }}</span>
+              </a>
+              @for (p of o.phones; track p.href) {
+                <a [href]="p.href" class="flex items-center gap-3 py-1 hover:text-steel-100"><app-icon name="phone" class="size-4 shrink-0 text-hivis-500" /> {{ p.label }}</a>
+              }
+              @for (e of o.emails; track e) {
+                <a [href]="'mailto:' + e" class="flex items-center gap-3 py-1 break-all hover:text-steel-100"><app-icon name="mail" class="size-4 shrink-0 text-hivis-500" /> {{ e }}</a>
+              }
+            </div>
           }
-          <div class="grid gap-1">
-            @for (p of company.phones; track p.href) {
-              <a [href]="p.href" class="flex items-center gap-3 py-1 hover:text-steel-100"><app-icon name="phone" class="size-4 text-hivis-500" /> {{ p.label }}</a>
-            }
-            <a [href]="'mailto:' + company.emails.info" class="flex items-center gap-3 py-1 break-all hover:text-steel-100"><app-icon name="mail" class="size-4 text-hivis-500" /> {{ company.emails.info }}</a>
-            <a [href]="'mailto:' + company.emails.training" class="flex items-center gap-3 py-1 break-all hover:text-steel-100"><app-icon name="mail" class="size-4 text-hivis-500" /> {{ company.emails.training }}</a>
-          </div>
         </address>
       </div>
     </div>
 
     <!-- Oversized outlined wordmark -->
-    <p class="display pointer-events-none -mb-[0.18em] text-center text-[13vw] leading-none whitespace-nowrap text-transparent select-none [-webkit-text-stroke:1px_rgb(255_255_255/0.08)]" aria-hidden="true">Alan Global</p>
+    <p class="display pointer-events-none -mb-[0.18em] text-center text-[7vw] leading-none whitespace-nowrap text-transparent select-none [-webkit-text-stroke:1px_rgb(255_255_255/0.1)]" aria-hidden="true">Alan Global Safety</p>
 
     <div class="border-t border-white/[0.06]">
       <div class="container-x flex flex-col gap-2 pt-6 pb-[calc(5.5rem+env(safe-area-inset-bottom))] text-xs sm:flex-row sm:justify-between sm:pb-6">

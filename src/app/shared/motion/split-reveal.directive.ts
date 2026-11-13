@@ -1,6 +1,7 @@
 import { afterNextRender, booleanAttribute, Directive, effect, ElementRef, inject, input, OnDestroy, Renderer2 } from '@angular/core';
 import type { SplitText } from 'gsap/SplitText';
 import { MotionService } from '../../core/motion';
+import { onceInView } from './in-view';
 
 /**
  * Headline that rises line by line from behind a mask.
@@ -21,6 +22,7 @@ export class SplitRevealDirective implements OnDestroy {
   private split?: SplitText;
   private played = false;
   private destroyed = false;
+  private stopWatching?: () => void;
 
   constructor() {
     // Text is written on the server too, so prerendered HTML has the real headline.
@@ -40,9 +42,15 @@ export class SplitRevealDirective implements OnDestroy {
       return;
     }
     const intro = this.splitIntro();
-    if (!intro && this.motion.isFirstPaint() && this.el.getBoundingClientRect().top < innerHeight * 0.9) return;
+    if (!intro && (this.motion.isFirstPaint() || this.motion.isLandingPage()) && this.el.getBoundingClientRect().top < innerHeight * 0.9) return;
     await this.document().fonts?.ready;
     if (this.destroyed) return;
+    // Headlines further down are split only when they approach the viewport: splitting
+    // every heading at load forces a lot of layout work on phones.
+    if (!intro) {
+      await new Promise<void>((resolve) => (this.stopWatching = onceInView(this.el, resolve, '0px 0px 15% 0px')));
+      if (this.destroyed || this.played) return;
+    }
 
     this.played = true;
     this.split = kit.SplitText.create(this.el, {
@@ -58,7 +66,6 @@ export class SplitRevealDirective implements OnDestroy {
           duration: 1.3,
           stagger: 0.1,
           delay: this.splitDelay(),
-          scrollTrigger: intro ? undefined : { trigger: this.el, start: 'top 90%', once: true },
         });
       },
     });
@@ -70,6 +77,7 @@ export class SplitRevealDirective implements OnDestroy {
 
   ngOnDestroy(): void {
     this.destroyed = true;
+    this.stopWatching?.();
     this.split?.revert();
   }
 }

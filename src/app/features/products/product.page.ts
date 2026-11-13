@@ -145,7 +145,7 @@ interface Datasheet {
         <section class="py-20 sm:py-28">
           <div class="container-x">
             <div class="flex flex-wrap items-end justify-between gap-6">
-              <h2 class="display text-3xl sm:text-4xl" reveal>{{ 'product.related' | translate: { section: sectionName() } }}</h2>
+              <h2 class="display min-w-0 text-2xl [overflow-wrap:anywhere] sm:text-4xl" reveal>{{ 'product.related' | translate: { section: sectionName() } }}</h2>
               <a [routerLink]="['/products', p.section]" class="inline-flex min-h-11 items-center gap-2 font-semibold text-hivis-500 hover:text-hivis-300" reveal>{{ 'product.all' | translate: { section: sectionName() } }} <app-icon name="arrow" class="size-4" /></a>
             </div>
             <ul class="mt-10 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4" reveal revealStagger>

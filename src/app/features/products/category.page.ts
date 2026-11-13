@@ -223,8 +223,13 @@ export class CategoryPage {
 
   constructor() {
     // Search shows cards that were hidden: let row-by-row reveals re-measure.
+    let firstQuery = true;
     effect(() => {
       this.query();
+      if (firstQuery) {
+        firstQuery = false;
+        return;
+      }
       void this.motion.ready().then((kit) => kit && requestAnimationFrame(() => kit.ScrollTrigger.refresh()));
     });
     // SEO is set once the route input is known (also during prerendering).

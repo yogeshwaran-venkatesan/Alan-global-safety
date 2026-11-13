@@ -389,6 +389,10 @@ export const CATALOG: Record<string, CatalogItem[]> = {
     dt('fixed-online-gas-detector', 'tm-800-1600-multi-channel-gas-monitor', 'TM-800 / 1600 Multi Channel Gas Monitor', 900, 399),
     dt('fixed-online-gas-detector', 'gazchamp-ultra-fixed-gas-monitor', 'Gazchamp-ULTRA Fixed Gas Monitor', 900, 413),
   ],
+  'aed-defibrillators': [
+    dt('aed-defibrillators', 'philips-heartstart-frx', 'Philips HeartStart FRx AED', 375, 392),
+    dt('aed-defibrillators', 'philips-heartstart-hs1', 'Philips HeartStart HS1 AED', 582, 497),
+  ],
   // In-use photos supplied by the client.
   'fixed-line-system': [
     dtPhoto('fixed-line-system', 'horizontal-lifeline-over-the-head', 'Horizontal Lifeline System — Over the Head', 660, 660),

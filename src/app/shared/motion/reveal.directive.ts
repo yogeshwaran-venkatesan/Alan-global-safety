@@ -1,6 +1,7 @@
 import { afterNextRender, booleanAttribute, Directive, ElementRef, inject, input, OnDestroy } from '@angular/core';
 import type { gsap } from 'gsap';
 import { MotionService } from '../../core/motion';
+import { onceInView } from './in-view';
 
 export type RevealVariant = 'up' | 'fade' | 'scale' | 'left' | 'right' | 'clip';
 
@@ -28,6 +29,7 @@ export class RevealDirective implements OnDestroy {
   private readonly motion = inject(MotionService);
   private ctx?: gsap.Context;
   private destroyed = false;
+  private stops: (() => void)[] = [];
 
   constructor() {
     afterNextRender(() => void this.setup());
@@ -36,42 +38,45 @@ export class RevealDirective implements OnDestroy {
   private async setup(): Promise<void> {
     const kit = await this.motion.ready();
     if (!kit || this.destroyed) return;
-    if (this.motion.isFirstPaint() && this.el.getBoundingClientRect().top < innerHeight * 0.9) return;
+    if ((this.motion.isFirstPaint() || this.motion.isLandingPage()) && this.el.getBoundingClientRect().top < innerHeight * 0.9) return;
 
     const stagger = this.revealStagger();
     const children = Array.from(this.el.children) as HTMLElement[];
     const targets = stagger ? children : this.el;
     const from = FROM[this.reveal() || 'up'];
 
-    // Long lists (product grids): reveal row by row as each enters the viewport,
-    // so nothing further down waits on a long stagger chain.
+    const to = { x: 0, y: 0, scale: 1, autoAlpha: 1, clipPath: 'inset(0% 0% 0% 0%)', ease: 'expo.out', clearProps: 'transform,opacity,visibility,clipPath' };
+    this.ctx = kit.gsap.context(() => kit.gsap.set(targets, from));
+
+    // Long lists (product grids): each card reveals as it enters, so nothing waits on a long stagger chain.
     if (stagger && children.length > 8) {
-      this.ctx = kit.gsap.context(() => {
-        kit.gsap.set(children, from);
-        kit.ScrollTrigger.batch(children, {
-          start: 'top 94%',
-          once: true,
-          onEnter: (batch) =>
-            kit.gsap.to(batch, { x: 0, y: 0, scale: 1, autoAlpha: 1, clipPath: 'inset(0% 0% 0% 0%)', duration: 1, ease: 'expo.out', stagger: 0.07, clearProps: 'transform,opacity,visibility,clipPath' }),
-        });
-      });
+      let queue: HTMLElement[] = [];
+      let timer = 0;
+      const flush = () => {
+        const batch = queue;
+        queue = [];
+        timer = 0;
+        kit.gsap.to(batch, { ...to, duration: 1, stagger: 0.07 });
+      };
+      this.stops = children.map((c) =>
+        onceInView(c, () => {
+          queue.push(c);
+          timer ||= requestAnimationFrame(flush);
+        }, '0px 0px -6% 0px'),
+      );
       return;
     }
 
-    this.ctx = kit.gsap.context(() => {
-      kit.gsap.from(targets, {
-        ...from,
-        duration: 1.2,
-        delay: this.revealDelay(),
-        stagger: stagger ? 0.09 : 0,
-        clearProps: 'transform,opacity,visibility,clipPath',
-        scrollTrigger: { trigger: this.el, start: 'top 88%', once: true },
-      });
-    });
+    this.stops = [
+      onceInView(this.el, () => {
+        kit.gsap.to(targets, { ...to, duration: 1.2, delay: this.revealDelay(), stagger: stagger ? 0.09 : 0 });
+      }),
+    ];
   }
 
   ngOnDestroy(): void {
     this.destroyed = true;
+    this.stops.forEach((stop) => stop());
     this.ctx?.revert();
   }
 }

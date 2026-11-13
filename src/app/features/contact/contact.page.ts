@@ -93,7 +93,9 @@ type Topic = 'products' | 'training' | 'other';
                 @for (p of o.phones; track p.href) {
                   <a [href]="p.href" class="flex items-center gap-3 text-steel-100 hover:text-hivis-500"><app-icon name="phone" class="size-4 text-hivis-500" /> {{ p.label }}</a>
                 }
-                <a [href]="'mailto:' + o.email" class="flex items-center gap-3 break-all text-steel-100 hover:text-hivis-500"><app-icon name="mail" class="size-4 text-hivis-500" /> {{ o.email }}</a>
+                @for (e of o.emails; track e) {
+                <a [href]="'mailto:' + e" class="flex items-center gap-3 break-all text-steel-100 hover:text-hivis-500"><app-icon name="mail" class="size-4 text-hivis-500" /> {{ e }}</a>
+                }
                 <p class="font-mono text-xs tracking-wider text-steel-400">GSTIN {{ o.gstin }}</p>
               </div>
               <a [href]="dir(o)" target="_blank" rel="noopener" class="btn btn-ghost mt-6">{{ 'contact.offices.directions' | translate }} <app-icon name="arrowUpRight" class="size-4" /></a>

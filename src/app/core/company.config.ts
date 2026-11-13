@@ -38,7 +38,7 @@ export interface Office {
   key: 'kochi' | 'coimbatore';
   lines: string[];
   phones: { label: string; href: string }[];
-  email: string;
+  emails: string[];
   gstin: string;
   mapsQuery: string;
 }
@@ -49,17 +49,17 @@ export const OFFICES: Office[] = [
     key: 'kochi',
     lines: ['Door No: 2219, Kalladaayithadam Building', 'Near T.V Center, CSEZ Post, Kakkanad', 'Ernakulam – 682037, Kerala'],
     phones: [...COMPANY.phones],
-    email: COMPANY.emails.info,
+    emails: [COMPANY.emails.info, COMPANY.emails.training],
     gstin: '32AWYPP7470R1Z9',
     mapsQuery: COMPANY.mapsQuery,
   },
   {
     key: 'coimbatore',
-    lines: ['40/4B, Shop #3, Thiruchendur Murugan Complex', 'Palani Goundan Pudur, Virundheeswarar Nagar', 'Pannimadai Road, K. Vadamadurai (Post)', 'Coimbatore – 641017, Tamil Nadu'],
-    phones: [COMPANY.phones[0]],
-    email: 'rkp@alanglobalsafety.com',
+    lines: ['40/4B, Shop #3, Thiruchendur Murugan Complex', 'Palani Goundan Pudur, Virundheeswarar Nagar', 'Pannirmadai Road, K. Vadamadurai (Post)', 'Coimbatore – 641017, Tamil Nadu'],
+    phones: [{ label: '+91 78458 68300', href: 'tel:+917845868300' }],
+    emails: ['rkp@alanglobalsafety.com'],
     gstin: '33AWYPP7470R1Z7',
-    mapsQuery: 'Thiruchendur Murugan Complex, Pannimadai Road, K. Vadamadurai, Coimbatore 641017',
+    mapsQuery: 'Thiruchendur Murugan Complex, Pannirmadai Road, K. Vadamadurai, Coimbatore 641017',
   },
 ];
 
@@ -140,6 +140,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
   cat('fire-hydrant', 'fire', 'hydrant', 'hose-reel-drum'),
   cat('emergency-rescue', 'fire', 'siren', 'scba-self-contained-breathing-apparatus'),
   cat('first-aid', 'emergency', 'firstAid', 'first-aid-box'),
+  cat('aed-defibrillators', 'emergency', 'heartPulse', 'philips-heartstart-frx'),
   cat('eyewash-shower', 'emergency', 'eyewash', 'eye-wash-fountain-shower-ss-gi'),
   cat('sorbents-spill-kits', 'spill', 'sorbent', 'oil-spill-kit'),
   cat('safety-cans-cabinets', 'spill', 'cabinet', 'safety-cabinet-blue-yellow'),

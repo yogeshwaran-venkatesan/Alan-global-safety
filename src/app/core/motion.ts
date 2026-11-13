@@ -1,6 +1,6 @@
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { inject, Injectable, NgZone, PLATFORM_ID } from '@angular/core';
-import { Router, Scroll } from '@angular/router';
+import { NavigationStart, Router, Scroll } from '@angular/router';
 import type { gsap as Gsap } from 'gsap';
 import type { ScrollTrigger as ScrollTriggerType } from 'gsap/ScrollTrigger';
 import type { Flip as FlipType } from 'gsap/Flip';
@@ -33,6 +33,7 @@ export class MotionService {
   private kit: Promise<MotionKit | null> | null = null;
   /** True until the first page has finished its entrance — avoids hiding content already on screen. */
   private firstPaint = true;
+  private navigated = false;
 
   get enabled(): boolean {
     return this.browser && this.document.documentElement.classList.contains('motion');
@@ -41,6 +42,13 @@ export class MotionService {
   /** Kick off loading early (app initializer) without blocking the first render. */
   init(): void {
     if (!this.enabled) return;
+    let first = true;
+    this.router.events.subscribe((e) => {
+      if (e instanceof NavigationStart) {
+        if (!first) this.navigated = true;
+        first = false;
+      }
+    });
     void this.ready();
     setTimeout(() => (this.firstPaint = false), 1500);
   }
@@ -48,6 +56,14 @@ export class MotionService {
   /** Content that is already visible on the very first paint should not be hidden again. */
   isFirstPaint(): boolean {
     return this.firstPaint;
+  }
+
+  /**
+   * True while the visitor is still on the page they landed on. Content that hydrates late
+   * (deferred hydration) while already on screen must not be hidden and re-animated.
+   */
+  isLandingPage(): boolean {
+    return !this.navigated;
   }
 
   ready(): Promise<MotionKit | null> {
@@ -81,6 +97,18 @@ export class MotionService {
         return l;
       });
 
+      // Re-measuring every trigger is the most expensive thing motion does: coalesce requests
+      // (page change, fonts loaded) into one refresh when the browser is idle.
+      let refreshTimer: ReturnType<typeof setTimeout> | undefined;
+      const scheduleRefresh = () => {
+        clearTimeout(refreshTimer);
+        refreshTimer = setTimeout(() => {
+          const run = () => ScrollTrigger.refresh();
+          if ('requestIdleCallback' in window) requestIdleCallback(run, { timeout: 800 });
+          else run();
+        }, 250);
+      };
+
       // Links like /contact#offices: glide to the section, clear of the fixed header.
       // Retried briefly so it also works on first load, while the page is still settling.
       const scrollToAnchor = (id: string) => {
@@ -104,10 +132,10 @@ export class MotionService {
       this.router.events.pipe(filter((e): e is Scroll => e instanceof Scroll)).subscribe((e) => {
         if (e.anchor) scrollToAnchor(e.anchor);
         else if (!e.position) lenis.scrollTo(0, { immediate: true, force: true });
-        requestAnimationFrame(() => requestAnimationFrame(() => ScrollTrigger.refresh()));
+        scheduleRefresh();
       });
       // Fonts change text metrics: re-measure once they're in.
-      void this.document.fonts?.ready.then(() => ScrollTrigger.refresh());
+      void this.document.fonts?.ready.then(() => scheduleRefresh());
 
       return { gsap, ScrollTrigger, SplitText, Flip, lenis };
     } catch (err) {

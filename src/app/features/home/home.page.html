@@ -103,6 +103,8 @@
   </div>
 </section>
 
+<!-- Below-the-fold lists hydrate only when they scroll into view (keeps the first load light on phones). -->
+@defer (hydrate on viewport) {
 <!-- ===================================================== FAST-MOVING PRODUCTS -->
 <section class="relative py-24 sm:py-32">
   <div class="container-x"><app-fast-moving /></div>
@@ -176,6 +178,7 @@
     </ol>
   </div>
 </section>
+}
 
 <!-- ===================================================== PROCESS -->
 <section class="relative overflow-hidden bg-paper py-24 text-ink-900 sm:py-36">

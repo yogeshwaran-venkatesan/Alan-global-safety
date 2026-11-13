@@ -24,7 +24,7 @@ describe('Product catalogue (from the brochure)', () => {
   });
 
   it('gives every product a unique id, a name and a photo in its section folder', () => {
-    expect(PRODUCT_COUNT).toBe(298 + 17);
+    expect(PRODUCT_COUNT).toBe(298 + 17 + 2);
     for (const [slug, items] of Object.entries(CATALOG)) {
       const ids = items.map((i) => i.id);
       expect(new Set(ids).size).withContext(slug).toBe(ids.length);
@@ -37,8 +37,8 @@ describe('Product catalogue (from the brochure)', () => {
     }
   });
 
-  it('lists 17 products with their own datasheet page', () => {
-    expect(DETAIL_PRODUCTS.length).toBe(17);
+  it('lists 19 products with their own datasheet page', () => {
+    expect(DETAIL_PRODUCTS.length).toBe(19);
   });
 
   it('has 25 training programmes with unique keys', () => {
