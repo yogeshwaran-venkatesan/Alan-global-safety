@@ -55,11 +55,11 @@ export const OFFICES: Office[] = [
   },
   {
     key: 'coimbatore',
-    lines: ['40/4B, Shop #3, Thiruchendur Murugan Complex', 'Palani Goundan Pudur, Virundheeswarar Nagar', 'Pannirmadai Road, K. Vadamadurai (Post)', 'Coimbatore – 641017, Tamil Nadu'],
+    lines: ['40/4B, Shop #3, Thiruchendur Murugan Complex', 'Palani Goundan Pudur, Virundheeswarar Nagar', 'Paneermadai Road, K. Vadamadurai (Post)', 'Coimbatore – 641017, Tamil Nadu'],
     phones: [{ label: '+91 78458 68300', href: 'tel:+917845868300' }],
     emails: ['rkp@alanglobalsafety.com'],
     gstin: '33AWYPP7470R1Z7',
-    mapsQuery: 'Thiruchendur Murugan Complex, Pannirmadai Road, K. Vadamadurai, Coimbatore 641017',
+    mapsQuery: 'Thiruchendur Murugan Complex, Paneermadai Road, K. Vadamadurai, Coimbatore 641017',
   },
 ];
 
